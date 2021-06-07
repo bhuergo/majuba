@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@300&display=swap');
+
+body {
+  background: #f7c329;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  font-family: 'Overpass', sans-serif;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1 {
+  text-align: center;
+  color: #fff;
+  letter-spacing: 2px;
+  font-weight: 300;
+  font-size: 30px;
+}
+
+p {
+  text-align: center;
+  color: #fff;
+  letter-spacing: 2px;
+  font-weight: 200;
+  font-size: 15px;
+}
+
+.container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.login {
+  text-align: center;
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: #fff;
+  min-height: 200px;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  overflow: auto;
+  zoom: 1;
+  border-radius: 25px;
+}
+
+.login #key {
+  font-size: 35px;
+  letter-spacing: 15px;
+  text-align: center;
+}
+
+.enter {
+  text-align: center;
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: #fff;
+  min-height: 100px;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  overflow: auto;
+  zoom: 1;
+  border-radius: 25px;
+}
+
+.enter button {
+  border: none;
+  background-color: rgb(252, 185, 2);
+  color: #fff;
+  width: 40%;
+  padding: 10px 20px;
+  border-radius: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  outline: none;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  margin-bottom: 20px;
+  margin-top: 30px;
+  transition: background-color 0.2s ease;
+  font-size: 20px;
+  font-weight: lighter;
+}
+.enter .return {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.enter button:hover {
+  background-color: rgb(252, 185, 2);
+}
+.enter .return:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.enter button:active {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.enter .return:active {
+  background-color: rgb(252, 185, 2);
+}
+
+form {
+  padding: 30px 50px 30px 50px;
+}
+form input {
+  border: none;
+  border-bottom: 2px solid rgb(252, 185, 2);
+  color: rgba(0, 0, 0, 0.8);
+  outline: none;
+  width: 70%;
+  margin-top: 35px;
+  font-weight: 300;
+  font-size: 20px;
+  text-align: center;
+}
+form input:nth-child(1) {
+  margin-top: 0px;
+}
+form input::-moz-placeholder {
+  color: rgb(252, 185, 2);
+  font-weight: 300;
+}
+form input:-ms-input-placeholder {
+  color: rgba(0, 0, 0, 0.8);
+  font-weight: 300;
+}
+form input::placeholder {
+  color: rgba(0, 0, 0, 0.3);
+  font-weight: 300;
+}
+form select {
+  border: 2px solid rgb(252, 185, 2);
+  border-radius: 15px;
+  padding: 8px;
+  color: rgba(252, 185, 2, 0.8);
+  outline: none;
+  width: 75%;
+  margin-top: 25px;
+  font-weight: 300;
+  font-size: 20px;
+  text-align-last: center;
+}
+form select option {
+  color: rgba(0, 0, 0, 0.4);
+  font-weight: 300;
+  text-align: center;
+}
+button {
+  border: none;
+  background-color: rgb(252, 185, 2);
+  color: #fff;
+  width: 50%;
+  padding: 10px 20px;
+  border-radius: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  outline: none;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  margin-bottom: 20px;
+  margin-top: 40px;
+  transition: background-color 0.2s ease;
+  font-size: 16px;
+  font-weight: bold;
+}
+button:hover {
+  background-color: rgb(252, 185, 2);
+}
+button:active {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+input[type=date] {
+  font-weight: 300;
+  color: rgb(252, 185, 2);
+}
