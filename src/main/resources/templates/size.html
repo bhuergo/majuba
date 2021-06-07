@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org/" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ma·ju·ba</title>
+  <link rel="stylesheet" href="/static/login.css">
+</head>
+<body>
+  <div class="container">
+    <h1>DISPONIBILIDAD</h1>
+    <div class="login">
+      <form action="#" autocomplete="off">
+        <select class="form-select" aria-label="Personas" th:field="">
+          <option value="" disabled selected hidden>Mesa para</option>
+          <option value="1">1 persona</option>
+          <option value="2">2 personas</option>
+          <option value="3">3 personas</option>
+          <option value="4">4 personas</option>
+          <option value="5">5 personas</option>
+          <option value="6">6 personas</option>
+        </select>
+        <button>Comprobar</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
