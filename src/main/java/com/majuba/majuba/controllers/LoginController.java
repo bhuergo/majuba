@@ -49,6 +49,7 @@ public class LoginController {
     public RedirectView availability(@RequestParam Integer num_guests) {
         //service para chequear y mostrar disponibilidad
         return new RedirectView("disponibilidad");
+        // hacer que si disponibilidad es 0, la función "ingresar" se deshabilite (front)
         // hacer que si pone "volver" vaya a size (/guest)
     }
 
