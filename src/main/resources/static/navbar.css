@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@300&display=swap');
+/*@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Overpass:wght@600&display=swap');
 
 html {
@@ -22,7 +22,7 @@ body {
   --icon-margin-right: 9px;
   --menu-padding-horizontal: 29px;
   --menu-padding-vertical: 20px;
-  --active-indicator-extra-length: 12px; /* We want the indicator to be longer than the actual buttons themselves, this length is added to both sides of the indicator */
+  --active-indicator-extra-length: 12px;  We want the indicator to be longer than the actual buttons themselves, this length is added to both sides of the indicator 
   --space-between-icons: 70px;
 }
 
@@ -189,4 +189,4 @@ button {
 .active .text:after {
   opacity: 1;
   transition: opacity 0.4s;
-}
+}*/
