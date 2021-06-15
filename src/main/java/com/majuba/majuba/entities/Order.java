@@ -25,5 +25,4 @@ public class Order implements Serializable {
     private Waiter waiter;
     @OneToOne
     private Payment payment;
-
 }
