@@ -10,5 +10,6 @@ package com.majuba.majuba.entities;
  * @author JP
  */
 public class prueba {
+    //comentario
     
 }
