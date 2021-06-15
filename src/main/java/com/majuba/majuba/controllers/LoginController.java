@@ -12,7 +12,6 @@ public class LoginController {
         ModelAndView mav = new ModelAndView("login");
         mav.addObject("user", new User());
         return mav;
-        
-        //comentario
+
     }
 }
