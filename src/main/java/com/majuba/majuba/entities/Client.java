@@ -27,17 +27,12 @@ import lombok.NoArgsConstructor;
 public class Client implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_client;
+    private Long client_id;
     private String name;
     private String document;
     private String email;
     private Long phone;
     @OneToMany(mappedBy = "client")
     private List<Payment> payments;
-    
-    
-    
-    
-    
     
 }
