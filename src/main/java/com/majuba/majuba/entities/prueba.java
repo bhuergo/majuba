@@ -11,5 +11,6 @@ package com.majuba.majuba.entities;
  */
 public class prueba {
     //comentario
+    //comentario de barbi
     
 }
