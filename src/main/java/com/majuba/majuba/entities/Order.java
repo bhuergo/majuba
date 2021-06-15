@@ -20,7 +20,7 @@ public class Order implements Serializable {
     @OneToOne
     private Table table;
     @OneToMany()
-    private List<Trolley> trolley_elements;
+    private List<Cart> cart_elements;
     @ManyToOne
     private Waiter waiter;
     @OneToOne

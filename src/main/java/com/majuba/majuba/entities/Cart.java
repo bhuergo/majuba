@@ -11,11 +11,11 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Trolley implements Serializable {
+public class Cart implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long trolley_id;
+    private Long cart_id;
     @ManyToOne
     private Food food;
     private Long amount;

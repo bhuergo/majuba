@@ -16,7 +16,7 @@ public class Table implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long table_id;
-    private Long capacity;
+    private Integer capacity;
     private Long access_code;
     private Boolean available;
     private Boolean pending_payment;

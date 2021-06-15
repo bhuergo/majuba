@@ -25,5 +25,5 @@ public class Food implements Serializable{
     @ManyToMany
     private List<Ingredient> ingredient;
     @ManyToOne
-    private Trolley trolley;
+    private Cart cart;
 }
