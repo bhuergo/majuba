@@ -35,8 +35,8 @@ public class TableService {
     }
 
     @Transactional
-    public void generateAccessCode(Long table_id) {
-        Table table = searchById(table_id);
+    public void generateAccessCode(Integer num_guests) {
+        Table table = tableRepository.assigned_table(num_guests);
         double code = (Math.random() * (999999-100000) + 100000);
         Long access_code = (Double.valueOf(code)).longValue();
         table.setAccess_code(access_code);

@@ -47,7 +47,6 @@ public class LoginController {
     //Al apretar "comprobar", redirecciona a vista de disponibilidad
     @GetMapping("/disponible")
     public ModelAndView availability(@RequestParam Integer num_guests) {
-
         ModelAndView mav = new ModelAndView("disponibilidad");
         mav.addObject("num_tables", tableService.checkAvailability(num_guests));
         return mav;
@@ -55,8 +54,9 @@ public class LoginController {
 
     //Al apretar "ingresar", redirecciona al codigo de acceso
     @PostMapping("/mesa")
-    public RedirectView token() {
-
+    public RedirectView token(@RequestParam Integer num_guests) {
+        //asignamos una mesa y le generamos el codigo de acceso
+        tableService.generateAccessCode(num_guests);
         //service para generar y guardar numero de mesa
         return new RedirectView("login-cl");
     }
