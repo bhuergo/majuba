@@ -1,12 +1,12 @@
 
-package com.majuba.majuba.repositories;
+/*package com.majuba.majuba.repositories;*/
 
-import com.majuba.majuba.entities.Order;
+/*import com.majuba.majuba.entities.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Repository;*/
 
-@Repository
+/*@Repository
 public interface OrderRepository extends JpaRepository<Order, Long>{
     
     
-}
+}*/
