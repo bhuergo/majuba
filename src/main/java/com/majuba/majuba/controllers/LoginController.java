@@ -46,7 +46,8 @@ public class LoginController {
     //Al apretar "comprobar", redirecciona a vista de disponibilidad
     @PostMapping("/disponible")
     public RedirectView availability(@RequestParam Integer num_guests) {
-        //service para chequear y mostrar disponibilidad
+        Integer num_tables = tableService.checkAvailability(num_guests);
+
         return new RedirectView("disponibilidad");
         // hacer que si disponibilidad es 0, la función "ingresar" se deshabilite (front)
         // hacer que si pone "volver" vaya a size (/guest)
@@ -55,6 +56,7 @@ public class LoginController {
     //Al apretar "ingresar", redirecciona al codigo de acceso
     @PostMapping("/mesa")
     public RedirectView token() {
+
         //service para generar y guardar numero de mesa
         return new RedirectView("login-cl");
     }

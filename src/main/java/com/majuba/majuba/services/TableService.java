@@ -34,11 +34,17 @@ public class TableService {
         return cartRepository.findAll();
     }
 
+    @Transactional
     public void generateAccessCode(Long table_id) {
         Table table = searchById(table_id);
         double code = (Math.random() * (999999-100000) + 100000);
         Long access_code = (Double.valueOf(code)).longValue();
         table.setAccess_code(access_code);
+    }
+
+    @Transactional
+    public Integer checkAvailability(Integer num_guests) {
+        return tableRepository.num_tables(num_guests);
     }
 
     @Transactional
