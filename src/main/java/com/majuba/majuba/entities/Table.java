@@ -11,6 +11,7 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@javax.persistence.Table(name = "restaurant_table")
 public class Table implements Serializable {
 
     @Id
@@ -20,6 +21,6 @@ public class Table implements Serializable {
     private Long access_code;
     private Boolean available;
     private Boolean pending_payment;
-   /* @OneToOne
-    private Order order;*/
+    @OneToOne
+    private Order order;
 }

@@ -11,9 +11,9 @@
   <div class="container">
     <h1>DISPONIBILIDAD</h1>
     <div class="login">
-      <form action="@{/disponible}" method="POST" autocomplete="off">
-        <select class="form-select" aria-label="Personas" th:object="*{num_guests}">
-          <option th:value="" disabled selected hidden>Mesa para</option>
+      <form th:action="@{/disponible}" autocomplete="off">
+        <select class="form-select" aria-label="Personas" name="num_guests">
+          <option value="" disabled selected hidden>Mesa para</option>
           <option th:value="1">1 persona</option>
           <option th:value="2">2 personas</option>
           <option th:value="3">3 personas</option>

@@ -5,15 +5,15 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ma·ju·ba</title>
-  <link rel="stylesheet" href="/static/login.css">
+  <link rel="stylesheet" th:href="@{/login.css}">
 </head>
 <body>
   <div class="container">
-    <h1>HAY # MESAS DISPONIBLES</h1>
+    <h1>HAY  MESAS DISPONIBLES</h1>
     <div class="enter">
-        <button>Ingresar</button>
+        <button th:disabled="${num_tables ==0}">Ingresar</button>
         <button class="return">Volver</button>
-      </form>
+
     </div>
   </div>
 </body>

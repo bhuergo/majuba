@@ -8,10 +8,11 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
-/*@Entity
+@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@javax.persistence.Table(name ="customer_order")
 public class Order implements Serializable {
 
     @Id
@@ -25,4 +26,4 @@ public class Order implements Serializable {
     private Waiter waiter;
     @OneToOne
     private Payment payment;
-}*/
+}

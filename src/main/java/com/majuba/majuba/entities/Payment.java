@@ -18,8 +18,8 @@ public class Payment implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long payment_id;
     private Date date;
-    /*@OneToOne
-    private Order order;*/
+    @OneToOne
+    private Order order;
     @ManyToOne
     private Client client;
 }

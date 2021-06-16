@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
+
 public class LoginController {
 
     @Autowired
@@ -44,11 +45,11 @@ public class LoginController {
     }
 
     //Al apretar "comprobar", redirecciona a vista de disponibilidad
-    @PostMapping("/disponible")
+    @GetMapping("/disponible")
     public ModelAndView availability(@RequestParam Integer num_guests) {
-        Integer num_tables = tableService.checkAvailability(num_guests);
+
         ModelAndView mav = new ModelAndView("disponibilidad");
-        mav.addObject("num_tables", num_tables);
+        mav.addObject("num_tables", tableService.checkAvailability(num_guests));
         return mav;
         // hacer que si disponibilidad es 0, la función "ingresar" se deshabilite (front)
         // hacer que si pone "volver" vaya a size (/guest)
