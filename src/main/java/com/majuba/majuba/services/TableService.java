@@ -15,10 +15,9 @@ public class TableService {
     private TableRepository tableRepository;
 
     @Transactional
-    public void create(Integer capacity, Long access_code, Boolean available, Boolean pending_payment) {
+    public void create(Integer capacity, Boolean available, Boolean pending_payment) {
         Table table = new Table();
         table.setCapacity(capacity);
-        table.setAccess_code(access_code);
         table.setAvailable(available);
         table.setPending_payment(pending_payment);
         tableRepository.save(table);
@@ -28,8 +27,12 @@ public class TableService {
     //public List<Cart> buscarTodos() {
       //  return cartrepository.findAll();
     //}
-
-
+    public void generateToken(Long table_id) {
+        Table table = searchById(table_id);
+        Double code = (Double)(Math.random() * (999999-100000) + 100000);
+        Long access_code = (new Double(code)).longValue();
+        table.setAccess_code(access_code);
+    }
 
     @Transactional
     public void delete(Long table_id) {
