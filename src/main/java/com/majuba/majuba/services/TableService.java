@@ -2,12 +2,14 @@ package com.majuba.majuba.services;
 
 import com.majuba.majuba.entities.Cart;
 import com.majuba.majuba.entities.Table;
+import com.majuba.majuba.repositories.CartRepository;
 import com.majuba.majuba.repositories.TableRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -15,6 +17,8 @@ public class TableService {
 
     @Autowired
     private TableRepository tableRepository;
+    @Autowired
+    private CartRepository cartRepository;
 
     @Transactional
     public void create(Integer capacity, Boolean available, Boolean pending_payment) {
@@ -25,10 +29,11 @@ public class TableService {
         tableRepository.save(table);
     }
 
-    //@Transactional(readOnly = true)
-    //public List<Cart> buscarTodos() {
-      //  return cartrepository.findAll();
-    //}
+    @Transactional(readOnly = true)
+    public List<Cart> findAll() {
+        return cartRepository.findAll();
+    }
+
     public void generateToken(Long table_id) {
         Table table = searchById(table_id);
         double code = (Math.random() * (999999-100000) + 100000);
