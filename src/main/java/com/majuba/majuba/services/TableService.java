@@ -2,10 +2,12 @@ package com.majuba.majuba.services;
 
 import com.majuba.majuba.entities.Cart;
 import com.majuba.majuba.entities.Table;
+import com.majuba.majuba.repositories.TableRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
+
 import java.util.Optional;
 
 @Service
@@ -29,8 +31,8 @@ public class TableService {
     //}
     public void generateToken(Long table_id) {
         Table table = searchById(table_id);
-        Double code = (Double)(Math.random() * (999999-100000) + 100000);
-        Long access_code = (new Double(code)).longValue();
+        double code = (Math.random() * (999999-100000) + 100000);
+        Long access_code = (Double.valueOf(code)).longValue();
         table.setAccess_code(access_code);
     }
 
@@ -44,9 +46,6 @@ public class TableService {
         Optional<Table> tableOptional = tableRepository.findById(table_id);
         return tableOptional.orElse(null);
     }
-
-
-
 
 
 }
