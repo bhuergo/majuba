@@ -34,7 +34,6 @@ public class LoginController {
     //Al apretar "ingresar", redirecciona al menú para empleados
     @PostMapping("/system")
     public RedirectView system() {
-        //service para chequear datos de acceso
         return new RedirectView("index-emp");
     }
 
@@ -53,7 +52,7 @@ public class LoginController {
         // hacer que si pone "volver" vaya a size (/guest)
     }
 
-    //Al apretar "ingresar", redirecciona al codigo de seguridad
+    //Al apretar "ingresar", redirecciona al codigo de acceso
     @PostMapping("/mesa")
     public RedirectView token() {
         //service para generar y guardar numero de mesa
@@ -63,7 +62,7 @@ public class LoginController {
     //Al ingresar el token, redirecciona al menú para clientes
     @PostMapping("/menu")
     public RedirectView menu() {
-        //service que comprueba token
+        //service que comprueba codigo de acceso
         return new RedirectView("index-cl");
     }
 }
