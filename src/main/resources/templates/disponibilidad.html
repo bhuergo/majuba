@@ -9,11 +9,10 @@
 </head>
 <body>
   <div class="container">
-    <h1>HAY  MESAS DISPONIBLES</h1>
+    <h1>HAY <span th:text="${num_tables}"></span> MESAS DISPONIBLES</h1>
     <div class="enter">
-        <button th:disabled="${num_tables ==0}">Ingresar</button>
-        <button class="return">Volver</button>
-
+        <a th:href="@{/mesa}" th:disabled="${num_tables == 0}">Ingresar</a>
+        <a th:href="@{/guest}" class="return">Volver</a>
     </div>
   </div>
 </body>
