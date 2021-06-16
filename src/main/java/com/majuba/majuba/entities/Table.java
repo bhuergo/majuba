@@ -20,6 +20,6 @@ public class Table implements Serializable {
     private Long access_code;
     private Boolean available;
     private Boolean pending_payment;
-    @OneToOne
-    private Order order;
+   /* @OneToOne
+    private Order order;*/
 }

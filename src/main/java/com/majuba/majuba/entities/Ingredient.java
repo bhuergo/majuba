@@ -17,6 +17,6 @@ public class Ingredient implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long ingredient_id;
     private String description;
-    @ManyToMany
+    @ManyToMany(mappedBy = "ingredients")
     private List<Food> foods;
 }

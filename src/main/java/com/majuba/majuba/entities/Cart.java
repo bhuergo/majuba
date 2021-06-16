@@ -20,6 +20,6 @@ public class Cart implements Serializable {
     private Food food;
     private Long amount;
     private Double subtotal;
-    @ManyToOne
-    private Order order;
+    /*@ManyToOne
+    private Order order;*/
 }

@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
-@Entity
+/*@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,10 +19,10 @@ public class Order implements Serializable {
     private Long order_id;
     @OneToOne
     private Table table;
-    @OneToMany()
+    @OneToMany(mappedBy = "order")
     private List<Cart> cart_elements;
     @ManyToOne
     private Waiter waiter;
     @OneToOne
     private Payment payment;
-}
+}*/
