@@ -51,8 +51,6 @@ public class LoginController {
         ModelAndView mav = new ModelAndView("disponibilidad");
         mav.addObject("num_tables", tableService.checkAvailability(num_guests));
         return mav;
-        // hacer que si disponibilidad es 0, la función "ingresar" se deshabilite (front)
-        // hacer que si pone "volver" vaya a size (/guest)
     }
 
     //Al apretar "ingresar", redirecciona al codigo de acceso
