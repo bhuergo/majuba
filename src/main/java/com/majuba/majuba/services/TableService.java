@@ -34,7 +34,7 @@ public class TableService {
         return cartRepository.findAll();
     }
 
-    public void generateToken(Long table_id) {
+    public void generateAccessCode(Long table_id) {
         Table table = searchById(table_id);
         double code = (Math.random() * (999999-100000) + 100000);
         Long access_code = (Double.valueOf(code)).longValue();
