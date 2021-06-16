@@ -45,10 +45,11 @@ public class LoginController {
 
     //Al apretar "comprobar", redirecciona a vista de disponibilidad
     @PostMapping("/disponible")
-    public RedirectView availability(@RequestParam Integer num_guests) {
+    public ModelAndView availability(@RequestParam Integer num_guests) {
         Integer num_tables = tableService.checkAvailability(num_guests);
-
-        return new RedirectView("disponibilidad");
+        ModelAndView mav = new ModelAndView("disponibilidad");
+        mav.addObject("num_tables", num_tables);
+        return mav;
         // hacer que si disponibilidad es 0, la función "ingresar" se deshabilite (front)
         // hacer que si pone "volver" vaya a size (/guest)
     }
