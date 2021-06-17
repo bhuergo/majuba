@@ -13,7 +13,7 @@ public interface TableRepository extends JpaRepository<Table, Long>{
     @Query("SELECT COUNT (t) FROM Table t WHERE t.capacity >= :num_guests AND t.available = true")
     Integer num_tables(@Param("num_guests") Integer num_guests);
 
-    @Query("SELECT t FROM Table t WHERE t.capacity >= :num_guests AND t.available = true HAVING MIN(t.capacity)")
+    @Query(value = "SELECT t.* FROM Table t WHERE t.capacity >= :num_guests AND t.available = true HAVING MIN(t.capacity)", nativeQuery = true)
     Table assigned_table(@Param("num_guests") Integer num_guests);
 
 }
