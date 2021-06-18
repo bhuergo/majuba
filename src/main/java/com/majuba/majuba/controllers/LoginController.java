@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 
 public class LoginController {
@@ -46,19 +48,21 @@ public class LoginController {
 
     //Al apretar "comprobar", redirecciona a vista de disponibilidad
     @GetMapping("/disponible")
-    public ModelAndView availability(@RequestParam Integer num_guests) {
+    public ModelAndView availability(@RequestParam Integer num_guests, HttpSession session) {
         ModelAndView mav = new ModelAndView("disponibilidad");
         mav.addObject("num_tables", tableService.checkAvailability(num_guests));
+        session.setAttribute("num_guests",num_guests);
         return mav;
     }
 
     //Al apretar "ingresar", redirecciona al codigo de acceso
-    @PostMapping("/mesa")
-    public RedirectView token(@RequestParam Integer num_guests) {
+    @GetMapping("/mesa")
+    public ModelAndView token(HttpSession session) {
         //asignamos una mesa y le generamos el codigo de acceso
-        tableService.generateAccessCode(num_guests);
-        //service para generar y guardar numero de mesa
-        return new RedirectView("login-cl");
+        Integer num_guests = (Integer) session.getAttribute("num_guests");
+        ModelAndView mav = new ModelAndView("login-cl");
+        mav.addObject("assigned_table", tableService.generateAccessCode(num_guests));
+        return mav;
     }
 
     //Al ingresar el token, redirecciona al menú para clientes
