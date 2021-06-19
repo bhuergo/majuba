@@ -67,10 +67,10 @@ public class LoginController {
     //Al ingresar el token, redirecciona al menú para clientes
     @PostMapping("/ingreso")
     public RedirectView menu(@RequestParam Long token, HttpSession session) {
-        //service que comprueba codigo de acceso
         Table assigned_table = (Table) session.getAttribute("assigned_table");
+        //service que comprueba codigo de acceso
         Boolean access = tableService.checkAccessCode(token, assigned_table.getAccess_code());
-        if (!access) {
+        if (access) {
             return new RedirectView("/menu");
         } else {
             return new RedirectView("/guest");

@@ -50,7 +50,7 @@ public class TableService {
 
     @Transactional
     public Boolean checkAccessCode(Long token, Long access_code) {
-        if (token == access_code){
+        if (token.equals(access_code)){
             return true;
         } else {
             return false;

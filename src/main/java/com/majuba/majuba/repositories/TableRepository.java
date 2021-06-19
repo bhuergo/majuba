@@ -16,4 +16,5 @@ public interface TableRepository extends JpaRepository<Table, Long>{
     @Query(value = "SELECT t.* FROM restaurant_table t WHERE t.capacity >= :num_guests AND t.available = true ORDER BY t.capacity ASC LIMIT 1", nativeQuery = true)
     Table assigned_table(@Param("num_guests") Integer num_guests);
 
+
 }
