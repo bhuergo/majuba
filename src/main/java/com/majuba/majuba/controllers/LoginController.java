@@ -3,6 +3,7 @@ package com.majuba.majuba.controllers;
 import com.majuba.majuba.entities.Table;
 import com.majuba.majuba.entities.User;
 import com.majuba.majuba.services.TableService;
+import com.majuba.majuba.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +21,8 @@ public class LoginController {
 
     @Autowired
     private TableService tableService;
+    @Autowired
+    private UserService userService;
 
     //Vista donde el usuario debe elegir si entra como admin o cliente
     @GetMapping("/")
@@ -37,8 +40,8 @@ public class LoginController {
 
     //Al apretar "ingresar", redirecciona al menú para empleados
     @PostMapping("/system")
-    public RedirectView system(HttpSession session) {
-
+    public RedirectView system(@RequestParam String username, HttpSession session) {
+        userService.loadUserByUsername(username);
         return new RedirectView("index-emp");
     }
 

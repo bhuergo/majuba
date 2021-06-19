@@ -1,58 +1,32 @@
 
 package com.majuba.majuba.services;
 
-
-import com.majuba.majuba.entities.Role;
 import com.majuba.majuba.entities.User;
 import com.majuba.majuba.repositories.UserRepository;
-import java.util.List;
-import java.util.Optional;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 
-public class UserService {
+import java.util.Collections;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+
+@Service
+public class UserService implements UserDetailsService {
     
-        
     @Autowired
     private UserRepository userRepository;
 
-    @Transactional
-    public void create(Long user_id, String username, String password, Role role) {
-       User user = new User();
-        user.setPassword(password);
-        user.setRole(role);
-        user.setUser_id(user_id);
-        user.setUsername(username);
-        userRepository.save(user);
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = userRepository.searchForUsername(username);
 
+        if (user == null) {
+            throw new UsernameNotFoundException("NO EXISTE EL USUARIO");
+        }
+        SimpleGrantedAuthority role = new SimpleGrantedAuthority("ROLE_" + user.getRole().toString());
+        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), Collections.singletonList(role));
     }
-
-    @Transactional(readOnly = true)
-    public List<User> fidAll() {
-        return userRepository.findAll();
-    }
-/*
-   // @Transactional
-   // public List<Cart> buscarPorNombre(String nombre) {
-     //   return autorrepositorio.buscarPorNombre(nombre);
-    //}
-@Transactional
-    public void modify(Integer cart_id,Cart cart){
-        CartRepository.modify(cart_id,cart);
-    }*/
-    @Transactional
-    public void delete(Long user_id) {
-        userRepository.deleteById(user_id);
-    }
-
-    
-    @Transactional(readOnly = true)
-    public User searchById(Long user_id) {
-        Optional<User> userOptional = userRepository.findById(user_id);
-        return userOptional.orElse(null);
-    }
-    
-    
-    
     
 }
