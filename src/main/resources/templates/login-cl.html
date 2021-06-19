@@ -5,15 +5,15 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ma·ju·ba</title>
-  <link rel="stylesheet" href="/static/login.css">
+  <link rel="stylesheet" th:href="@{/login.css}">
 </head>
 <body>
   <div class="container">
     <h1>ACCESO MESA <span th:text="${assigned_table}"></span></h1>
     <p>Introduzca el código de 6 dígitos que le <br>brindaron al ingresar al establecimiento</p>
     <div class="login">
-      <form action="#" autocomplete="off">
-        <input id="key" placeholder=" ****** " type="text" maxlength="6"/>
+      <form th:action="@{/ingreso}" method="post" autocomplete="off">
+        <input id="key" placeholder=" ****** " type="text" maxlength="6" name="token"/>
         <button>Ingresar</button>
       </form>
     </div>

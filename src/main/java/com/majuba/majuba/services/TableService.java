@@ -35,17 +35,26 @@ public class TableService {
     }
 
     @Transactional
-    public Long generateAccessCode(Integer num_guests) {
+    public Table generateAccessCode(Integer num_guests) {
         Table table = tableRepository.assigned_table(num_guests);
         double code = (Math.random() * (999999-100000) + 100000);
         Long access_code = (Double.valueOf(code)).longValue();
         table.setAccess_code(access_code);
-        return table.getTable_id();
+        return table;
     }
 
     @Transactional
     public Integer checkAvailability(Integer num_guests) {
         return tableRepository.num_tables(num_guests);
+    }
+
+    @Transactional
+    public Boolean checkAccessCode(Long token, Long access_code) {
+        if (token == access_code){
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Transactional

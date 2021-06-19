@@ -1,11 +1,11 @@
 package com.majuba.majuba.controllers;
 
-import com.majuba.majuba.entities.User;
-import com.majuba.majuba.services.LoginService;
+import com.majuba.majuba.entities.Table;
 import com.majuba.majuba.services.TableService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -17,8 +17,6 @@ import javax.servlet.http.HttpSession;
 
 public class LoginController {
 
-    @Autowired
-    private LoginService loginService;
     @Autowired
     private TableService tableService;
 
@@ -51,7 +49,7 @@ public class LoginController {
     public ModelAndView availability(@RequestParam Integer num_guests, HttpSession session) {
         ModelAndView mav = new ModelAndView("disponibilidad");
         mav.addObject("num_tables", tableService.checkAvailability(num_guests));
-        session.setAttribute("num_guests",num_guests);
+        session.setAttribute("num_guests", num_guests);
         return mav;
     }
 
@@ -61,14 +59,26 @@ public class LoginController {
         //asignamos una mesa y le generamos el codigo de acceso
         Integer num_guests = (Integer) session.getAttribute("num_guests");
         ModelAndView mav = new ModelAndView("login-cl");
-        mav.addObject("assigned_table", tableService.generateAccessCode(num_guests));
+        mav.addObject("assigned_table", tableService.generateAccessCode(num_guests).getTable_id());
+        session.setAttribute("assigned_table", tableService.generateAccessCode(num_guests));
         return mav;
     }
 
     //Al ingresar el token, redirecciona al menú para clientes
-    @PostMapping("/menu")
-    public RedirectView menu() {
+    @PostMapping("/ingreso")
+    public RedirectView menu(@RequestParam Long token, HttpSession session) {
         //service que comprueba codigo de acceso
-        return new RedirectView("index-cl");
+        Table assigned_table = (Table) session.getAttribute("assigned_table");
+        Boolean access = tableService.checkAccessCode(token, assigned_table.getAccess_code());
+        if (!access) {
+            return new RedirectView("/menu");
+        } else {
+            return new RedirectView("/guest");
+        }
+    }
+
+    @GetMapping("/menu")
+    public ModelAndView menuMesa(HttpSession session) {
+        return new ModelAndView("index-cl");
     }
 }
