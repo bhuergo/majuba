@@ -1,6 +1,7 @@
 package com.majuba.majuba.controllers;
 
 import com.majuba.majuba.entities.Table;
+import com.majuba.majuba.entities.User;
 import com.majuba.majuba.services.TableService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,13 +29,16 @@ public class LoginController {
 
     //Al apretar "admin", redirecciona al formulario de login
     @GetMapping("/admin")
-    public ModelAndView admin() {
-        return new ModelAndView("login-emp");
+    public ModelAndView admin(HttpSession session) {
+        ModelAndView mav = new ModelAndView("login-emp");
+        mav.addObject("user", new User());
+        return mav;
     }
 
     //Al apretar "ingresar", redirecciona al menú para empleados
     @PostMapping("/system")
-    public RedirectView system() {
+    public RedirectView system(HttpSession session) {
+
         return new RedirectView("index-emp");
     }
 
