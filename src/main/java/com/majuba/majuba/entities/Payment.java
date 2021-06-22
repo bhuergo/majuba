@@ -17,6 +17,7 @@ public class Payment implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long payment_id;
+    @Temporal(TemporalType.DATE)
     private Date date;
     @OneToOne
     private Order order;

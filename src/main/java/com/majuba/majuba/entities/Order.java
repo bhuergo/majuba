@@ -12,6 +12,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@javax.persistence.Table(name ="customer_order")
 public class Order implements Serializable {
 
     @Id
@@ -19,7 +20,7 @@ public class Order implements Serializable {
     private Long order_id;
     @OneToOne
     private Table table;
-    @OneToMany()
+    @OneToMany(mappedBy = "order")
     private List<Cart> cart_elements;
     @ManyToOne
     private Waiter waiter;

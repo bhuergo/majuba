@@ -11,6 +11,7 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@javax.persistence.Table(name = "restaurant_table")
 public class Table implements Serializable {
 
     @Id

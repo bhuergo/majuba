@@ -8,6 +8,8 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
+//Categorías de comidas para dividir el menú
+
 @Entity
 @Data
 @AllArgsConstructor
