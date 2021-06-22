@@ -1,22 +1,125 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org/" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html
+  lang="es"
+  xmlns:th="http://www.thymeleaf.org/"
+  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ma·ju·ba</title>
-    <link rel="stylesheet" href="/static/login.css" />
+    <!-- Link CSS using thymeleaf -->
+    <!-- <link rel="stylesheet" th:href="@{/login-emp.css}" /> -->
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="../static/login-emp.css" />
+    <!-- Icons -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+      integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk"
+      crossorigin="anonymous"
+    />
   </head>
   <body>
-    <div class="container">
-      <h1>INGRESAR</h1>
-      <div class="login">
-        <form action="#" autocomplete="off">
-          <input placeholder="Usuario" type="text" />
-          <input placeholder="Contraseña" type="password" />
-          <button>Ingresar</button>
+    <nav class="topnav">
+      <h2 class="logo">ma·ju·ba</h2>
+    </nav>
+    <main class="main-container">
+      <div class="container">
+        <h1 class="title">ADMINISTRACIÓN</h1>
+        <form class="login" action="#" autocomplete="off">
+          <div class="login__inputs">
+            <input
+              placeholder="Usuario"
+              type="text"
+              name="username"
+              id="username"
+            />
+            <i class="far fa-check-circle u_check"></i>
+            <i class="far fa-times-circle u_times"></i>
+            <span class="error-username">Usuario invalido</span>
+          </div>
+          <div class="login__inputs">
+            <input
+              placeholder="Contraseña"
+              type="password"
+              name="password"
+              id="password"
+            />
+            <i class="far fa-check-circle p_check"></i>
+            <i class="far fa-times-circle p_times"></i>
+            <span class="error-password">Contraseña invalida</span>
+          </div>
+
+          <button type="submit">Ingresar</button>
         </form>
       </div>
-    </div>
+    </main>
+    <script>
+      let user = document.querySelector("#username");
+      let pass = document.querySelector("#password");
+      let form = document.querySelector(".login");
+      user.addEventListener("keyup", (e) => {
+        let wrong = document.querySelector(".u_times");
+        let valid = document.querySelector(".u_check");
+        if (user.value.length === 0 || user.value.length < 6) {
+          user.style.borderBottom = "2px solid #F71E43";
+          wrong.style.display = "block";
+          valid.style.display = "none";
+          return false;
+        } else {
+          user.style.borderBottom = "2px solid #346751";
+          wrong.style.display = "none";
+          valid.style.display = "block";
+        }
+      });
+
+      pass.addEventListener("keyup", (e) => {
+        let wrong = document.querySelector(".p_times");
+        let valid = document.querySelector(".p_check");
+        if (pass.value.length === 0 || pass.value.length < 8) {
+          pass.style.borderBottom = "2px solid #F71E43";
+          wrong.style.display = "block";
+          valid.style.display = "none";
+          return false;
+        } else {
+          pass.style.borderBottom = "2px solid #346751";
+          wrong.style.display = "none";
+          valid.style.display = "block";
+        }
+      });
+
+      const errUser = document.querySelector(".error-username");
+      const errPass = document.querySelector(".error-password");
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        validate();
+      });
+
+      const validate = () => {
+        let wrongUser = document.querySelector(".u_times");
+        let validUser = document.querySelector(".u_check");
+        let wrongPass = document.querySelector(".u_times");
+        let validPass = document.querySelector(".u_check");
+        console.log(pass.value);
+        if (user.value.length === 0 || user.value.length < 6) {
+          wrongUser.style.display = 'block';
+          user.style.borderBottom = '2px solid #F71E43';
+          errUser.style.display = "block";
+          return false;
+        } else if (pass.value.length === 0 || pass.value.length < 8) {
+          errPass.style.display = 'block'
+          console.log("asda");
+          return false;
+        } else {
+          errUser.style.display = "none";
+          errPass.style.display = 'none'
+          validUser.style.display = "block";
+          user.style.borderBottom = '2px solid #346751';
+          console.log("bien pa");
+        }
+      };
+    </script>
   </body>
 </html>

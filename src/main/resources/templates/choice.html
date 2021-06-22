@@ -1,24 +1,42 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org/">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ma·ju·ba</title>
-  <link rel="stylesheet" th:href="@{/choice.css}">
-</head>
-<body>
-  <div class='container'>
-    <p>INGRESAR COMO</p>
-    <div class='btn-group animated bounceIn'>
-      <a class='btn' th:href="@{/admin}">
-        <div class='fa fa-check'>Admin</div>
-      </a>
-      <span>o</span>
-      <a class='btn' th:href="@{/guest}">
-        <div class='fa fa-times'>Cliente</div>
-      </a>
-    </div>
-  </div>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ma·ju·ba</title>
+    <!-- Link CSS using thymeleaf -->
+    <!-- <link rel="stylesheet" th:href="@{/choice.css}" /> -->
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="../static/choice.css" />
+    <!-- Icons -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+      integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <nav class="topnav">
+      <h2 class="logo">ma·ju·ba</h2>
+    </nav>
+    <main class="main-container">
+      <div class="container">
+        <h1 class="title">ma·ju·ba</h1>
+        <h3 class="subtitle">Ingresar como</h3>
+        <div class="options">
+          <a class="option-container" th:href="@{/admin}">
+            <i class="fas fa-lock-open"></i>
+            <span>CLIENTE</span>
+          </a>
+
+          <a class="option-container" th:href="@{/guest}">
+            <i class="fas fa-hamburger"></i>
+            <span>ADMIN</span>
+          </a>
+        </div>
+      </div>
+    </main>
+  </body>
 </html>

@@ -1,0 +1,1 @@
+let user = document.querySelector('#username');

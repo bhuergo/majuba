@@ -1,29 +1,58 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org/" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ma·ju·ba</title>
-  <link rel="stylesheet" th:href="@{/login.css}">
-</head>
-<body>
-  <div class="container">
-    <h1>DISPONIBILIDAD</h1>
-    <div class="login">
-      <form action="@{/disponible}" method="POST" th:object="${mesa}" autocomplete="off">
-        <select class="form-select" aria-label="Personas" th:field="*{capacidad}">
-          <option th:value="" disabled selected hidden>Mesa para</option>
-          <option th:value="1">1 persona</option>
-          <option th:value="2">2 personas</option>
-          <option th:value="3">3 personas</option>
-          <option th:value="4">4 personas</option>
-          <option th:value="5">5 personas</option>
-          <option th:value="6">6 personas</option>
-        </select>
-        <button>Comprobar</button>
-      </form>
-    </div>
-  </div>
-</body>
+<html
+  lang="es"
+  xmlns:th="http://www.thymeleaf.org/"
+  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ma·ju·ba</title>
+    <!-- Link CSS using thymeleaf -->
+    <!-- <link rel="stylesheet" th:href="@{/size.css}" /> -->
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="../static/size.css" />
+    <!-- Icons -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+      integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <nav class="topnav">
+      <h2 class="logo">ma·ju·ba</h2>
+    </nav>
+    <main class="main-container">
+      <div class="container">
+        <h1 class="selectTitle">DISPONIBILIDAD</h1>
+        <div class="select-container">
+          <form
+            class="disponibility-form"
+            th:action="@{/disponible}"
+            method="POST"
+            th:object="${mesa}"
+            autocomplete="off"
+          >
+            <select
+              class="select"
+              aria-label="Personas"
+              th:field="*{capacidad}"
+            >
+              <option th:value="" disabled selected hidden>Mesa para</option>
+              <option th:value="1">1 persona</option>
+              <option th:value="2">2 personas</option>
+              <option th:value="3">3 personas</option>
+              <option th:value="4">4 personas</option>
+              <option th:value="5">5 personas</option>
+              <option th:value="6">6 personas</option>
+            </select>
+            <button type="submit" class="buttonload">Comprobar</button>
+          </form>
+        </div>
+      </div>
+    </main>
+  </body>
 </html>
