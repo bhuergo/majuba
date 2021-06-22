@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpSession;
+import java.security.Principal;
 
 @Controller
 
@@ -38,10 +39,11 @@ public class LoginController {
     }
 
     //Al apretar "ingresar", redirecciona al menú para empleados
-    @PostMapping("/system")
-    public RedirectView system(@RequestParam String username, HttpSession session) {
+    @GetMapping("/system")
+    public ModelAndView system(@RequestParam String username, HttpSession session, Principal principal) {
+        System.out.println(principal.getName());
         userService.loadUserByUsername(username);
-        return new RedirectView("index-emp");
+        return new ModelAndView("index-emp");
     }
 
     //Al apretar "cliente", redirecciona a elegir tamaño de mesa

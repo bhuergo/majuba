@@ -1,7 +1,10 @@
 package com.majuba.majuba;
 
+import com.majuba.majuba.services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -13,21 +16,32 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    @Autowired
+    private UserService userService;
+
     @Bean
     public BCryptPasswordEncoder encoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    @Autowired
+    public void configurerGlobal(AuthenticationManagerBuilder builder) throws Exception {
+        builder.userDetailsService(userService).passwordEncoder(encoder());
     }
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                    .antMatchers("/**").permitAll()
+                .antMatchers("/admin", "/guest", "/*.css", "/*.js", "/images/*").permitAll()
+                .antMatchers("/**").authenticated()
                 .and()
                 .formLogin()
-                    .loginPage("/admin").permitAll()
-                    .loginPage("/guest").permitAll()
+                .loginPage("/")
+                .loginProcessingUrl("/login") // <- No deberia ser necesario, por que lo pide?
+                .defaultSuccessUrl("/", true).permitAll()
                 .and()
-                    .logout().permitAll();
+                .logout().permitAll()
+                .and().csrf().disable();
     }
 }
