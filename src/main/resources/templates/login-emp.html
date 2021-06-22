@@ -10,10 +10,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ma·ju·ba</title>
     <!-- Link CSS using thymeleaf -->
-    <!-- <link rel="stylesheet" th:href="@{/login-emp.css}" /> -->
+     <link rel="stylesheet" th:href="@{/login-emp.css}" />
     <!-- Link CSS -->
-    <link rel="stylesheet" href="../static/login-emp.css" />
-    <!-- Icons -->
+    <!--<link rel="stylesheet" href="../static/login-emp.css" />
+    Icons -->
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
@@ -27,8 +27,8 @@
     </nav>
     <main class="main-container">
       <div class="container">
-        <h1 class="title">ADMINISTRACIÓN</h1>
-        <form class="login" action="#" autocomplete="off">
+        <h1 class="title">ADMINISTRACION</h1>
+        <form class="login" th:action="@{/login}" method="POST" autocomplete="off">
           <div class="login__inputs">
             <input
               placeholder="Usuario"
@@ -57,69 +57,69 @@
       </div>
     </main>
     <script>
-      let user = document.querySelector("#username");
-      let pass = document.querySelector("#password");
-      let form = document.querySelector(".login");
-      user.addEventListener("keyup", (e) => {
-        let wrong = document.querySelector(".u_times");
-        let valid = document.querySelector(".u_check");
-        if (user.value.length === 0 || user.value.length < 6) {
-          user.style.borderBottom = "2px solid #F71E43";
-          wrong.style.display = "block";
-          valid.style.display = "none";
-          return false;
-        } else {
-          user.style.borderBottom = "2px solid #346751";
-          wrong.style.display = "none";
-          valid.style.display = "block";
-        }
-      });
+     let user = document.querySelector("#username");
+     let pass = document.querySelector("#password");
+     let form = document.querySelector(".login");
+     user.addEventListener("keyup", (e) => {
+       let wrong = document.querySelector(".u_times");
+       let valid = document.querySelector(".u_check");
+       if (user.value.length === 0) {
+         user.style.borderBottom = "2px solid #F71E43";
+         wrong.style.display = "block";
+         valid.style.display = "none";
+         return false;
+       } else {
+         user.style.borderBottom = "2px solid #346751";
+         wrong.style.display = "none";
+         valid.style.display = "block";
+       }
+     });
 
-      pass.addEventListener("keyup", (e) => {
-        let wrong = document.querySelector(".p_times");
-        let valid = document.querySelector(".p_check");
-        if (pass.value.length === 0 || pass.value.length < 8) {
-          pass.style.borderBottom = "2px solid #F71E43";
-          wrong.style.display = "block";
-          valid.style.display = "none";
-          return false;
-        } else {
-          pass.style.borderBottom = "2px solid #346751";
-          wrong.style.display = "none";
-          valid.style.display = "block";
-        }
-      });
+     pass.addEventListener("keyup", (e) => {
+       let wrong = document.querySelector(".p_times");
+       let valid = document.querySelector(".p_check");
+       if (pass.value.length === 0) {
+         pass.style.borderBottom = "2px solid #F71E43";
+         wrong.style.display = "block";
+         valid.style.display = "none";
+         return false;
+       } else {
+         pass.style.borderBottom = "2px solid #346751";
+         wrong.style.display = "none";
+         valid.style.display = "block";
+       }
+     });
 
-      const errUser = document.querySelector(".error-username");
-      const errPass = document.querySelector(".error-password");
-      form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        validate();
-      });
+     const errUser = document.querySelector(".error-username");
+     const errPass = document.querySelector(".error-password");
+     form.addEventListener("submit", (e) => {
 
-      const validate = () => {
-        let wrongUser = document.querySelector(".u_times");
-        let validUser = document.querySelector(".u_check");
-        let wrongPass = document.querySelector(".u_times");
-        let validPass = document.querySelector(".u_check");
-        console.log(pass.value);
-        if (user.value.length === 0 || user.value.length < 6) {
-          wrongUser.style.display = 'block';
-          user.style.borderBottom = '2px solid #F71E43';
-          errUser.style.display = "block";
-          return false;
-        } else if (pass.value.length === 0 || pass.value.length < 8) {
-          errPass.style.display = 'block'
-          console.log("asda");
-          return false;
-        } else {
-          errUser.style.display = "none";
-          errPass.style.display = 'none'
-          validUser.style.display = "block";
-          user.style.borderBottom = '2px solid #346751';
-          console.log("bien pa");
-        }
-      };
-    </script>
-  </body>
+       validate();
+     });
+
+     const validate = () => {
+       let wrongUser = document.querySelector(".u_times");
+       let validUser = document.querySelector(".u_check");
+       let wrongPass = document.querySelector(".u_times");
+       let validPass = document.querySelector(".u_check");
+       console.log(pass.value);
+       if (user.value.length === 0 ) {
+         wrongUser.style.display = 'block';
+         user.style.borderBottom = '2px solid #F71E43';
+         errUser.style.display = "block";
+         return false;
+       } else if (pass.value.length === 0 ) {
+         errPass.style.display = 'block'
+         console.log("asda");
+         return false;
+       } else {
+         errUser.style.display = "none";
+         errPass.style.display = 'none'
+         validUser.style.display = "block";
+         user.style.borderBottom = '2px solid #346751';
+
+       }
+     };
+   </script>
+ </body>
 </html>

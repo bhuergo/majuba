@@ -10,10 +10,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ma·ju·ba</title>
     <!-- Link CSS using thymeleaf -->
-    <!-- <link rel="stylesheet" th:href="@{/size.css}" /> -->
+    <link rel="stylesheet" th:href="@{/size.css}" />
     <!-- Link CSS -->
-    <link rel="stylesheet" href="../static/size.css" />
-    <!-- Icons -->
+    <!-- <link rel="stylesheet" href="../static/size.css" />
+     Icons -->
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
@@ -32,16 +32,14 @@
           <form
             class="disponibility-form"
             th:action="@{/disponible}"
-            method="POST"
-            th:object="${mesa}"
             autocomplete="off"
           >
             <select
               class="select"
               aria-label="Personas"
-              th:field="*{capacidad}"
+              name="num_guests"
             >
-              <option th:value="" disabled selected hidden>Mesa para</option>
+              <option value="" disabled selected hidden>Mesa para</option>
               <option th:value="1">1 persona</option>
               <option th:value="2">2 personas</option>
               <option th:value="3">3 personas</option>
