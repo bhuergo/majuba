@@ -73,7 +73,7 @@ body {
   color: #6c1ef7;
 }
 
-.options-disponibility {
+.options-availability {
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -82,7 +82,7 @@ body {
   color: #000;
 }
 
-.option-disponibility {
+.option-availability {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -92,11 +92,11 @@ body {
   border: none;
 }
 
-.option-disponibility i {
+.option-availability i {
   margin-right: 4px;
 }
 
-.option-disponibility a:visited {
+.option-availability a:visited {
   color: var(--primaryColor);
 }
 
