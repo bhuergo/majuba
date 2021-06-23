@@ -17,12 +17,11 @@ public class FoodService {
     private FoodRepository foodRepository;
 
     @Transactional
-    public void create(Long food_id, byte[] image, String title, String description, Double price, Category category, List ingredients, Cart cart) {
+    public void create(byte[] image, String title, String description, Double price, Category category, List ingredients) {
         Food food = new Food();
-        food.setCart(cart);
+
        food.setCategory(category);
        food.setDescription(description);
-       food.setFood_id(food_id);
        food.setImage(image);
        food.setIngredients(ingredients);
       food.setPrice(price);
