@@ -6,7 +6,9 @@ import com.majuba.majuba.services.TableService;
 import com.majuba.majuba.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -43,8 +45,14 @@ public class LoginController {
     public ModelAndView system(@RequestParam String username, HttpSession session, Principal principal) {
         System.out.println(principal.getName());
         userService.loadUserByUsername(username);
-        return new ModelAndView("index-emp");
+        return new ModelAndView ("index-emp");
     }
+    // al ingresar user y pw, este get mapping redirije al index del empleado
+   // @GetMapping("/emp")
+    //public ModelAndView emp() {
+       // return new ModelAndView("index-emp");
+//    }
+
 
     //Al apretar "cliente", redirecciona a elegir tamaño de mesa
     @GetMapping("/guest")
@@ -89,4 +97,6 @@ public class LoginController {
     public ModelAndView menuMesa(HttpSession session) {
         return new ModelAndView("index-cl");
     }
+
+
 }
