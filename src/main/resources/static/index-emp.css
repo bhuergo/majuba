@@ -73,6 +73,7 @@ body {
 .cart__button {
   padding: 8px;
   background: transparent;
+  color: #000;
   border: none;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
@@ -92,14 +93,16 @@ section {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   scroll-snap-align: center;
 }
 
 /* New food */
 
-#new-food {
+#new-food,
+#new-supply,
+#waiter {
   justify-content: center;
 }
 
@@ -219,8 +222,119 @@ section {
 }
 
 .form__select {
-    padding: 1rem;
-    border-radius: 6px;
-    outline: none;
-    margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 6px;
+  outline: none;
+  margin-bottom: 1rem;
+}
+
+/* Tables */
+
+.tables__container {
+  margin-top: 5rem;
+  width: 90%;
+}
+
+.tables__title {
+  text-align: center;
+  font-family: "Playfair Display", serif;
+  font-weight: 500;
+  font-size: 2rem;
+  margin-bottom: .8rem;
+}
+
+.tables__flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.table {
+  font-family: "Roboto", sans-serif;
+  width: 150px;
+  height: 100px;
+  display: flex;
+  border-radius: 12px;
+  padding: 8px;
+  box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.5);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #E8F0F2;
+}
+
+.table__title {
+  display: flex;
+  color: #000;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+}
+
+.table__svg {
+  margin-right: 4px;
+}
+
+.table__code {
+  color: #000;
+  letter-spacing: 2px;
+  font-weight: 800;
+}
+
+
+.available {
+  background-color: #66DE93;
+}
+
+.occupied {
+  background-color: #FF616D;
+}
+
+.pending-payment {
+  background-color: #EBA83A;
+}
+
+.cart__modal-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity .3s;
+}
+
+.bg-active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.cart__modal {
+  position: relative;
+  height: 70vh;
+  width:40%;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.4rem;
+  border-radius: 10px;
+}
+
+.cart__modal-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 10px;
+  cursor: pointer;
+  background-color: transparent;
+  font-size: 1.1rem;
+  border: none;
+  color: #444444;
 }

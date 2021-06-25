@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ma·ju·ba</title>
+  <link rel="stylesheet" href="../static/navbar.css">
+</head>
+<body>
+  <!-- <nav th:replace="navbar-emp :: navbar"></nav> -->
+  <nav class="menu">
+    <div class="logo">
+      <div class="logo__item">
+        <img src="/static/images/logo.png" alt="logo">
+      </div>
+    </div>
+  
+    <div class="nav">
+      <div class="nav__item">
+        <button class="active">
+          <img class="icon" src="/static/images/mesas.svg" width="30" height="30">
+            <span class="text" data-title="Mesas">Mesas</span>
+          </button>
+      </div>
+    
+    
+      <div class="nav__item">
+        <button>
+          <img class="icon" src="/static/images/new-ingredient.svg" width="30" height="30">
+            <span class="text" data-title="Nuevo insumo">Nuevo insumo</span>
+          </button>
+      </div>
+    
+      <div class="nav__item">
+        <button>
+          <img class="icon" src="/static/images/comidas.svg" width="30" height="30">
+            <span class="text" data-title="Comidas">Comidas</span>
+          </button>
+      </div>
+    
+      <div class="nav__item">
+        <button>
+          <img class="icon" src="/static/images/new-food.svg" width="30" height="30">
+            <span class="text" data-title="Nueva comida">Nueva comida</span>
+          </button>
+      </div>
+
+      <div class="nav__active-indicator"></div>
+    
+    </div>
+  
+    <div class="trolley">
+      <div class="nav__item">
+        <button>
+          <img class="icon" src="/static/images/carrito.svg" width="30" height="30">
+          <span class="text" data-title="Nuevos pedidos">Nuevos pedidos</span>
+          </button>
+      </div>
+
+      <div class="nav__item">
+        <button>
+          <img class="icon" src="/static/images/ventas.svg" width="30" height="30">
+          <span class="text" data-title="Pagos">Pagos</span>
+          </button>
+      </div>
+    </div>
+  </nav>
+  
+
+  <script src="/static/navbar.js"></script>
+</body>
+</html>
