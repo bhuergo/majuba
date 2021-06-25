@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ma·ju·ba</title>
+    <!-- Link CSS using thymeleaf -->
+    <!-- <link rel="stylesheet" th:href="@{/index-emp.css}" /> -->
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="../static/index-emp.css" />
+    <!-- Icons -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+      integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <!-- Cart modal -->
+    <div class="cart__modal-bg">
+      <div class="cart__modal">
+        funciona
+        <button class="cart__modal-button">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+    </div>
+    <script>
+      const cartButton = document.querySelector(".cart__button");
+      const modalBg = document.querySelector(".cart__modal-bg");
+      const cartModalButton = document.querySelector(".cart__modal-button");
+
+      cartButton.addEventListener("click", () => {
+        modalBg.classList.toggle("bg-active");
+      });
+
+      cartModalButton.addEventListener("click", () => {
+        modalBg.classList.toggle("bg-active");
+      });
+    </script>
+  </body>
+</html>
