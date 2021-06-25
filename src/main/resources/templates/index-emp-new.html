@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ma·ju·ba</title>
     <!-- Link CSS using thymeleaf -->
-    <!-- <link rel="stylesheet" th:href="@{/index-emp.css}" /> -->
+     <link rel="stylesheet" th:href="@{/index-emp.css}" />
     <!-- Link CSS -->
-    <link rel="stylesheet" href="../static/index-emp.css" />
+
     <!-- Icons -->
     <link
       rel="stylesheet"
@@ -57,7 +57,7 @@
         </section>
 
         <section id="new-food">
-            <form class="form" th:action="@{/system}" autocomplete="off">
+            <form class="form" autocomplete="off">
                 <h2 class="form__title">Nueva comida</h2>
                 <div class="form__div">
                     <input type="text" class="form__input" placeholder=" ">
@@ -72,20 +72,20 @@
                 <label for="" class="form__label-category">Categoría</label>
                 <select class="form__select" name="category" id="category">
                     <option value="" selected>Seleccionar Categoría</option>
-                    <option th:each=" : ${}" th:text="${}" th:value="${}"></option>
+                  <!--  <option th:each=" : ${}" th:text="${}" th:value="${}"></option> -->
                 </select>
                 <label for="" class="form__label-category">Ingredientes</label>
                 <select class="form__select" name="ingredients" id="ingredients">
                     <option value="" selected>Seleccionar Ingredientes</option>
-                    <option th:each=" : ${}" th:text="${}" th:value="${}"></option>
-                </select>
-                <button class="form__button"> 
-                    <i class="fas fa-plus"></i>
-                    <span>Cargar</span>
-                </button>
-            </form>
-        </section>
+                    <!--  <option th:each=" : ${}" th:text="${}" th:value="${}"></option>-->
+                 </select>
+                 <button class="form__button">
+                     <i class="fas fa-plus"></i>
+                     <span>Cargar</span>
+                 </button>
+             </form>
+         </section>
 
-      </main>
-</body>
-</html>
+       </main>
+ </body>
+ </html>

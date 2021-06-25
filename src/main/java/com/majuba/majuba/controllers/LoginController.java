@@ -56,11 +56,7 @@ public class LoginController {
     public ModelAndView system() {
         return new ModelAndView ("index-emp-new");
     }
-    // al ingresar user y pw, este get mapping redirije al index del empleado
-   // @GetMapping("/emp")
-    //public ModelAndView emp() {
-       // return new ModelAndView("index-emp");
-//    }
+
 
 
     //Al apretar "cliente", redirecciona a elegir tamaño de mesa
