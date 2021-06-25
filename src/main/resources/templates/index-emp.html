@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ma·ju·ba</title>
     <!-- Link CSS using thymeleaf -->
-    <!-- <link rel="stylesheet" th:href="@{/index-emp.css}" /> -->
+     <link rel="stylesheet" th:href="@{/index-emp.css}" />
     <!-- Link CSS -->
-    <link rel="stylesheet" href="../static/index-emp.css" />
-    <!-- Icons -->
+      <link rel="stylesheet" href="../static/index-emp.css" />
+     <!-- Icons -->
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
@@ -40,11 +40,10 @@
       <section id="tables">
         <div class="tables__container">
           <h2 class="tables__title">Mesas</h2>
-          <div class="tables__flex-container" th:each=" : ${}">
+          <div class="tables__flex-container" th:each=" table : ${tables}">
             <div
               class="table"
-              th:classappend="|${available ? available : occupied} ${pending_payment ? pending-payment : ''}|"
-            >
+              th:classappend="|${table.available ? 'available' : 'occupied'} ${table.pending_payment ? 'pending-payment' : ''}|">
               <div class="table__title">
                 <img
                   class="table__svg"
@@ -53,9 +52,9 @@
                   height="30"
                   alt="tables"
                 />
-                <h4>Mesa Nº<span>2</span></h4>
+                <h4>Mesa Nº<span th:text="${table.table_id}"></span></h4>
               </div>
-              <p>Código: <span class="table__code">654321</span></p>
+              <p>Código: <span class="table__code" th:text="${table.access_code}"></span></p>
             </div>
           </div>
         </div>
