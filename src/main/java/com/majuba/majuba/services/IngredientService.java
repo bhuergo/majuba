@@ -15,11 +15,11 @@ public class IngredientService {
     private IngredientRepository ingredientRepository;
 
     @Transactional
-    public void create(Long igredient_id, String description, List foods) {
+    public void create(String description) {
        Ingredient ingredient = new Ingredient();
        ingredient.setDescription(description);
-       ingredient.setFoods(foods);
-       ingredient.setIngredient_id(igredient_id);
+       
+       
        ingredientRepository.save(ingredient);
 
     }

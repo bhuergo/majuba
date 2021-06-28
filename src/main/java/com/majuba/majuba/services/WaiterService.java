@@ -15,7 +15,7 @@ public class WaiterService {
     private WaiterRepository waiterRepository;
 
     @Transactional
-    public void create(Long waiter_id, String name, List orders) {
+    public void create(String name) {
         Waiter waiter = new Waiter();
         
         waiterRepository.save(waiter);
