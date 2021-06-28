@@ -17,10 +17,11 @@ public class Table implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long table_id;
-    private Integer capacity;
+    private Integer capacity;//NO
     private Long access_code;
-    private Boolean available;
+    private Boolean available;//debe mostrarse con un color (verde:disponible, rojo:ocupado, naranja:sin pagar-EFECTIVO-)
     private Boolean pending_payment;
     @OneToOne
-    private Order order;
+    private Order order;//NO
+
 }

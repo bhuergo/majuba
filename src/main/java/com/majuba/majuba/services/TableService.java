@@ -30,8 +30,8 @@ public class TableService {
     }
 
     @Transactional(readOnly = true)
-    public List<Cart> findAll() {
-        return cartRepository.findAll();
+    public List<Table> findAll() {
+        return tableRepository.findAll();
     }
 
     @Transactional
