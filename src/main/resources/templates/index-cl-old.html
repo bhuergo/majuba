@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ma·ju·ba</title>
+  <!-- Link CSS using thymeleaf -->
+    <!-- <link rel="stylesheet" th:href="@{/choice.css}" /> -->
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="../static/navbar.css" />
+    <!-- Icons -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+      integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk"
+      crossorigin="anonymous"
+    />
+</head>
+<body>
+  <!-- <nav th:replace="navbar-cl :: navbar"></nav> -->
+  <nav class="menu">
+    <div class="logo">
+      <div class="logo__item">
+        <img src="../static/images/logo.png" alt="logo">
+      </div>
+    </div>
+  
+    <div class="nav">
+      <div class="nav__item">
+        <button class="active">
+          <img class="icon" src="../static/images/entradas.svg" width="30" height="30">
+            <span class="text" data-title="Entradas">Entradas</span>
+          </button>
+      </div>
+    
+      <div class="nav__item">
+        <button>
+          <img class="icon" src="../static/images/minutas.svg" width="30" height="30">
+            <span class="text" data-title="Minutas">Minutas</span>
+          </button>
+      </div>
+    
+      <div class="nav__item">
+        <button>
+          <img class="icon" src="../static/images/ensaladas.svg" width="30" height="30">
+            <span class="text" data-title="Ensaladas">Ensaladas</span>
+          </button>
+      </div>
+    
+      <div class="nav__item">
+        <button>
+          <img class="icon" src="../static/images/pastas.svg" width="30" height="30">
+            <span class="text" data-title="Pastas">Pastas</span>
+          </button>
+      </div>
+    
+      <div class="nav__item">
+        <button>
+          <img class="icon" src="../static/images/carnes.svg" width="30" height="30">
+            <span class="text" data-title="Carnes">Carnes</span>
+          </button>
+      </div>
+  
+      <div class="nav__item">
+        <button>
+          <img class="icon" src="../static/images/pescados.svg" width="30" height="30">
+            <span class="text" data-title="Pescados">Pescados</span>
+          </button>
+      </div>
+  
+      <div class="nav__item">
+        <button>
+          <img class="icon" src="../static/images/pizzas.svg" width="30" height="30">
+            <span class="text" data-title="Pizzas">Pizzas</span>
+          </button>
+      </div>
+  
+      <div class="nav__item">
+        <button>
+          <img class="icon" src="../static/images/postres.svg" width="30" height="30">
+            <span class="text" data-title="Postres">Postres</span>
+          </button>
+      </div>
+  
+      <div class="nav__item">
+        <button>
+          <img class="icon" src="../static/images/bebidas.svg" width="30" height="30">
+            <span class="text" data-title="Bebidas">Bebidas</span>
+          </button>
+      </div>
+  
+      <div class="nav__item">
+        <button>
+          <img class="icon" src="../static/images/cafeteria.svg" width="30" height="30">
+            <span class="text" data-title="Cafetería">Cafetería</span>
+          </button>
+      </div>
+    
+      <div class="nav__active-indicator"></div>
+    
+    </div>
+  
+    <div class="trolley">
+      <div class="nav__item">
+        <button>
+          <img class="icon" src="../static/images/carrito.svg" width="30" height="30">
+          <span class="text" data-title="Mis consumos">Mi mesa</span>
+          </button>
+      </div>
+    </div>
+  </nav>
+  
+
+  <script src="../static/navbar.js"></script>
+</body>
+</html>

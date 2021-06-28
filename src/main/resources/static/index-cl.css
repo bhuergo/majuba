@@ -1,0 +1,160 @@
+@import url("https://fonts.googleapis.com/css2?family=Overpass:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background-color: #f7c329;
+}
+
+.title__container {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  font-family: "Playfair Display", serif;
+  font-size: 20px;
+}
+
+.restaurant {
+  font-family: "Roboto", sans-serif;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.restaurant__name {
+  font-family: "Amatic SC", cursive;
+  font-size: 3rem;
+  letter-spacing: 1px;
+}
+
+.main-container {
+  font-family: "Playfair Display", serif;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px;
+}
+
+.selection {
+  align-self: flex-start;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.food-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70px;
+  background-color: #fff5da;
+  opacity: 0.9;
+  border-radius: 12px;
+  -webkit-box-shadow: 0px 0px 34px 0px rgba(0, 0, 0, 0.34);
+  box-shadow: 0px 0px 34px 0px rgba(0, 0, 0, 0.34);
+  transition: opacity 0.2s ease-in-out;
+  margin-bottom: .5rem;
+}
+
+.food-container__title {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #000;
+  font-size: 1.7rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.food__image {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  transform: translateY(-50%);
+  color: #000;
+}
+
+.food-container:hover {
+  opacity: 1;
+}
+
+.dropdown-button {
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  top: 50%;
+  right: 10%;
+  transform: translateY(-50%);
+  color: #000;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.principal__food {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff5da;
+  opacity: 0.9;
+  border-radius: 12px;
+  -webkit-box-shadow: 0px 0px 34px 0px rgba(0, 0, 0, 0.34);
+  box-shadow: 0px 0px 34px 0px rgba(0, 0, 0, 0.34);
+  transition: opacity 0.2s ease-in-out;
+  margin-bottom: 1rem;
+}
+
+.principal__food-info {
+  width: 100%;
+  position: relative;
+  height: 70px;
+}
+
+.food-options {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.food-options__list {
+    list-style: none;
+}
+
+.food-option {
+    display : flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 24px 60px;
+    width: 100%;   
+}
+
+.food-option a {
+    text-decoration: none;
+    color: #000;
+    width: 100%;
+    margin-left: 20px;
+}
