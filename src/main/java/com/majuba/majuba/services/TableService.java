@@ -68,5 +68,10 @@ public class TableService {
         return tableOptional.orElse(null);
     }
 
+    @Transactional
+    public void ocupateTable(Long table_id){
+        tableRepository.updateAvailability(table_id);
+    }
+
 
 }

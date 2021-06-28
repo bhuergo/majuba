@@ -24,10 +24,13 @@ import org.springframework.web.servlet.view.RedirectView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.security.Principal;
+import java.util.List;
 
 @Controller
 
 public class LoginController {
+
+
 
     @Autowired
     private AuthenticationManager authManager ;
@@ -54,7 +57,12 @@ public class LoginController {
     //Al apretar "ingresar", redirecciona al menú para empleados
     @GetMapping("/system")
     public ModelAndView system() {
-        return new ModelAndView ("index-emp-new");
+        ModelAndView mav = new ModelAndView("index-emp");
+        List<Table> tables = tableService.findAll();
+        System.out.println(tables);
+        mav.addObject("tables",tables);
+        return mav;
+
     }
 
 
@@ -100,6 +108,7 @@ public class LoginController {
             sc.setAuthentication(auth);
 
             session.setAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY, sc);
+            tableService.ocupateTable(assigned_table.getTable_id());
 
             return new RedirectView("/menu");
         } else {

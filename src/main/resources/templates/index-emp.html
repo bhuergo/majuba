@@ -8,8 +8,8 @@
     <!-- Link CSS using thymeleaf -->
      <link rel="stylesheet" th:href="@{/index-emp.css}" />
     <!-- Link CSS -->
-      <link rel="stylesheet" href="../static/index-emp.css" />
-     <!-- Icons -->
+    <!--  <link rel="stylesheet" href="../static/index-emp.css" />
+     Icons -->
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
@@ -38,14 +38,14 @@
       <section id="tables">
         <div class="tables__container">
           <h2 class="tables__title">Mesas</h2>
-          <div class="tables__flex-container" th:each=" table : ${tables}">
-            <div
+          <div class="tables__flex-container">
+            <div th:each=" table : ${tables}"
               class="table"
               th:classappend="|${table.available ? 'available' : 'occupied'} ${table.pending_payment ? 'pending-payment' : ''}|">
               <div class="table__title">
                 <img
                   class="table__svg"
-                  src="../static/images/mesas.svg"
+                  th:src="@{/images/mesas.svg}"
                   width="30"
                   height="30"
                   alt="tables"
@@ -94,33 +94,33 @@
           <label for="" class="form__label-category">Categoría</label>
           <select class="form__select" name="category" id="category">
             <option value="" selected>Seleccionar Categoría</option>
-            <option th:each=" : ${}" th:text="${}" th:value="${}"></option>
+          <!--  <option th:each=" : ${}" th:text="${}" th:value="${}"></option> -->
           </select>
           <label for="" class="form__label-category">Ingredientes</label>
           <select class="form__select" name="ingredients" id="ingredients">
             <option value="" selected>Seleccionar Ingredientes</option>
-            <option th:each=" : ${}" th:text="${}" th:value="${}"></option>
-          </select>
-          <button class="form__button">
-            <i class="fas fa-plus"></i>
-            <span>Cargar</span>
-          </button>
-        </form>
-      </section>
+            <!--   <option th:each=" : ${}" th:text="${}" th:value="${}"></option> -->
+             </select>
+             <button class="form__button">
+               <i class="fas fa-plus"></i>
+               <span>Cargar</span>
+             </button>
+           </form>
+         </section>
 
-      <section id="waiter">
-        <form class="form" autocomplete="off">
-          <h2 class="form__title">Nuevo mozo</h2>
-          <div class="form__div">
-            <input type="text" class="form__input" placeholder=" " />
-            <label for="" class="form__label">Nombre</label>
-          </div>
-          <button class="form__button">
-            <i class="fas fa-plus"></i>
-            <span>Cargar</span>
-          </button>
-        </form>
-      </section>
-    </main>
-  </body>
-</html>
+         <section id="waiter">
+           <form class="form" autocomplete="off">
+             <h2 class="form__title">Nuevo mozo</h2>
+             <div class="form__div">
+               <input type="text" class="form__input" placeholder=" " />
+               <label for="" class="form__label">Nombre</label>
+             </div>
+             <button class="form__button">
+               <i class="fas fa-plus"></i>
+               <span>Cargar</span>
+             </button>
+           </form>
+         </section>
+       </main>
+     </body>
+   </html>
