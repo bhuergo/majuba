@@ -3,6 +3,7 @@ package com.majuba.majuba.controllers;
 import com.majuba.majuba.entities.Food;
 import com.majuba.majuba.entities.Table;
 import com.majuba.majuba.entities.User;
+import com.majuba.majuba.entities.Waiter;
 import com.majuba.majuba.services.CategoryService;
 import com.majuba.majuba.services.TableService;
 import com.majuba.majuba.services.UserService;
@@ -65,9 +66,11 @@ public class LoginController {
     public ModelAndView system() {
         ModelAndView mav = new ModelAndView("index-emp");
         List<Table> tables = tableService.findAll();
-        System.out.println(tables);
+
+
         mav.addObject("tables",tables);
         mav.addObject("food",new Food());
+        mav.addObject("waiter", new Waiter());
         mav.addObject("categories", categoryService.fidAll());
 
         return mav;

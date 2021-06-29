@@ -18,8 +18,8 @@ public class WaiterController {
     private WaiterService wService;
     
     @PostMapping("/save")
-    public RedirectView save(@RequestParam String nombre){
-    wService.create(nombre);
+    public RedirectView save(@RequestParam String name){
+    wService.create(name);
     return new RedirectView("/system");
     }
     

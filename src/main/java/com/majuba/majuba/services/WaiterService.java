@@ -18,9 +18,8 @@ public class WaiterService {
     @Transactional
     public void create(String name) {
         Waiter waiter = new Waiter();
-        
+        waiter.setName(name);
         waiterRepository.save(waiter);
-
     }
 
     @Transactional(readOnly = true)
