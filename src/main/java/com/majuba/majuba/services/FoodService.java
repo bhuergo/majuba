@@ -8,8 +8,10 @@ import com.majuba.majuba.repositories.FoodRepository;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+@Service
 public class FoodService {
     
         
@@ -17,13 +19,12 @@ public class FoodService {
     private FoodRepository foodRepository;
 
     @Transactional
-    public void create(byte[] image, String title, String description, Double price, Category category, List ingredients) {
+    public void create(byte[] image, String title, String description, Double price, Category category) {
         Food food = new Food();
 
        food.setCategory(category);
        food.setDescription(description);
        food.setImage(image);
-       food.setIngredients(ingredients);
       food.setPrice(price);
        food.setTitle(title);                                            
         foodRepository.save(food);

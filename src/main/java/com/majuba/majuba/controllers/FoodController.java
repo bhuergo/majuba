@@ -4,7 +4,6 @@ package com.majuba.majuba.controllers;
 import com.majuba.majuba.entities.Cart;
 import com.majuba.majuba.entities.Category;
 import com.majuba.majuba.services.FoodService;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,8 +22,8 @@ public class FoodController {
     
     
     @PostMapping("/save")
-    public RedirectView save(@RequestParam Long food_id,@RequestParam byte[] image,@RequestParam String title,@RequestParam String description,@RequestParam Double price,@RequestParam Category category,@RequestParam List ingredients,@RequestParam Cart cart){
-    fService.create(food_id, image, title, description, price, category, ingredients, cart);
+    public RedirectView save(@RequestParam byte[] image,@RequestParam String title,@RequestParam String description,@RequestParam Double price,@RequestParam Category category){
+    fService.create(image, title, description, price, category);
     
     return new RedirectView("/system");
     }

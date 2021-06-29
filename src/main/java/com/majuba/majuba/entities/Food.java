@@ -23,8 +23,6 @@ public class Food implements Serializable{
     private Double price;
     @ManyToOne
     private Category category;
-    @ManyToMany
-    private List<Ingredient> ingredients;
     @ManyToOne
     private Cart cart;
 }

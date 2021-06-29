@@ -18,7 +18,7 @@ public interface TableRepository extends JpaRepository<Table, Long>{
     Table assigned_table(@Param("num_guests") Integer num_guests);
 
     @Modifying
-    @Query("UPDATE Table t SET t.available = false WHERE t.table_id = :table_id")
+    @Query(value="UPDATE restaurant_table t SET t.available = not t.available WHERE t.table_id = :table_id" ,nativeQuery = true)
     public void updateAvailability(@Param("table_id") Long table_id);
 
 }
