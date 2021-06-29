@@ -73,35 +73,40 @@
       </section>
 
       <section id="new-food">
-        <form class="form" autocomplete="off">
+        <form class="form" autocomplete="off" th:action="@{/foods/save}" method="post" th:object="${food}">
           <h2 class="form__title">Nueva comida</h2>
           <div class="form__div">
-            <input type="text" class="form__input" placeholder=" " />
+            <input th:field="*{title}" type="text" class="form__input" placeholder=" " />
             <label for="" class="form__label">Título</label>
           </div>
           <div class="form__div">
-            <input type="text" class="form__input" placeholder=" " />
+            <input th:field="*{description}" type="text" class="form__input" placeholder=" " />
             <label for="" class="form__label">Descripción</label>
           </div>
-          <label for="img" class="form__label-image">Imágen</label>
+          <div class="form__div">
+            <input th:field="*{price}" type="number" class="form__input" placeholder=" " />
+            <label for="" class="form__label">Precio</label>
+          </div>
+          <label for="img" class="form__label-image">Imagen</label>
           <input
+            th:field="*{image}"
             class="form__input-image"
             type="file"
             id="img"
             name="img"
             accept="image/*"
           />
-          <label for="" class="form__label-category">Categoría</label>
-          <select class="form__select" name="category" id="category">
+          <label for="" class="form__label-category">Categoria</label>
+          <select th:field="*{category}" class="form__select" name="category" id="category">
             <option value="" selected>Seleccionar Categoría</option>
-          <!--  <option th:each=" : ${}" th:text="${}" th:value="${}"></option> -->
+          <option th:each=" category : ${categories}" th:text="${category.name}" th:value="${category.category_id}"></option>
           </select>
           <label for="" class="form__label-category">Ingredientes</label>
           <select class="form__select" name="ingredients" id="ingredients">
             <option value="" selected>Seleccionar Ingredientes</option>
             <!--   <option th:each=" : ${}" th:text="${}" th:value="${}"></option> -->
              </select>
-             <button class="form__button">
+             <button type="submit" class="form__button">
                <i class="fas fa-plus"></i>
                <span>Cargar</span>
              </button>
