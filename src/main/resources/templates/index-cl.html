@@ -26,7 +26,9 @@
     </div>
     <main class="main-container">
       <p class="selection">¿Qué desea comer?</p>
+      <div class="foods-container">
 
+      
       <div class="food-container">
         <img
           class="food__image"
@@ -136,6 +138,16 @@
         />
         <a class="food-container__title" href="#"> Cafetería </a>
       </div>
+    </div>
     </main>
+    <script>
+      const principalFood = document.querySelector(".principal__food-info");
+      const foodOptions = document.querySelector(".food-options");
+      const dropdownButton = document.querySelector(".fa-angle-down");
+      principalFood.addEventListener('click', () => {
+        foodOptions.classList.toggle('display');
+        dropdownButton.classList.toggle('rotate');
+      })
+    </script>
   </body>
 </html>
