@@ -69,7 +69,7 @@
          valid.style.display = "none";
          return false;
        } else {
-         user.style.borderBottom = "2px solid #346751";
+         user.style.borderBottom = "2px solid #9EDE73";
          wrong.style.display = "none";
          valid.style.display = "block";
        }
@@ -84,7 +84,7 @@
          valid.style.display = "none";
          return false;
        } else {
-         pass.style.borderBottom = "2px solid #346751";
+         pass.style.borderBottom = "2px solid #9EDE73";
          wrong.style.display = "none";
          valid.style.display = "block";
        }
@@ -102,7 +102,6 @@
        let validUser = document.querySelector(".u_check");
        let wrongPass = document.querySelector(".u_times");
        let validPass = document.querySelector(".u_check");
-       console.log(pass.value);
        if (user.value.length === 0 ) {
          wrongUser.style.display = 'block';
          user.style.borderBottom = '2px solid #F71E43';
@@ -110,13 +109,12 @@
          return false;
        } else if (pass.value.length === 0 ) {
          errPass.style.display = 'block'
-         console.log("asda");
          return false;
        } else {
          errUser.style.display = "none";
          errPass.style.display = 'none'
          validUser.style.display = "block";
-         user.style.borderBottom = '2px solid #346751';
+         user.style.borderBottom = '2px solid #9EDE73';
 
        }
      };

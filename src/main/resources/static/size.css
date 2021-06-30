@@ -31,9 +31,10 @@ body {
 }
 
 .container {
-  width: 90%;
+  width: 94%;
   min-height: 20vh;
   display: flex;
+  background-color: #FFF5FD;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -49,11 +50,13 @@ body {
 .select {
   font-family: "Roboto", sans-serif;
   outline: none;
-  padding: 6px 20px;
-  background: var(--primaryColor);
-  color: #fff;
-  border-radius: 4px;
+  background-color: transparent;
+  padding: 6px 10px;
+  color: #000;
+  border: none;
+  border-bottom: 1.5px solid #000;
   font-size: 16px;
+  cursor: pointer;
 }
 
 .selectTitle {
@@ -106,10 +109,10 @@ body {
 
 .logo {
   font-family: "Playfair Display", serif;
-  color: var(--primaryColor);
+  color: #000;
   text-align: center;
   letter-spacing: 2px;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 700;
 }
 
@@ -136,7 +139,7 @@ body {
 
 @media only screen and (min-width: 992px) {
   .container {
-    width: 40%;
+    width: 35%;
   }
 
   .select-container {

@@ -52,9 +52,9 @@ body {
 }
 
 .selection {
-  align-self: flex-start;
+  align-self: center;
   font-size: 18px;
-  margin-bottom: 10px;
+  margin-bottom: 1rem;
 }
 
 .food-container {
@@ -64,13 +64,22 @@ body {
   justify-content: center;
   align-items: center;
   height: 70px;
-  background-color: #fff5da;
-  opacity: 0.9;
+  background-color: #FFF5FD;
+  opacity: 1;
   border-radius: 12px;
   -webkit-box-shadow: 0px 0px 34px 0px rgba(0, 0, 0, 0.34);
   box-shadow: 0px 0px 34px 0px rgba(0, 0, 0, 0.34);
-  transition: opacity 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out;
   margin-bottom: .5rem;
+}
+
+.foods-container {
+  width: 100%;
+  max-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .food-container__title {
@@ -95,7 +104,7 @@ body {
 }
 
 .food-container:hover {
-  opacity: 1;
+  background-color: #ebebee;
 }
 
 .dropdown-button {
@@ -110,19 +119,20 @@ body {
   cursor: pointer;
 }
 
+
 .principal__food {
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #fff5da;
-  opacity: 0.9;
+  background-color: #FFF5FD;
+  opacity: 1;
   border-radius: 12px;
   -webkit-box-shadow: 0px 0px 34px 0px rgba(0, 0, 0, 0.34);
   box-shadow: 0px 0px 34px 0px rgba(0, 0, 0, 0.34);
   transition: opacity 0.2s ease-in-out;
-  margin-bottom: 1rem;
+  margin-bottom: .5rem;
 }
 
 .principal__food-info {
@@ -135,6 +145,9 @@ body {
     width: 100%;
     display: flex;
     flex-direction: column;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .8s ease;
 }
 
 .food-options__list {
@@ -149,7 +162,19 @@ body {
     font-size: 18px;
     font-weight: 700;
     padding: 24px 60px;
-    width: 100%;   
+    width: 100%;
+}
+
+.display {
+  max-height: 300px;
+}
+
+.rotate {
+  transform: rotate(180deg);
+}
+
+.fa-angle-down {
+  transition: transform .5s ease-in-out;
 }
 
 .food-option a {
@@ -157,4 +182,23 @@ body {
     color: #000;
     width: 100%;
     margin-left: 20px;
+}
+
+
+@media only screen and (min-width: 768px) {
+  .foods-container {
+    width: 80%;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .foods-container {
+    width: 70%;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .foods-container {
+    width: 50%;
+  }
 }

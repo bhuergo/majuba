@@ -8,8 +8,8 @@
     <!-- Link CSS using thymeleaf -->
      <link rel="stylesheet" th:href="@{/index-emp.css}" />
     <!-- Link CSS -->
-    <!--  <link rel="stylesheet" href="../static/index-emp.css" />
-     Icons -->
+      <link rel="stylesheet" href="../static/index-emp.css" />
+     <!-- Icons -->
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
@@ -38,8 +38,9 @@
       <section id="tables">
         <div class="tables__container">
           <h2 class="tables__title">Mesas</h2>
-          <div class="tables__flex-container">
-            <div th:each=" table : ${tables}"
+          <div class="tables__flex-container" >
+            <div
+              th:each=" table : ${tables}"
               class="table"
               th:classappend="|${table.available ? 'available' : 'occupied'} ${table.pending_payment ? 'pending-payment' : ''}|">
               <div class="table__title">
@@ -84,10 +85,10 @@
             <label for="" class="form__label">Descripción</label>
           </div>
           <div class="form__div">
-            <input th:field="*{price}" type="number" class="form__input" placeholder=" " />
+            <input th:field="*{price}" type="number" min="0" class="form__input" placeholder=" " />
             <label for="" class="form__label">Precio</label>
           </div>
-          <label for="img" class="form__label-image">Imagen</label>
+          <label for="img" class="form__label-image">Imágen</label>
           <input
             th:field="*{image}"
             class="form__input-image"
@@ -96,36 +97,31 @@
             name="img"
             accept="image/*"
           />
-          <label for="" class="form__label-category">Categoria</label>
+          <label for="" class="form__label-category">Categoría</label>
           <select th:field="*{category}" class="form__select" name="category" id="category">
             <option value="" selected>Seleccionar Categoría</option>
-          <option th:each=" category : ${categories}" th:text="${category.name}" th:value="${category.category_id}"></option>
+            <option th:each=" category : ${categories}" th:text="${category.name}" th:value="${category.category_id}"></option>
           </select>
-          <label for="" class="form__label-category">Ingredientes</label>
-          <select class="form__select" name="ingredients" id="ingredients">
-            <option value="" selected>Seleccionar Ingredientes</option>
-            <!--   <option th:each=" : ${}" th:text="${}" th:value="${}"></option> -->
-             </select>
-             <button type="submit" class="form__button">
-               <i class="fas fa-plus"></i>
-               <span>Cargar</span>
-             </button>
-           </form>
-         </section>
+          <button class="form__button">
+            <i class="fas fa-plus"></i>
+            <span>Cargar</span>
+          </button>
+        </form>
+      </section>
 
-         <section id="waiter">
-           <form class="form" autocomplete="off" th:action="@{/waiters/save}" method="post" th:object="${waiter}">
-             <h2 class="form__title">Nuevo mozo</h2>
-             <div class="form__div">
-               <input th:field="*{name}" type="text" class="form__input" placeholder=" " />
-               <label for="" class="form__label">Nombre</label>
-             </div>
-             <button class="form__button">
-               <i class="fas fa-plus"></i>
-               <span>Cargar</span>
-             </button>
-           </form>
-         </section>
-       </main>
-     </body>
-   </html>
+      <section id="waiter">
+        <form class="form" autocomplete="off">
+          <h2 class="form__title">Nuevo mozo</h2>
+          <div class="form__div">
+            <input type="text" class="form__input" placeholder=" " />
+            <label for="" class="form__label">Nombre</label>
+          </div>
+          <button class="form__button">
+            <i class="fas fa-plus"></i>
+            <span>Cargar</span>
+          </button>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>
