@@ -38,14 +38,15 @@
       <section id="tables">
         <div class="tables__container">
           <h2 class="tables__title">Mesas</h2>
-          <div class="tables__flex-container" th:each=" table : ${tables}">
+          <div class="tables__flex-container" >
             <div
+              th:each=" table : ${tables}"
               class="table"
               th:classappend="|${table.available ? 'available' : 'occupied'} ${table.pending_payment ? 'pending-payment' : ''}|">
               <div class="table__title">
                 <img
                   class="table__svg"
-                  src="../static/images/mesas.svg"
+                  th:src="@{/images/mesas.svg}"
                   width="30"
                   height="30"
                   alt="tables"
@@ -73,18 +74,23 @@
       </section>
 
       <section id="new-food">
-        <form class="form" autocomplete="off">
+        <form class="form" autocomplete="off" th:action="@{/foods/save}" method="post" th:object="${food}">
           <h2 class="form__title">Nueva comida</h2>
           <div class="form__div">
-            <input type="text" class="form__input" placeholder=" " />
+            <input th:field="*{title}" type="text" class="form__input" placeholder=" " />
             <label for="" class="form__label">Título</label>
           </div>
           <div class="form__div">
-            <input type="text" class="form__input" placeholder=" " />
+            <input th:field="*{description}" type="text" class="form__input" placeholder=" " />
             <label for="" class="form__label">Descripción</label>
+          </div>
+          <div class="form__div">
+            <input th:field="*{price}" type="number" min="0" class="form__input" placeholder=" " />
+            <label for="" class="form__label">Precio</label>
           </div>
           <label for="img" class="form__label-image">Imágen</label>
           <input
+            th:field="*{image}"
             class="form__input-image"
             type="file"
             id="img"
@@ -92,14 +98,9 @@
             accept="image/*"
           />
           <label for="" class="form__label-category">Categoría</label>
-          <select class="form__select" name="category" id="category">
+          <select th:field="*{category}" class="form__select" name="category" id="category">
             <option value="" selected>Seleccionar Categoría</option>
-            <option th:each=" : ${}" th:text="${}" th:value="${}"></option>
-          </select>
-          <label for="" class="form__label-category">Ingredientes</label>
-          <select class="form__select" name="ingredients" id="ingredients">
-            <option value="" selected>Seleccionar Ingredientes</option>
-            <option th:each=" : ${}" th:text="${}" th:value="${}"></option>
+            <option th:each=" category : ${categories}" th:text="${category.name}" th:value="${category.category_id}"></option>
           </select>
           <button class="form__button">
             <i class="fas fa-plus"></i>
