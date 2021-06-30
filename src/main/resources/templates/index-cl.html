@@ -38,7 +38,7 @@
           width="30"
           height="30"
         />
-        <a class="food-container__title" href="#"> Entradas </a>
+        <a class="food-container__title" th:href="@{/foods/entradas}"> Entradas </a>
       </div>
       <div class="food-container">
         <img
@@ -103,7 +103,8 @@
       </div>
       <div class="food-container">
         <img
-          class="food__image"
+           class="food__image"
+           th:src="@{/images/pizzas.svg}"
           src="../static/images/pizzas.svg"
           alt="Ensaladas"
           width="30"
@@ -114,6 +115,7 @@
       <div class="food-container">
         <img
           class="food__image"
+          th:src="@{/images/postres.svg}"
           src="../static/images/postres.svg"
           alt="Ensaladas"
           width="30"
@@ -124,6 +126,7 @@
       <div class="food-container">
         <img
           class="food__image"
+          th:src="@{/images/bebidas.svg}"
           src="../static/images/bebidas.svg"
           alt="Ensaladas"
           width="30"
@@ -134,6 +137,7 @@
       <div class="food-container">
         <img
           class="food__image"
+          th:src="@{/images/cafeteria.svg}"
           src="../static/images/cafeteria.svg"
           alt="Ensaladas"
           width="30"

@@ -64,6 +64,11 @@ public class FoodService {
         Category category = categoryRepository.findById(category_id).orElse(null);
         foodRepository.edit(food_id,image,title,description,price,category);
     }
-    
+
+    @Transactional
+    public List <Food> findByCategory(String name){
+
+        return foodRepository.searchForCategory(name);
+    }
     
 }

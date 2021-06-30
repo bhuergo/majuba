@@ -14,13 +14,17 @@ import org.springframework.stereotype.Repository;
 public interface FoodRepository extends JpaRepository<Food,Long>{
     
 
-    @Query("SELECT a FROM Food a WHERE a.title LIKE :title")
+    @Query("SELECT f FROM Food f WHERE f.title LIKE :title")
     List<Food> searchForName (@Param("title") String title);
 
 
     @Modifying
     @Query("UPDATE Food f SET f.image = :image, f.title = :title, f.description = :description, f.price = :price, f.category = :category_id WHERE f.food_id = :food_id")
      void edit(@Param("food_id") Long food_id, @Param("image") byte [] image, @Param("title") String title, @Param("description") String description , @Param("price")Double price, @Param("category_id")Category category_id);
+
+    @Query("SELECT f From Food f WHERE f.category.name = :name")
+    List <Food> searchForCategory (@Param ("name") String name);
+
 
 
 
