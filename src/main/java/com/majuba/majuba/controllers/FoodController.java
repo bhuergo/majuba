@@ -68,88 +68,14 @@ public class FoodController {
         return ResponseEntity.ok().contentType(MediaType.IMAGE_PNG).body(food.getImage());
     }
 
-    @GetMapping("/entradas")
-    public ModelAndView show() {
-        ModelAndView mav = new ModelAndView("entradas");
-        mav.addObject("foods", fService.findByCategory("entradas"));
+    @GetMapping("/{categoria}")
+    public ModelAndView show(@PathVariable("categoria") String food_category) {
+        System.out.println(food_category);
+        ModelAndView mav = new ModelAndView(food_category);
+        mav.addObject("foods", fService.findByCategory(food_category));
         return mav;
+
+
     }
-    /*
-
-
-
-
-    @GetMapping("/menu/ensaladas")
-    public ModelAndView show(){
-        ModelAndView mav = new ModelAndView("ensaladas");
-        mav.addObject("foods",fService.findByCategory(category_name));
-
-        return mav;
-    }
-    @GetMapping("/menu/minutas")
-    public ModelAndView show(){
-        ModelAndView mav = new ModelAndView("minutas");
-        mav.addObject("foods",fService.findByCategory(category_name));
-
-        return mav;
-    }
-    @GetMapping("/menu/carnes")
-    public ModelAndView show(){
-        ModelAndView mav = new ModelAndView("carnes");
-        mav.addObject("foods",fService.findByCategory(category_name));
-
-        return mav;
-    }
-    @GetMapping("/menu/pescados")
-    public ModelAndView show(){
-        ModelAndView mav = new ModelAndView("index-cl");
-        mav.addObject("foods",fService.findByCategory(category_name));
-
-        return mav;
-    }
-    @GetMapping("/menu/guarniciones")
-    public ModelAndView show(){
-        ModelAndView mav = new ModelAndView("index-cl");
-        mav.addObject("foods",fService.findByCategory(category_name));
-
-        return mav;
-    }
-    @GetMapping("/menu/pastas")
-    public ModelAndView show(){
-        ModelAndView mav = new ModelAndView("index-cl");
-        mav.addObject("foods",fService.findByCategory(category_name));
-
-        return mav;
-    }
-    @GetMapping("/menu/pizzas")
-    public ModelAndView show(){
-        ModelAndView mav = new ModelAndView("index-cl");
-        mav.addObject("foods",fService.findByCategory(category_name));
-
-        return mav;
-    }
-    @GetMapping("/menu/postres")
-    public ModelAndView show(){
-        ModelAndView mav = new ModelAndView("index-cl");
-        mav.addObject("foods",fService.findByCategory(category_name));
-
-        return mav;
-    }
-    @GetMapping("/menu/bebidas")
-    public ModelAndView show(){
-        ModelAndView mav = new ModelAndView("index-cl");
-        mav.addObject("foods",fService.findByCategory(category_name));
-
-        return mav;
-    }
-    @GetMapping("/menu/cafeteria")
-    public ModelAndView show(){
-        ModelAndView mav = new ModelAndView("index-cl");
-        mav.addObject("foods",fService.findByCategory(category_name));
-
-        return mav;
-    }
-
-*/
 
 }

@@ -44,15 +44,7 @@ public class FoodService {
     public List<Food> fidAll() {
         return foodRepository.findAll();
     }
-/*
-   // @Transactional
-   // public List<Cart> buscarPorNombre(String nombre) {
-     //   return autorrepositorio.buscarPorNombre(nombre);
-    //}
-@Transactional
-    public void modify(Integer cart_id,Cart cart){
-        CartRepository.modify(cart_id,cart);
-    }*/
+
     @Transactional
     public void delete(Long food_id) {
        foodRepository.deleteById(food_id);
