@@ -74,7 +74,7 @@
       </section>
 
       <section id="new-food">
-        <form class="form" autocomplete="off" th:action="@{/foods/save}" method="post" th:object="${food}">
+        <form class="form" autocomplete="off" th:action="@{/foods/save}" method="post" th:object="${food}" enctype="multipart/form-data">
           <h2 class="form__title">Nueva comida</h2>
           <div class="form__div">
             <input th:field="*{title}" type="text" class="form__input" placeholder=" " />

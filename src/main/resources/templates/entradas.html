@@ -27,23 +27,24 @@
     </nav>
     <main class="main-container">
       <h1 class="option-menu">Entradas</h1>
-      <ul class="foods-container" <!--th:each=" : ${}"-->>
-        <li>
-          <div class="food">
+      <ul class="foods-container"
+        <li  th:each=" food : ${foods}"> >
+          <div  class="food" >
+
             <img
               class="food__img"
-              src="../static/images/food-images/empanadas.jpg"
+              th:src="@{/foods/image/__${food.food_id}__}"
               alt="Entrada"
             />
 
             <div class="food__info">
-              <h3 class="food__title">Empanadas de humita</h3>
-              <p class="food__description">
-                Empanadas con masa integral, humita y queso mozzarella.
+              <h3 class="food__title" th:text="${food.title}"></h3>
+              <p class="food__description" th:text="${food.description}">
+
               </p>
             </div>
             <div class="food__cart">
-              <p class="food__cart-price">$<span class="">60</span></p>
+              <p class="food__cart-price" >$<span  th:text="${food.price}"></span></p>
               <select class="food__cart-select" name="" id="">
                 <option value="" selected>Cant</option>
                 <option value="">1</option>
@@ -52,30 +53,7 @@
             </div>
           </div>
         </li>
-        <li>
-            <div class="food">
-              <img
-                class="food__img"
-                src="../static/images/food-images/empanadas.jpg"
-                alt="Entrada"
-              />
-  
-              <div class="food__info">
-                <h3 class="food__title">Empanadas de humita</h3>
-                <p class="food__description">
-                  Empanadas con masa integral, humita y queso mozzarella.
-                </p>
-              </div>
-              <div class="food__cart">
-                <p class="food__cart-price">$<span class="">60</span></p>
-                <select class="food__cart-select" name="" id="">
-                  <option value="" selected>Cant</option>
-                  <option value="">1</option>
-                </select>
-                <button class="food__cart-button">Agregar</button>
-              </div>
-            </div>
-          </li>
+
       </ul>
     </main>
   </body>

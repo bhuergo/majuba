@@ -1,16 +1,18 @@
 
 package com.majuba.majuba.services;
 
-import com.majuba.majuba.entities.Cart;
 import com.majuba.majuba.entities.Category;
 import com.majuba.majuba.entities.Food;
 import com.majuba.majuba.repositories.CategoryRepository;
 import com.majuba.majuba.repositories.FoodRepository;
-import java.util.List;
-import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class FoodService {
@@ -22,13 +24,17 @@ public class FoodService {
     private CategoryRepository categoryRepository;
 
     @Transactional
-    public void create(byte[] image, String title, String description, Double price, Long category_id) {
+    public void create(MultipartFile image, String title, String description, Double price, Long category_id) {
         Food food = new Food();
 
        food.setCategory(categoryRepository.findById(category_id).orElse(null));
        food.setDescription(description);
-       food.setImage(image);
-      food.setPrice(price);
+        try {
+            food.setImage(image.getBytes());
+        } catch (IOException e) {
+            food.setImage(null);
+        }
+        food.setPrice(price);
        food.setTitle(title);                                            
         foodRepository.save(food);
 

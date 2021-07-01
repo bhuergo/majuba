@@ -17,6 +17,7 @@ public class Food implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long food_id;
+    @Lob
     private byte[] image;
     private String title;
     private String description;
