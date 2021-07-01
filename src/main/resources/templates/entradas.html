@@ -13,7 +13,7 @@
     <link rel="stylesheet" th:href="@{/food.css}" />
     <!-- Link CSS -->
     <!-- <link rel="stylesheet" href="../static/food.css" />-->
-      <!-- Icons -->
+    <!-- Icons -->
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
@@ -22,38 +22,47 @@
     />
   </head>
   <body>
-    <nav class="title__container">
-      <h2 class="title">ma·ju·ba</h2>
+    <nav class="topnav">
+      <h2 class="logo">ma·ju·ba</h2>
     </nav>
     <main class="main-container">
       <h1 class="option-menu">Entradas</h1>
-      <ul class="foods-container"
-        <li  th:each=" food : ${foods}"> >
-          <div  class="food" >
-
+      <ul class="foods-container">
+        <li th:each=" food : ${foods}">
+          <div class="food">
             <img
               class="food__img"
               th:src="@{/foods/image/__${food.food_id}__}"
-              alt="Entrada"
+              alt="Entradas"
             />
 
             <div class="food__info">
               <h3 class="food__title" th:text="${food.title}"></h3>
-              <p class="food__description" th:text="${food.description}">
-
-              </p>
+              <p class="food__description" th:text="${food.description}"></p>
             </div>
             <div class="food__cart">
-              <p class="food__cart-price" >$<span  th:text="${food.price}"></span></p>
+              <p class="food__cart-price">
+                $<span th:text="${food.price}"></span>
+              </p>
               <select class="food__cart-select" name="" id="">
                 <option value="" selected>Cant</option>
-                <option value="">1</option>
+                <option value="option">1</option>
+                <option value="option">2</option>
+                <option value="option">3</option>
+                <option value="option">4</option>
+                <option value="option">5</option>
+                <option value="option">6</option>
+                <option value="option">7</option>
+                <option value="option">8</option>
+                <option value="option">9</option>
+                <option value="option">10</option>
+                <option value="option">11</option>
+                <option value="option">12</option>
               </select>
               <button class="food__cart-button">Agregar</button>
             </div>
           </div>
         </li>
-
       </ul>
     </main>
   </body>
