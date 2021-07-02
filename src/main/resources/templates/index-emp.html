@@ -26,7 +26,7 @@
           <li><a href="#new-supply">Nuevo insumo</a></li>
           <li><a href="#new-food">Nueva comida</a></li>
           <li><a href="#waiter">Mozo</a></li>
-          <li><a href="#">Comidas</a></li>
+          <li><a th:href="@{/menu-emp}">Comidas</a></li>
         </ul>
         <div class="cart">
           <a href="#" class="cart__button">
@@ -94,7 +94,7 @@
             class="form__input-image"
             type="file"
             id="img"
-            name="img"
+            name="image"
             accept="image/*"
           />
           <label for="" class="form__label-category">Categoría</label>

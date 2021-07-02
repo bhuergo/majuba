@@ -133,5 +133,9 @@ public class LoginController {
         return new ModelAndView("index-cl");
     }
 
+    @GetMapping("/menu-emp")
+    public ModelAndView menuEmp(HttpSession session) {
+        return new ModelAndView("menu-emp");
+    }
 
 }

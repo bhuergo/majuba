@@ -10,10 +10,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ma·ju·ba</title>
     <!-- Link CSS using thymeleaf -->
-    <!-- <link rel="stylesheet" th:href="@{/food.css}" /> -->
+    <link rel="stylesheet" th:href="@{/food.css}" />
     <!-- Link CSS -->
-    <link rel="stylesheet" href="../static/food.css" />
-    <!-- Icons -->
+    <!-- <link rel="stylesheet" href="../static/food.css" />
+     Icons -->
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
@@ -77,13 +77,15 @@
           autocomplete="off"
           action=""
           method="post"
-          th:object="${food}"
+
           enctype="multipart/form-data"
         >
           <h2 class="form__title">Editar comida</h2>
           <div class="form__div">
+
             <input
-              th:field="*{title}"
+                    name="title"
+
               type="text"
               class="form__input"
               placeholder=" "
@@ -92,7 +94,7 @@
           </div>
           <div class="form__div">
             <input
-              th:field="*{description}"
+                    name="description"
               type="text"
               class="form__input"
               placeholder=" "
@@ -101,7 +103,7 @@
           </div>
           <div class="form__div">
             <input
-              th:field="*{price}"
+                    name="price"
               type="number"
               min="0"
               class="form__input"
@@ -111,18 +113,17 @@
           </div>
           <label for="img" class="form__label-image">Nueva Imágen</label>
           <input
-            th:field="*{image}"
+                  name="image"
             class="form__input-image"
             type="file"
             id="img"
-            name="img"
             accept="image/*"
           />
           <label for="" class="form__label-category">Nueva Categoría</label>
           <select
-            th:field="*{category}"
+                  name="category"
             class="form__select"
-            name="category"
+
             id="category"
           >
             <option value="" selected>Seleccionar Categoría</option>
@@ -132,7 +133,7 @@
               th:value="${category.category_id}"
             ></option>
           </select>
-          <button class="form__button">
+          <button class="form__button" type="submit" form="modify">
             <i class="fas fa-pencil-alt"></i>
             <span>Editar</span>
           </button>
