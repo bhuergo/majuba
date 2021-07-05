@@ -45,7 +45,13 @@ public class FoodController {
     }
 
 
-
+    @GetMapping("/{categoria}/emp")
+    public ModelAndView show(@PathVariable("categoria") String food_category) {
+        ModelAndView mav = new ModelAndView(food_category+"-emp");
+        mav.addObject("foods", fService.findByCategory(food_category));
+        mav.addObject("categories", cService.fidAll());
+        return mav;
+    }
 
 
 
@@ -70,8 +76,8 @@ public class FoodController {
     }
 
     @GetMapping("/{categoria}")
-    public ModelAndView show(@PathVariable("categoria") String food_category) {
-        ModelAndView mav = new ModelAndView(food_category+"-emp");
+    public ModelAndView showCl(@PathVariable("categoria") String food_category) {
+        ModelAndView mav = new ModelAndView(food_category);
         mav.addObject("foods", fService.findByCategory(food_category));
         mav.addObject("categories", cService.fidAll());
         return mav;
