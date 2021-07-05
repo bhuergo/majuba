@@ -54,6 +54,7 @@
                 <h4>Mesa Nº<span th:text="${table.table_id}"></span></h4>
               </div>
               <p>Código: <span class="table__code" th:text="${table.access_code}"></span></p>
+              <p>Mesero/s: <span class="table__code" th:each=" waiter : ${table.waiters}" th:text="${waiter.name}" th:value="${waiter.waiter_id}"></span></p>
             </div>
           </div>
         </div>
