@@ -49,7 +49,7 @@
               width="30"
               height="30"
       />
-      <a class="food-container__title" href="#"> Ensaladas </a>
+      <a class="food-container__title" th:href="@{/foods/{categoria}/emp(categoria='ensaladas') }"> Ensaladas </a>
     </div>
     <div class="principal__food" id="principals">
       <div class="principal__food-info">
@@ -61,7 +61,7 @@
                 width="30"
                 height="30"
         />
-        <a class="food-container__title" href="#"> Principales </a>
+        <a class="food-container__title" > Principales </a>
         <button class="dropdown-button">
           <i class="fas fa-angle-down"></i>
         </button>
@@ -70,31 +70,31 @@
         <ul class="food-options__list">
           <li class="food-option">
             <img th:src="@{/images/minutas.svg}" src="../static/images/minutas.svg" alt="Minutas" width="20px" height="20px"/>
-            <a href="#">
+            <a th:href="@{/foods/{categoria}/emp(categoria='minutas') }">
               <span>Minutas</span>
             </a>
           </li>
           <li class="food-option">
             <img th:src="@{/images/carnes.svg}" src="../static/images/carnes.svg" alt="Carnes" width="20px" height="20px"/>
-            <a href="#">
+            <a th:href="@{/foods/{categoria}/emp(categoria='carnes') }">
               <span>Carnes</span>
             </a>
           </li>
           <li class="food-option">
             <img th:src="@{/images/pescados.svg}" src="../static/images/pescados.svg" alt="Pescados" width="20px" height="20px"/>
-            <a href="#">
+            <a th:href="@{/foods/{categoria}/emp(categoria='pescados') }">
               <span>Pescados</span>
             </a>
           </li>
           <li class="food-option">
             <img th:src="@{/images/comidas.svg}" src="../static/images/comidas.svg" alt="Guarniciones" width="20px" height="20px"/>
-            <a href="#">
+            <a th:href="@{/foods/{categoria}/emp(categoria='guarniciones') }">
               <span>Guarniciones</span>
             </a>
           </li>
           <li class="food-option">
             <img th:src="@{/images/pastas.svg}" src="../static/images/pastas.svg" alt="Pastas" width="20px" height="20px"/>
-            <a href="#">
+            <a th:href="@{/foods/{categoria}/emp(categoria='pastas') }">
               <span>Pastas</span>
             </a>
           </li>
@@ -110,7 +110,7 @@
               width="30"
               height="30"
       />
-      <a class="food-container__title" href="#"> Pizzas </a>
+      <a class="food-container__title" th:href="@{/foods/{categoria}/emp(categoria='pizzas') }"> Pizzas </a>
     </div>
     <div class="food-container">
       <img
@@ -121,7 +121,7 @@
               width="30"
               height="30"
       />
-      <a class="food-container__title" href="#"> Postres </a>
+      <a class="food-container__title" th:href="@{/foods/{categoria}/emp(categoria='postres') }"> Postres </a>
     </div>
     <div class="food-container">
       <img
@@ -132,7 +132,7 @@
               width="30"
               height="30"
       />
-      <a class="food-container__title" href="#"> Bebidas </a>
+      <a class="food-container__title" th:href="@{/foods/{categoria}/emp(categoria='bebidas') }"> Bebidas </a>
     </div>
     <div class="food-container">
       <img
@@ -143,7 +143,7 @@
               width="30"
               height="30"
       />
-      <a class="food-container__title" href="#"> Cafetería </a>
+      <a class="food-container__title" th:href="@{/foods/{categoria}/emp(categoria='cafeteria') }"> Cafetería </a>
     </div>
   </div>
 </main>
