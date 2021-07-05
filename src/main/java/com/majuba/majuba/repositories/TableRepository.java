@@ -2,11 +2,14 @@
 package com.majuba.majuba.repositories;
 
 import com.majuba.majuba.entities.Table;
+import com.majuba.majuba.entities.Waiter;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public interface TableRepository extends JpaRepository<Table, Long>{
@@ -20,5 +23,9 @@ public interface TableRepository extends JpaRepository<Table, Long>{
     @Modifying
     @Query(value="UPDATE restaurant_table t SET t.available = not t.available WHERE t.table_id = :table_id" ,nativeQuery = true)
     public void updateAvailability(@Param("table_id") Long table_id);
+
+    @Modifying
+    @Query("UPDATE Table t SET t.waiters = :waiters WHERE t.table_id = :table_id")
+    public void assignWaiters(@Param("table_id") Long table_id, @Param("waiters") List<Waiter> waiters);
 
 }

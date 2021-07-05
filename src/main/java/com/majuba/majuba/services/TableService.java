@@ -2,6 +2,7 @@ package com.majuba.majuba.services;
 
 import com.majuba.majuba.entities.Cart;
 import com.majuba.majuba.entities.Table;
+import com.majuba.majuba.entities.Waiter;
 import com.majuba.majuba.repositories.CartRepository;
 import com.majuba.majuba.repositories.TableRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,14 @@ public class TableService {
         table.setAvailable(available);
         table.setPending_payment(pending_payment);
         tableRepository.save(table);
+    }
+
+    @Transactional
+    public void assignWaiter(Long table_id, List<Waiter> waiters) {
+        Optional<Table> tableOptional = tableRepository.findById(table_id);
+        Table table = tableOptional.orElse(null);
+        table.setWaiters(waiters);
+        tableRepository.assignWaiters(table_id, waiters);
     }
 
     @Transactional(readOnly = true)

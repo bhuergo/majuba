@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Data
@@ -23,6 +24,10 @@ public class Table implements Serializable {
     private Boolean pending_payment;
     @OneToOne
     private Order order;//NO
+    @ManyToMany
+    private List<Waiter> waiters;
+
+
 
 
 }

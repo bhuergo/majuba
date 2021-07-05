@@ -26,15 +26,7 @@ public class WaiterService {
     public List<Waiter> fidAll() {
         return waiterRepository.findAll();
     }
-/*
-   // @Transactional
-   // public List<Cart> buscarPorNombre(String nombre) {
-     //   return autorrepositorio.buscarPorNombre(nombre);
-    //}
-@Transactional
-    public void modify(Integer cart_id,Cart cart){
-        CartRepository.modify(cart_id,cart);
-    }*/
+
     @Transactional
     public void delete(Long waiter_id) {
          waiterRepository.deleteById(waiter_id);

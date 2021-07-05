@@ -18,13 +18,12 @@ public class OrderService {
     private OrderRepository orderRepository;
 
     @Transactional
-    public void create(Long order_id, Table table, List cart_elements, Waiter waiter, Payment payment) {
+    public void create(Long order_id, Table table, List cart_elements,Payment payment) {
         Order order = new Order();
         order.setCart_elements(cart_elements);
         order.setOrder_id(order_id);
         order.setPayment(payment);
         order.setTable(table);
-        order.setWaiter(waiter);
         orderRepository.save(order);
 
     }
@@ -33,15 +32,7 @@ public class OrderService {
     public List<Order> fidAll() {
         return orderRepository.findAll();
     }
-/*
-   // @Transactional
-   // public List<Cart> buscarPorNombre(String nombre) {
-     //   return autorrepositorio.buscarPorNombre(nombre);
-    //}
-@Transactional
-    public void modify(Integer cart_id,Cart cart){
-        CartRepository.modify(cart_id,cart);
-    }*/
+
     @Transactional
     public void delete(Long order_id) {
         orderRepository.deleteById(order_id);
