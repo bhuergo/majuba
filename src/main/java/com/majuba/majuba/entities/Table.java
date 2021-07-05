@@ -24,4 +24,5 @@ public class Table implements Serializable {
     @OneToOne
     private Order order;//NO
 
+
 }

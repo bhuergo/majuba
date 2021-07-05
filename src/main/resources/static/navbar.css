@@ -22,7 +22,7 @@ body {
   --icon-margin-right: 9px;
   --menu-padding-horizontal: 29px;
   --menu-padding-vertical: 20px;
-  --active-indicator-extra-length: 12px;  We want the indicator to be longer than the actual buttons themselves, this length is added to both sides of the indicator 
+  --active-indicator-extra-length: 12px;
   --space-between-icons: 70px;
 }
 
