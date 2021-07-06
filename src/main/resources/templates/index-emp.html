@@ -111,10 +111,10 @@
       </section>
 
       <section id="waiter">
-        <form class="form" autocomplete="off">
+        <form class="form" autocomplete="off" th:action="@{/waiters/save}" method="post" th:object="${waiter}">
           <h2 class="form__title">Nuevo mozo</h2>
           <div class="form__div">
-            <input type="text" class="form__input" placeholder=" " />
+            <input th:field="*{name}" type="text" class="form__input" placeholder=" " />
             <label for="" class="form__label">Nombre</label>
           </div>
           <button class="form__button">

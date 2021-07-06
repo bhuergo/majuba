@@ -67,6 +67,7 @@ public class LoginController {
         mav.addObject("tables",tables);
         mav.addObject("food",new Food());
         mav.addObject("categories", categoryService.fidAll());
+        mav.addObject("waiter", new Waiter());
         return mav;
     }
 
