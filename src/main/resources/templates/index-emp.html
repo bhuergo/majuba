@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ma·ju·ba</title>
     <!-- Link CSS using thymeleaf -->
-     <link rel="stylesheet" th:href="@{/index-emp.css}" />
+    <!-- <link rel="stylesheet" th:href="@{/index-emp.css}" /> -->
     <!-- Link CSS -->
-    <!-- <link rel="stylesheet" href="../static/index-emp.css" />
-     Icons -->
+    <link rel="stylesheet" href="../static/index-emp.css" />
+    <!-- Icons  -->
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
@@ -26,7 +26,7 @@
           <li><a href="#new-supply">Nuevo insumo</a></li>
           <li><a href="#new-food">Nueva comida</a></li>
           <li><a href="#waiter">Mozo</a></li>
-          <li><a th:href="@{/menu-emp}">Comidas</a></li>
+          <li><a href="#foods">Comidas</a></li>
         </ul>
         <div class="cart">
           <a href="#" class="cart__button">
@@ -38,11 +38,12 @@
       <section id="tables">
         <div class="tables__container">
           <h2 class="tables__title">Mesas</h2>
-          <div class="tables__flex-container" >
+          <div class="tables__flex-container">
             <div
               th:each=" table : ${tables}"
               class="table"
-              th:classappend="|${table.available ? 'available' : 'occupied'} ${table.pending_payment ? 'pending-payment' : ''}|">
+              th:classappend="|${table.available ? 'available' : 'occupied'} ${table.pending_payment ? 'pending-payment' : ''}|"
+            >
               <div class="table__title">
                 <img
                   class="table__svg"
@@ -53,8 +54,19 @@
                 />
                 <h4>Mesa Nº<span th:text="${table.table_id}"></span></h4>
               </div>
-              <p>Código: <span class="table__code" th:text="${table.access_code}"></span></p>
-              <p>Mesero/s: <span class="table__code" th:each=" waiter : ${table.waiters}" th:text="${waiter.name}" th:value="${waiter.waiter_id}"></span></p>
+              <p>
+                Código:
+                <span class="table__code" th:text="${table.access_code}"></span>
+              </p>
+              <p>
+                Mesero/s:
+                <span
+                  class="table__code"
+                  th:each=" waiter : ${table.waiters}"
+                  th:text="${waiter.name}"
+                  th:value="${waiter.waiter_id}"
+                ></span>
+              </p>
             </div>
           </div>
         </div>
@@ -75,18 +87,41 @@
       </section>
 
       <section id="new-food">
-        <form class="form" autocomplete="off" th:action="@{/foods/save}" method="post" th:object="${food}" enctype="multipart/form-data">
+        <form
+          class="form"
+          autocomplete="off"
+          th:action="@{/foods/save}"
+          method="post"
+          th:object="${food}"
+          enctype="multipart/form-data"
+        >
           <h2 class="form__title">Nueva comida</h2>
           <div class="form__div">
-            <input th:field="*{title}" type="text" class="form__input" placeholder=" " />
+            <input
+              th:field="*{title}"
+              type="text"
+              class="form__input"
+              placeholder=" "
+            />
             <label for="" class="form__label">Título</label>
           </div>
           <div class="form__div">
-            <input th:field="*{description}" type="text" class="form__input" placeholder=" " />
+            <input
+              th:field="*{description}"
+              type="text"
+              class="form__input"
+              placeholder=" "
+            />
             <label for="" class="form__label">Descripción</label>
           </div>
           <div class="form__div">
-            <input th:field="*{price}" type="number" min="0" class="form__input" placeholder=" " />
+            <input
+              th:field="*{price}"
+              type="number"
+              min="0"
+              class="form__input"
+              placeholder=" "
+            />
             <label for="" class="form__label">Precio</label>
           </div>
           <label for="img" class="form__label-image">Imágen</label>
@@ -99,9 +134,18 @@
             accept="image/*"
           />
           <label for="" class="form__label-category">Categoría</label>
-          <select th:field="*{category}" class="form__select" name="category" id="category">
+          <select
+            th:field="*{category}"
+            class="form__select"
+            name="category"
+            id="category"
+          >
             <option value="" selected>Seleccionar Categoría</option>
-            <option th:each=" category : ${categories}" th:text="${category.name}" th:value="${category.category_id}"></option>
+            <option
+              th:each=" category : ${categories}"
+              th:text="${category.name}"
+              th:value="${category.category_id}"
+            ></option>
           </select>
           <button class="form__button">
             <i class="fas fa-plus"></i>
@@ -123,6 +167,170 @@
           </button>
         </form>
       </section>
+      <section id="foods">
+        <h2 class="menu-title">Menu</h2>
+        <div class="foods-container">
+          <div class="food-container">
+            <img
+              class="food__image"
+              th:src="@{/images/entradas.svg}"
+              src="../static/images/entradas.svg"
+              alt="Entradas"
+              width="30"
+              height="30"
+            />
+            <a
+              class="food-container__title"
+              th:href="@{/foods/{categoria}(categoria='entradas') }"
+              >Entradas
+            </a>
+          </div>
+          <div class="food-container">
+            <img
+              class="food__image"
+              th:src="@{/images/ensaladas.svg}"
+              src="../static/images/ensaladas.svg"
+              alt="Ensaladas"
+              width="30"
+              height="30"
+            />
+            <a class="food-container__title" href="#"> Ensaladas </a>
+          </div>
+          <div class="principal__food" id="principals">
+            <div class="principal__food-info">
+              <img
+                class="food__image"
+                th:src="@{/images/comidas.svg}"
+                src="../static/images/comidas.svg"
+                alt="Principales"
+                width="30"
+                height="30"
+              />
+              <a class="food-container__title" href="#"> Principales </a>
+              <button class="dropdown-button">
+                <i class="fas fa-angle-down"></i>
+              </button>
+            </div>
+            <div class="food-options">
+              <ul class="food-options__list">
+                <li class="food-option">
+                  <img
+                    th:src="@{/images/minutas.svg}"
+                    src="../static/images/minutas.svg"
+                    alt="Minutas"
+                    width="20px"
+                    height="20px"
+                  />
+                  <a href="#">
+                    <span>Minutas</span>
+                  </a>
+                </li>
+                <li class="food-option">
+                  <img
+                    th:src="@{/images/carnes.svg}"
+                    src="../static/images/carnes.svg"
+                    alt="Carnes"
+                    width="20px"
+                    height="20px"
+                  />
+                  <a href="#">
+                    <span>Carnes</span>
+                  </a>
+                </li>
+                <li class="food-option">
+                  <img
+                    th:src="@{/images/pescados.svg}"
+                    src="../static/images/pescados.svg"
+                    alt="Pescados"
+                    width="20px"
+                    height="20px"
+                  />
+                  <a href="#">
+                    <span>Pescados</span>
+                  </a>
+                </li>
+                <li class="food-option">
+                  <img
+                    th:src="@{/images/comidas.svg}"
+                    src="../static/images/comidas.svg"
+                    alt="Guarniciones"
+                    width="20px"
+                    height="20px"
+                  />
+                  <a href="#">
+                    <span>Guarniciones</span>
+                  </a>
+                </li>
+                <li class="food-option">
+                  <img
+                    th:src="@{/images/pastas.svg}"
+                    src="../static/images/pastas.svg"
+                    alt="Pastas"
+                    width="20px"
+                    height="20px"
+                  />
+                  <a href="#">
+                    <span>Pastas</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="food-container">
+            <img
+              class="food__image"
+              th:src="@{/images/pizzas.svg}"
+              src="../static/images/pizzas.svg"
+              alt="Ensaladas"
+              width="30"
+              height="30"
+            />
+            <a class="food-container__title" href="#"> Pizzas </a>
+          </div>
+          <div class="food-container">
+            <img
+              class="food__image"
+              th:src="@{/images/postres.svg}"
+              src="../static/images/postres.svg"
+              alt="Ensaladas"
+              width="30"
+              height="30"
+            />
+            <a class="food-container__title" href="#"> Postres </a>
+          </div>
+          <div class="food-container">
+            <img
+              class="food__image"
+              th:src="@{/images/bebidas.svg}"
+              src="../static/images/bebidas.svg"
+              alt="Ensaladas"
+              width="30"
+              height="30"
+            />
+            <a class="food-container__title" href="#"> Bebidas </a>
+          </div>
+          <div class="food-container">
+            <img
+              class="food__image"
+              th:src="@{/images/cafeteria.svg}"
+              src="../static/images/cafeteria.svg"
+              alt="Ensaladas"
+              width="30"
+              height="30"
+            />
+            <a class="food-container__title" href="#"> Cafetería </a>
+          </div>
+        </div>
+      </section>
     </main>
+    <script>
+      const principalFood = document.querySelector(".principal__food-info");
+      const foodOptions = document.querySelector(".food-options");
+      const dropdownButton = document.querySelector(".fa-angle-down");
+      principalFood.addEventListener('click', () => {
+        foodOptions.classList.toggle('display');
+        dropdownButton.classList.toggle('rotate');
+      })
+    </script>
   </body>
 </html>
