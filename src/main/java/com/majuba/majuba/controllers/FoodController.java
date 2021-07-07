@@ -44,22 +44,29 @@ public class FoodController {
         return new RedirectView("/system");
     }
 
-    @GetMapping("/edit/{food_id}")
-    public ModelAndView edit(@PathVariable Long food_id) {
-        ModelAndView mav = new ModelAndView("edit-food");
-        mav.addObject("food", fService.searchById(food_id));
+
+    @GetMapping("/{categoria}/emp")
+    public ModelAndView show(@PathVariable("categoria") String food_category) {
+        ModelAndView mav = new ModelAndView(food_category+"-emp");
+        mav.addObject("foods", fService.findByCategory(food_category));
         mav.addObject("categories", cService.fidAll());
         return mav;
     }
 
-    @PostMapping("/savechanges")
-    public RedirectView edit(@RequestParam Long food_id, @RequestParam byte[] image, @RequestParam String title, @RequestParam String description, @RequestParam Double price, @RequestParam("category") Long category_id) {
-        fService.edit(food_id, image, title, description, price, category_id);
-        return new RedirectView("/comidas");
 
+
+    @PostMapping("/edit/{food_id}")
+    public RedirectView edit(@PathVariable Long food_id, MultipartFile image, @RequestParam String title, @RequestParam String description, @RequestParam Double price, @RequestParam("category") Long category_id) {
+
+        try {
+            String category = fService.edit(food_id, image, title, description, price, category_id);
+            return new RedirectView("/foods/"+category);
+        }catch(Exception e){
+            return new RedirectView("/system");
+        }
     }
 
-    //PARTE CLIENTE
+                                          //PARTE CLIENTE
 
     @GetMapping("/image/{food_id}")
     @ResponseBody
@@ -69,13 +76,11 @@ public class FoodController {
     }
 
     @GetMapping("/{categoria}")
-    public ModelAndView show(@PathVariable("categoria") String food_category) {
-        System.out.println(food_category);
+    public ModelAndView showCl(@PathVariable("categoria") String food_category) {
         ModelAndView mav = new ModelAndView(food_category);
         mav.addObject("foods", fService.findByCategory(food_category));
+        mav.addObject("categories", cService.fidAll());
         return mav;
-
-
     }
 
 }

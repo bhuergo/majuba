@@ -17,13 +17,11 @@ import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.security.Principal;
@@ -66,18 +64,18 @@ public class LoginController {
     public ModelAndView system() {
         ModelAndView mav = new ModelAndView("index-emp");
         List<Table> tables = tableService.findAll();
-
-
         mav.addObject("tables",tables);
         mav.addObject("food",new Food());
-        mav.addObject("waiter", new Waiter());
         mav.addObject("categories", categoryService.fidAll());
-
+        mav.addObject("waiter", new Waiter());
         return mav;
-
     }
 
-
+    @PostMapping("/system/{table_id}")
+    public RedirectView tableWaiter(@PathVariable Long table_id, @RequestParam List<Waiter> waiters) {
+        tableService.assignWaiter(table_id, waiters);
+        return new RedirectView("/system");
+    }
 
     //Al apretar "cliente", redirecciona a elegir tamaño de mesa
     @GetMapping("/guest")
@@ -107,19 +105,12 @@ public class LoginController {
 
     //Al ingresar el token, redirecciona al menú para clientes
     @PostMapping("/ingreso")
-    public RedirectView menu(@RequestParam Long token, HttpSession session, HttpServletRequest request) {
+    public RedirectView menu(@RequestParam Long token, HttpSession session, HttpServletRequest request) throws ServletException {
         Table assigned_table = (Table) session.getAttribute("assigned_table");
         //service que comprueba codigo de acceso
         Boolean access = tableService.checkAccessCode(token, assigned_table.getAccess_code());
         if (access) {
-            UsernamePasswordAuthenticationToken authReq = new UsernamePasswordAuthenticationToken("cliente", "root");
-            authReq.setDetails(new WebAuthenticationDetails(request));
-            Authentication auth = authManager.authenticate(authReq);
-
-            SecurityContext sc = SecurityContextHolder.getContext();
-            sc.setAuthentication(auth);
-
-            session.setAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY, sc);
+            request.login("cliente","root");
             tableService.ocupateTable(assigned_table.getTable_id());
 
             return new RedirectView("/menu");
@@ -133,5 +124,9 @@ public class LoginController {
         return new ModelAndView("index-cl");
     }
 
+    @GetMapping("/menu-emp")
+    public ModelAndView menuEmp(HttpSession session) {
+        return new ModelAndView("menu-emp");
+    }
 
 }

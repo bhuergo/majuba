@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ma·ju·ba</title>
+  <!-- Link CSS using thymeleaf -->
+  <link rel="stylesheet" th:href="@{/index-cl.css}" />
+  <!-- Link CSS -->
+  <!--   <link rel="stylesheet" href="../static/index-cl.css" />
+  Icons  -->
+  <link
+          rel="stylesheet"
+          href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+          integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk"
+          crossorigin="anonymous"
+  />
+</head>
+<body>
+<nav class="title__container">
+  <h2 class="title">ma·ju·ba</h2>
+</nav>
+<div class="restaurant">
+  <span class="restaurant__name" >Cake in Box</span>
+</div>
+<main class="main-container">
+
+  <div class="foods-container">
+
+
+    <div class="food-container">
+      <img
+              class="food__image"
+              th:src="@{/images/entradas.svg}"
+              src="../static/images/entradas.svg"
+              alt="Entradas"
+              width="30"
+              height="30"
+      />
+      <a class="food-container__title" th:href="@{/foods/{categoria}/emp(categoria='entradas') }">Entradas </a>
+    </div>
+    <div class="food-container">
+      <img
+              class="food__image"
+              th:src="@{/images/ensaladas.svg}"
+              src="../static/images/ensaladas.svg"
+              alt="Ensaladas"
+              width="30"
+              height="30"
+      />
+      <a class="food-container__title" th:href="@{/foods/{categoria}/emp(categoria='ensaladas') }"> Ensaladas </a>
+    </div>
+    <div class="principal__food" id="principals">
+      <div class="principal__food-info">
+        <img
+                class="food__image"
+                th:src="@{/images/comidas.svg}"
+                src="../static/images/comidas.svg"
+                alt="Principales"
+                width="30"
+                height="30"
+        />
+        <a class="food-container__title" > Principales </a>
+        <button class="dropdown-button">
+          <i class="fas fa-angle-down"></i>
+        </button>
+      </div>
+      <div class="food-options">
+        <ul class="food-options__list">
+          <li class="food-option">
+            <img th:src="@{/images/minutas.svg}" src="../static/images/minutas.svg" alt="Minutas" width="20px" height="20px"/>
+            <a th:href="@{/foods/{categoria}/emp(categoria='minutas') }">
+              <span>Minutas</span>
+            </a>
+          </li>
+          <li class="food-option">
+            <img th:src="@{/images/carnes.svg}" src="../static/images/carnes.svg" alt="Carnes" width="20px" height="20px"/>
+            <a th:href="@{/foods/{categoria}/emp(categoria='carnes') }">
+              <span>Carnes</span>
+            </a>
+          </li>
+          <li class="food-option">
+            <img th:src="@{/images/pescados.svg}" src="../static/images/pescados.svg" alt="Pescados" width="20px" height="20px"/>
+            <a th:href="@{/foods/{categoria}/emp(categoria='pescados') }">
+              <span>Pescados</span>
+            </a>
+          </li>
+          <li class="food-option">
+            <img th:src="@{/images/comidas.svg}" src="../static/images/comidas.svg" alt="Guarniciones" width="20px" height="20px"/>
+            <a th:href="@{/foods/{categoria}/emp(categoria='guarniciones') }">
+              <span>Guarniciones</span>
+            </a>
+          </li>
+          <li class="food-option">
+            <img th:src="@{/images/pastas.svg}" src="../static/images/pastas.svg" alt="Pastas" width="20px" height="20px"/>
+            <a th:href="@{/foods/{categoria}/emp(categoria='pastas') }">
+              <span>Pastas</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="food-container">
+      <img
+              class="food__image"
+              th:src="@{/images/pizzas.svg}"
+              src="../static/images/pizzas.svg"
+              alt="Ensaladas"
+              width="30"
+              height="30"
+      />
+      <a class="food-container__title" th:href="@{/foods/{categoria}/emp(categoria='pizzas') }"> Pizzas </a>
+    </div>
+    <div class="food-container">
+      <img
+              class="food__image"
+              th:src="@{/images/postres.svg}"
+              src="../static/images/postres.svg"
+              alt="Ensaladas"
+              width="30"
+              height="30"
+      />
+      <a class="food-container__title" th:href="@{/foods/{categoria}/emp(categoria='postres') }"> Postres </a>
+    </div>
+    <div class="food-container">
+      <img
+              class="food__image"
+              th:src="@{/images/bebidas.svg}"
+              src="../static/images/bebidas.svg"
+              alt="Ensaladas"
+              width="30"
+              height="30"
+      />
+      <a class="food-container__title" th:href="@{/foods/{categoria}/emp(categoria='bebidas') }"> Bebidas </a>
+    </div>
+    <div class="food-container">
+      <img
+              class="food__image"
+              th:src="@{/images/cafeteria.svg}"
+              src="../static/images/cafeteria.svg"
+              alt="Ensaladas"
+              width="30"
+              height="30"
+      />
+      <a class="food-container__title" th:href="@{/foods/{categoria}/emp(categoria='cafeteria') }"> Cafetería </a>
+    </div>
+  </div>
+</main>
+<script>
+  const principalFood = document.querySelector(".principal__food-info");
+  const foodOptions = document.querySelector(".food-options");
+  const dropdownButton = document.querySelector(".fa-angle-down");
+  principalFood.addEventListener('click', () => {
+    foodOptions.classList.toggle('display');
+    dropdownButton.classList.toggle('rotate');
+  })
+</script>
+</body>
+</html>

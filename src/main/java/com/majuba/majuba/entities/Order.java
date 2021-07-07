@@ -22,8 +22,7 @@ public class Order implements Serializable {
     private Table table;
     @OneToMany(mappedBy = "order")
     private List<Cart> cart_elements;
-    @ManyToOne
-    private Waiter waiter;
     @OneToOne
     private Payment payment;
+
 }

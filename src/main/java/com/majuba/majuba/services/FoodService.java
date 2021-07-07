@@ -58,9 +58,18 @@ public class FoodService {
     }
 
     @Transactional
-    public void edit(Long food_id,byte[] image, String title, String description, Double price, Long category_id){
+    public String edit(Long food_id,MultipartFile image, String title, String description, Double price, Long category_id){
         Category category = categoryRepository.findById(category_id).orElse(null);
-        foodRepository.edit(food_id,image,title,description,price,category);
+        try {
+          foodRepository.edit(food_id,image.getBytes(),title,description,price,category);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+            return category.getName();
+
+
     }
 
     @Transactional

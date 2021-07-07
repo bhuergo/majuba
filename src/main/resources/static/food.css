@@ -14,17 +14,21 @@ body {
   background-color: #f7c329;
 }
 
-.title__container {
+.topnav {
   width: 100%;
-  height: 50px;
+  height: 8vh;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 }
 
-.title {
+.logo {
   font-family: "Playfair Display", serif;
-  font-size: 20px;
+  color: #000;
+  text-align: center;
+  letter-spacing: 2px;
+  font-size: 1.5rem;
+  font-weight: 700;
 }
 
 .main-container {
@@ -33,7 +37,36 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 12px;
+}
+
+/* Cart */
+
+.cart-container {
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  position: relative;
+}
+
+.cart-button {
+  position: absolute;
+  border: none;
+  cursor: pointer;
+  color: #000;
+  background-color: transparent;
+  top: 35%;
+  right: 8%;
+  font-size: 1.4rem;
+  transition: all 0.2s ease;
+}
+
+.cart-button:hover {
+  transform: scale(1.1);
+  color: #6411f7;
+}
+
+.cart-button:active {
+  color: #000;
 }
 
 .option-menu {
@@ -45,14 +78,16 @@ body {
 .foods-container {
   margin-top: 1rem;
   list-style-type: none;
-  width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .food {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  width: 100%;
+  width: 95%;
   border-radius: 1rem;
   background-color: #fff;
   display: flex;
@@ -84,6 +119,8 @@ body {
   font-size: 20px;
 }
 
+/* Div with options for client */
+
 .food__cart {
   margin-top: 20px;
   display: flex;
@@ -101,6 +138,7 @@ body {
 
 .food__cart-select {
   outline: none;
+  text-align: center;
   padding: 8px 20px;
   border: none;
   border-bottom: 1.5px solid #000;
@@ -114,11 +152,11 @@ body {
   font-weight: 700;
   border: none;
   cursor: pointer;
-  transition: background-color 0.2s ease-out;
+  transition: all 0.2s ease-out;
 }
 
 .food__cart-button:hover {
-  background-color: #f7921e;
+  background-color: #a05c0f;
 }
 
 .food__cart-button:active {
@@ -126,8 +164,261 @@ body {
   opacity: 0.9;
 }
 
+.cart__modal-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.3s;
+}
+
+.bg-active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.cart__modal {
+  position: relative;
+  height: 70vh;
+  width: 80%;
+  background-color: #fff5fd;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.4rem;
+  border-radius: 10px;
+}
+
+.cart__modal-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 10px;
+  cursor: pointer;
+  background-color: transparent;
+  font-size: 1.1rem;
+  border: none;
+  color: #444444;
+}
+
+/* Div with options for employees */
+
+.food__options {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 60px;
+  justify-content: space-around;
+}
+
+.food__options-edit {
+  color: #fff;
+  padding: 8px 38px;
+  border: 2px solid #cd5d7d;
+  background-color: #cd5d7d;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+
+.food__options-edit:hover {
+  color: #cd5d7d;
+  background-color: #fff;
+}
+
+.food__options-delete {
+  color: #fff;
+  padding: 10px 40px;
+  border: 2px solid #a7c5eb;
+  background-color: #a7c5eb;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+
+.food__options-delete:hover {
+  color: #a7c5eb;
+  background-color: #fff;
+}
+
+/* Edit modal */
+.edit__modal-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.3s;
+}
+
+.edit__modal {
+  position: relative;
+  width: 40%;
+  background-color: #fff5fd;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.4rem;
+  border-radius: 10px;
+}
+
+.edit__modal-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 10px;
+  cursor: pointer;
+  background-color: transparent;
+  font-size: 1.1rem;
+  border: none;
+  color: #444444;
+}
+
+.bg-active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  padding: 10px 2rem;
+  border-radius: 10px;
+}
+
+.form__title {
+  text-align: center;
+  font-family: "Playfair Display", serif;
+  font-weight: 500;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.form__div {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  margin-bottom: 1rem;
+}
+
+.form__input {
+  font-family: "Roboto", sans-serif;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: #000;
+  font-size: 1rem;
+  border: 1px solid #000;
+  border-radius: 6px;
+  outline: none;
+  padding: 1rem;
+  background: none;
+  z-index: 1;
+}
+
+.form__label {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  padding: 0 0.25rem;
+  background-color: #fff5fd;
+  color: #000;
+  transition: 0.3s;
+}
+
+.form__input:focus + .form__label {
+  top: -0.5rem;
+  left: 0.8rem;
+  color: #39a2db;
+  font-size: 14px;
+  font-weight: 500;
+  z-index: 10;
+}
+
+.form__input:not(:placeholder-shown).form__input:not(:focus) + .form__label {
+  top: -0.5rem;
+  left: 0.8rem;
+  font-size: 14px;
+  font-weight: 500;
+  z-index: 10;
+}
+
+.form__input:focus {
+  border: 2px solid #39a2db;
+}
+
+.form__label-image {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.1rem;
+  margin-bottom: 0.4rem;
+}
+
+.form__input-image {
+  margin-bottom: 1rem;
+  width: fit-content;
+}
+
+.form__button {
+  margin: 0 auto;
+  width: 30%;
+  padding: 6px 10px;
+  border-radius: 6px;
+  outline: none;
+  border: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: #fff5fd;
+  background-color: #558776;
+  transition: background-color 0.2s ease-out;
+}
+
+.form__button:hover {
+  background-color: #558776;
+}
+
+.form__button:active {
+  background-color: #3a6351;
+  opacity: 0.9;
+}
+
+.form__label-category {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.1rem;
+  margin-bottom: 0.4rem;
+}
+
+.form__select {
+  padding: 1rem;
+  border-radius: 6px;
+  outline: none;
+  margin-bottom: 1rem;
+}
+
 
 @media only screen and (min-width: 576px) {
+  .food {
+    width: 400px;
+  }
+}
+
+/* @media only screen and (min-width: 576px) {
 	.food {
 		flex-direction: row;
 		height: 30vh;
@@ -149,4 +440,4 @@ body {
 		height: 100%;
 		flex-direction: column;
 	}
-}
+} */

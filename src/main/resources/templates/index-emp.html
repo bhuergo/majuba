@@ -26,7 +26,7 @@
           <li><a href="#new-supply">Nuevo insumo</a></li>
           <li><a href="#new-food">Nueva comida</a></li>
           <li><a href="#waiter">Mozo</a></li>
-          <li><a href="#">Comidas</a></li>
+          <li><a th:href="@{/menu-emp}">Comidas</a></li>
         </ul>
         <div class="cart">
           <a href="#" class="cart__button">
@@ -54,6 +54,7 @@
                 <h4>Mesa Nº<span th:text="${table.table_id}"></span></h4>
               </div>
               <p>Código: <span class="table__code" th:text="${table.access_code}"></span></p>
+              <p>Mesero/s: <span class="table__code" th:each=" waiter : ${table.waiters}" th:text="${waiter.name}" th:value="${waiter.waiter_id}"></span></p>
             </div>
           </div>
         </div>
@@ -94,7 +95,7 @@
             class="form__input-image"
             type="file"
             id="img"
-            name="img"
+            name="image"
             accept="image/*"
           />
           <label for="" class="form__label-category">Categoría</label>
@@ -110,10 +111,10 @@
       </section>
 
       <section id="waiter">
-        <form class="form" autocomplete="off">
+        <form class="form" autocomplete="off" th:action="@{/waiters/save}" method="post" th:object="${waiter}">
           <h2 class="form__title">Nuevo mozo</h2>
           <div class="form__div">
-            <input type="text" class="form__input" placeholder=" " />
+            <input th:field="*{name}" type="text" class="form__input" placeholder=" " />
             <label for="" class="form__label">Nombre</label>
           </div>
           <button class="form__button">
