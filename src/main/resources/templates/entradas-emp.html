@@ -77,15 +77,12 @@
           autocomplete="off"
           action=""
           method="post"
-
           enctype="multipart/form-data"
         >
           <h2 class="form__title">Editar comida</h2>
           <div class="form__div">
-
             <input
-                    name="title"
-
+              name="title"
               type="text"
               class="form__input"
               placeholder=" "
@@ -94,7 +91,7 @@
           </div>
           <div class="form__div">
             <input
-                    name="description"
+              name="description"
               type="text"
               class="form__input"
               placeholder=" "
@@ -103,7 +100,7 @@
           </div>
           <div class="form__div">
             <input
-                    name="price"
+              name="price"
               type="number"
               min="0"
               class="form__input"
@@ -113,19 +110,14 @@
           </div>
           <label for="img" class="form__label-image">Nueva Imágen</label>
           <input
-                  name="image"
+            name="image"
             class="form__input-image"
             type="file"
             id="img"
             accept="image/*"
           />
           <label for="" class="form__label-category">Nueva Categoría</label>
-          <select
-                  name="category"
-            class="form__select"
-
-            id="category"
-          >
+          <select name="category" class="form__select" id="category">
             <option value="" selected>Seleccionar Categoría</option>
             <option
               th:each=" category : ${categories}"
