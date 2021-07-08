@@ -51,7 +51,44 @@
           </div>
           <div class="food__cart">
             <p class="food__cart-price">
-              $<span th:text="${food.price}">1500</span>
+              $<span th:text="${food.price}">20</span>
+            </p>
+            <select class="food__cart-select" name="" id="">
+              <option value="" selected>Cant</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+            </select>
+            <button class="food__cart-button">Agregar</button>
+          </div>
+        </li>
+        <li class="food" th:each=" food : ${foods}">
+          <img
+            class="food__img"
+            src="../static/images/food-images/cafe.jpg"
+            th:src="@{/foods/image/__${food.food_id}__}"
+            alt="Cafetería"
+          />
+          <div class="food__info">
+            <h3 class="food__title" th:text="${food.title}">
+              El cafe mas negro 2
+            </h3>
+            <p class="food__description" th:text="${food.description}">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </p>
+          </div>
+          <div class="food__cart">
+            <p class="food__cart-price">
+              $<span th:text="${food.price}">40</span>
             </p>
             <select class="food__cart-select" name="" id="">
               <option value="" selected>Cant</option>
@@ -87,8 +124,8 @@
             <p>Precio</p>
           </div>
           <div class="order-item">
-            <p>Bastones muzzarella</p>
-            <p>43</p>
+            <p class="order-item__title">Bastones muzzarella</p>
+            <p class="order-item__amount">43</p>
             <div class="buttons-items">
               <button id="add-item">
                 <i class="fas fa-plus"></i>
@@ -97,25 +134,15 @@
                 <i class="fas fa-minus"></i>
               </button>
             </div>
-            <p>$<span>1300</span></p>
+            <p class="order-item__price">$<span>1300</span></p>
           </div>
+          
         </div>
         <button class="order-button">
           <i class="fas fa-money-check-alt"></i>
         </button>
       </div>
     </div>
-    <script>
-      const cantSelect = document.querySelector(".food__cart-select");
-      const cartButton = document.querySelector(".cart-button");
-      const modalBg = document.querySelector(".cart__modal-bg");
-      const cartModalButton = document.querySelector(".cart__modal-button");
-      cartButton.addEventListener("click", () => {
-        modalBg.classList.toggle("bg-active");
-      });
-      cartModalButton.addEventListener("click", () => {
-        modalBg.classList.toggle("bg-active");
-      });
-    </script>
+    <script src="../static/cart.js"></script>
   </body>
 </html>
