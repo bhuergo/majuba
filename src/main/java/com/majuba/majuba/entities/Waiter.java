@@ -18,7 +18,5 @@ public class Waiter implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long waiter_id;
     private String name;
-    @ManyToMany
-    private List<Table> tables;
 
 }

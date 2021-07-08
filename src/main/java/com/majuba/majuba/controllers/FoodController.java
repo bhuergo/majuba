@@ -45,7 +45,13 @@ public class FoodController {
     }
 
 
-
+    @GetMapping("/{categoria}/emp")
+    public ModelAndView show(@PathVariable("categoria") String food_category) {
+        ModelAndView mav = new ModelAndView(food_category+"-emp");
+        mav.addObject("foods", fService.findByCategory(food_category));
+        mav.addObject("categories", cService.findAll());
+        return mav;
+    }
 
 
 
@@ -54,7 +60,7 @@ public class FoodController {
 
         try {
             String category = fService.edit(food_id, image, title, description, price, category_id);
-            return new RedirectView("/foods/"+category);
+            return new RedirectView("/foods/"+category+"-emp");
         }catch(Exception e){
             return new RedirectView("/system");
         }
@@ -70,10 +76,10 @@ public class FoodController {
     }
 
     @GetMapping("/{categoria}")
-    public ModelAndView show(@PathVariable("categoria") String food_category) {
-        ModelAndView mav = new ModelAndView(food_category+"-emp");
+    public ModelAndView showCl(@PathVariable("categoria") String food_category) {
+        ModelAndView mav = new ModelAndView(food_category);
         mav.addObject("foods", fService.findByCategory(food_category));
-        mav.addObject("categories", cService.fidAll());
+        mav.addObject("categories", cService.findAll());
         return mav;
     }
 

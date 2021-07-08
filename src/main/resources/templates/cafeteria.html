@@ -10,10 +10,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ma·ju·ba</title>
     <!-- Link CSS using thymeleaf -->
-    <!-- <link rel="stylesheet" th:href="@{/food.css}" /> -->
-    <!-- Link CSS -->
+    <link rel="stylesheet" th:href="@{/food.css}" />
+    <!-- Link CSS
     <link rel="stylesheet" href="../static/food.css" />
-    <!-- Icons -->
+    Icons -->
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
@@ -33,8 +33,8 @@
         </button>
       </div>
 
-      <ul class="foods-container">
-        <li class="food" th:each=" food : ${foods}">
+      <ul class="foods-container" id="cards">
+        <li class="food" th:each=" food : ${foods}" >
           <img
             class="food__img"
             src="../static/images/food-images/cafe.jpg"
@@ -110,8 +110,8 @@
         </li>
       </ul>
     </main>
-    <div class="cart__modal-bg">
-      <div class="cart__modal">
+    <div class="cart__modal-bg" >
+      <div class="cart__modal" id="modal">
         <button class="cart__modal-button">
           <i class="fas fa-times"></i>
         </button>
@@ -143,6 +143,22 @@
         </button>
       </div>
     </div>
+<<<<<<< HEAD
     <script src="../static/cart.js"></script>
+=======
+    <script>
+      const cantSelect = document.querySelector(".food__cart-select");
+      const cartButton = document.querySelector(".cart-button");
+      const modalBg = document.querySelector(".cart__modal-bg");
+      const cartModalButton = document.querySelector(".cart__modal-button");
+      cartButton.addEventListener("click", () => {
+        modalBg.classList.toggle("bg-active");
+      });
+      cartModalButton.addEventListener("click", () => {
+        modalBg.classList.toggle("bg-active");
+      });
+    </script>
+    <script th:src="@{/app.js}"></script>
+>>>>>>> 0ac9f5cfe435a008b72368f93daddfed78fb2b11
   </body>
 </html>
