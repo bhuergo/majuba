@@ -33,8 +33,8 @@
         </button>
       </div>
 
-      <ul class="foods-container">
-        <li class="food" th:each=" food : ${foods}">
+      <ul class="foods-container" id="cards">
+        <li class="food" th:each=" food : ${foods}" >
           <img
             class="food__img"
             src="../static/images/food-images/cafe.jpg"
@@ -73,8 +73,8 @@
         </li>
       </ul>
     </main>
-    <div class="cart__modal-bg">
-      <div class="cart__modal">
+    <div class="cart__modal-bg" >
+      <div class="cart__modal" id="modal">
         <button class="cart__modal-button">
           <i class="fas fa-times"></i>
         </button>
@@ -117,5 +117,6 @@
         modalBg.classList.toggle("bg-active");
       });
     </script>
+    <script th:src="@{/app.js}"></script>
   </body>
 </html>
