@@ -26,7 +26,7 @@ public class CategoryService {
     }
 
     @Transactional(readOnly = true)
-    public List<Category> fidAll() {
+    public List<Category> findAll() {
         return categoryRepository.findAll();
     }
 /*

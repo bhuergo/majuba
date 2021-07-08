@@ -66,7 +66,7 @@ public class LoginController {
         List<Table> tables = tableService.findAll();
         mav.addObject("tables",tables);
         mav.addObject("food",new Food());
-        mav.addObject("categories", categoryService.fidAll());
+        mav.addObject("categories", categoryService.findAll());
         mav.addObject("waiter", new Waiter());
         return mav;
     }

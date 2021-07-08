@@ -181,7 +181,7 @@
             />
             <a
               class="food-container__title"
-              th:href="@{/foods/{categoria}(categoria='entradas') }"
+              th:href="@{/foods/{categoria}/emp(categoria='entradas') }"
               >Entradas
             </a>
           </div>
@@ -194,7 +194,7 @@
               width="30"
               height="30"
             />
-            <a class="food-container__title" href="#"> Ensaladas </a>
+            <a class="food-container__title" th:href="@{/foods/{categoria}/emp(categoria='ensaladas') }"> Ensaladas </a>
           </div>
           <div class="principal__food" id="principals">
             <div class="principal__food-info">
@@ -206,7 +206,7 @@
                 width="30"
                 height="30"
               />
-              <a class="food-container__title" href="#"> Principales </a>
+              <a class="food-container__title" > Principales </a>
               <button class="dropdown-button">
                 <i class="fas fa-angle-down"></i>
               </button>
@@ -221,7 +221,7 @@
                     width="20px"
                     height="20px"
                   />
-                  <a href="#">
+                  <a th:href="@{/foods/{categoria}/emp(categoria='minutas') }">
                     <span>Minutas</span>
                   </a>
                 </li>
@@ -233,7 +233,7 @@
                     width="20px"
                     height="20px"
                   />
-                  <a href="#">
+                  <a th:href="@{/foods/{categoria}/emp(categoria='carnes') }">
                     <span>Carnes</span>
                   </a>
                 </li>
@@ -245,7 +245,7 @@
                     width="20px"
                     height="20px"
                   />
-                  <a href="#">
+                  <a th:href="@{/foods/{categoria}/emp(categoria='pescados') }">
                     <span>Pescados</span>
                   </a>
                 </li>
@@ -257,7 +257,7 @@
                     width="20px"
                     height="20px"
                   />
-                  <a href="#">
+                  <a th:href="@{/foods/{categoria}/emp(categoria='guarniciones') }">
                     <span>Guarniciones</span>
                   </a>
                 </li>
@@ -269,7 +269,7 @@
                     width="20px"
                     height="20px"
                   />
-                  <a href="#">
+                  <a th:href="@{/foods/{categoria}/emp(categoria='pastas') }">
                     <span>Pastas</span>
                   </a>
                 </li>
@@ -285,7 +285,7 @@
               width="30"
               height="30"
             />
-            <a class="food-container__title" href="#"> Pizzas </a>
+            <a class="food-container__title" th:href="@{/foods/{categoria}/emp(categoria='pizzas') }"> Pizzas </a>
           </div>
           <div class="food-container">
             <img
@@ -296,7 +296,7 @@
               width="30"
               height="30"
             />
-            <a class="food-container__title" href="#"> Postres </a>
+            <a class="food-container__title" th:href="@{/foods/{categoria}/emp(categoria='postres') }"> Postres </a>
           </div>
           <div class="food-container">
             <img
@@ -307,7 +307,7 @@
               width="30"
               height="30"
             />
-            <a class="food-container__title" href="#"> Bebidas </a>
+            <a class="food-container__title" th:href="@{/foods/{categoria}/emp(categoria='bebidas') }"> Bebidas </a>
           </div>
           <div class="food-container">
             <img
@@ -318,7 +318,7 @@
               width="30"
               height="30"
             />
-            <a class="food-container__title" href="#"> Cafetería </a>
+            <a class="food-container__title" th:href="@{/foods/{categoria}/emp(categoria='cafeteria') }"> Cafetería </a>
           </div>
         </div>
       </section>
