@@ -20,7 +20,5 @@ public class Client implements Serializable {
     private String document;
     private String email;
     private Long phone;
-    @OneToMany(mappedBy = "client")
-    private List<Payment> payments;
     
 }
