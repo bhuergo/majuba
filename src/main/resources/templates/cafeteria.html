@@ -11,7 +11,7 @@
     <title>ma·ju·ba</title>
     <!-- Link CSS using thymeleaf -->
     <!-- <link rel="stylesheet" th:href="@{/food.css}" /> -->
-   <!-- Link CSS -->
+    <!-- Link CSS -->
     <link rel="stylesheet" href="../static/food.css" />
     <!-- Icons  -->
     <link
@@ -34,7 +34,7 @@
       </div>
 
       <ul class="foods-container" id="cards">
-        <li class="food" th:each=" food : ${foods}" >
+        <li class="food" th:each=" food : ${foods}">
           <img
             class="food__img"
             src="../static/images/food-images/cafe.jpg"
@@ -54,8 +54,7 @@
               $<span th:text="${food.price}" class="price-value">20</span>
             </p>
             <select class="food__cart-select" name="" id="">
-              <option value="1" selected>Cant</option>
-              <option value="1">1</option>
+              <option value="1" selected>1</option>
               <option value="2">2</option>
               <option value="3">3</option>
               <option value="4">4</option>
@@ -91,8 +90,7 @@
               $<span th:text="${food.price}" class="price-value">40</span>
             </p>
             <select class="food__cart-select" name="" id="">
-              <option value="" selected>Cant</option>
-              <option value="1">1</option>
+              <option value="1" selected>1</option>
               <option value="2">2</option>
               <option value="3">3</option>
               <option value="4">4</option>
@@ -110,19 +108,14 @@
         </li>
       </ul>
     </main>
-    <div class="cart__modal-bg" >
+    <div class="cart__modal-bg">
       <div class="cart__modal" id="modal">
         <button class="cart__modal-button">
           <i class="fas fa-times"></i>
         </button>
         <h2>Orden de compra</h2>
         <div class="items-container">
-          <div class="items-titles">
-            <p>Titulo</p>
-            <p>Cant</p>
-            <p>-</p>
-            <p>Precio</p>
-          </div>          
+          
         </div>
         <button class="order-button">
           <i class="fas fa-money-check-alt"></i>

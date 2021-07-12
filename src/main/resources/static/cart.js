@@ -27,35 +27,53 @@ const addToCartClicked = (e) => {
 
 const addItemToCart = (title, cant, totalPrice) => {
   const orderItem = document.createElement('div');
-  orderItem.classList.add('order-item')
+  orderItem.classList.add('order-item');
+  const orderItemsNames = cartModalItems.getElementsByClassName('order-item__title');
+  for (let i = 0; i < orderItemsNames.length; i++) {
+    if (orderItemsNames[i].innerHTML == title) {
+      alert('Este item ya se encuentra en el carrito.');
+      return;
+    }
+  }
   const orderItemContent = `
-            <p class="order-item__title">${title}</p>
-            <p class="order-item__amount">${cant}</p>
-            <div class="buttons-items">
-              <button id="add-item">
-                <i class="fas fa-plus"></i>
-              </button>
-              <button id="remove-item">
-                <i class="fas fa-minus"></i>
-              </button>
-            </div>
-            <p class="order-item__price">$<span>${totalPrice}</span></p>
+  <p>
+    <span class="order-item__cant">${cant}</span>x
+    <span class="order-item__title">${title}</span>
+  </p>
+  <div class="buttons-items">
+    <button class="add-item">
+      <i class="fas fa-plus"></i>
+    </button>
+    <button class="remove-item">
+      <i class="fas fa-minus"></i>
+    </button>
+    <p class="order-item__price">$<span>${totalPrice}</span></p>
+  </div>
   `;
   orderItem.innerHTML = orderItemContent;
-  console.log(orderItem);
-  // cartModalItems.innerHTML = orderItem;
   cartModalItems.append(orderItem);
-  // cartModalItems.innerHTML.append(orderItem);
+  const removeCartItemsButtons = cartModalItems.getElementsByClassName('remove-item');
+  for (let i = 0; i < removeCartItemsButtons.length; i++) {
+    let removeButton = removeCartItemsButtons[i];
+    removeButton.addEventListener('click', () => {
+      alert('asd')
+    });  
+  }
+  cartModalItems.getElementsByClassName('add-item')[0].addEventListener('click', updateCart)
 };
 
 for (let i = 0; i < addToCartButtons.length; i++) {
   const button = addToCartButtons[i];
   button.addEventListener("click", addToCartClicked);
-  // button.addEventListener("click", (e) => {
-  //   let buttonClicked = e.target;
-  //   let foodItem = buttonClicked.parentElement.parentElement;
-  //   let price = foodItem.getElementsByClassName("price-value")[0].innerText;
-  //   let cant = foodItem.getElementsByClassName("food__cart-select")[0].value;
-  //   console.log(cant);
-  // });
+}
+
+// Remove items from cart
+
+
+
+const updateCart = () => {
+  let cartItemContainer = document.getElementsByClassName('items-container')[0];
+  let cartRows = cartItemContainer.getElementsByClassName('order-item');
+  let total = 0;
+  console.log(cartItemContainer, cartRows);
 }
