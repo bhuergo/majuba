@@ -22,16 +22,18 @@ const addToCartClicked = (e) => {
   let price = foodItem.getElementsByClassName("price-value")[0].innerText;
   let cant = foodItem.getElementsByClassName("food__cart-select")[0].value;
   let totalPrice = price * cant;
+  totalPrice = Math.round(totalPrice * 100) / 100;
   addItemToCart(title, cant, totalPrice);
 };
 
 const addItemToCart = (title, cant, totalPrice) => {
-  const orderItem = document.createElement('div');
-  orderItem.classList.add('order-item');
-  const orderItemsNames = cartModalItems.getElementsByClassName('order-item__title');
+  const orderItem = document.createElement("div");
+  orderItem.classList.add("order-item");
+  const orderItemsNames =
+    cartModalItems.getElementsByClassName("order-item__title");
   for (let i = 0; i < orderItemsNames.length; i++) {
     if (orderItemsNames[i].innerHTML == title) {
-      alert('Este item ya se encuentra en el carrito.');
+      alert("Este item ya se encuentra en el carrito.");
       return;
     }
   }
@@ -52,15 +54,28 @@ const addItemToCart = (title, cant, totalPrice) => {
   `;
   orderItem.innerHTML = orderItemContent;
   cartModalItems.append(orderItem);
-  const removeCartItemsButtons = cartModalItems.getElementsByClassName('remove-item');
-  for (let i = 0; i < removeCartItemsButtons.length; i++) {
-    let removeButton = removeCartItemsButtons[i];
-    removeButton.addEventListener('click', () => {
-      alert('asd')
-    });  
+
+  let cartItemContainer = document.getElementsByClassName('items-container')[0];
+  let cartRows = cartItemContainer.getElementsByClassName('order-item');
+  let addButtonsItems = cartItemContainer.getElementsByClassName('add-item');
+  for (let i = 0; i < addButtonsItems.length; i++) {
+    let button = addButtonsItems[i];
+    console.log(button);
+    button.addEventListener('click', (e) => {
+      console.log(button);
+    })
   }
-  cartModalItems.getElementsByClassName('add-item')[0].addEventListener('click', updateCart)
+  // for (let cartRow of cartRows) {
+  //   let priceItem = cartRow.getElementsByClassName('order-item__price')[0].childNodes[1].innerText;
+  //   let quantityItem = cartRow.getElementsByClassName('order-item__cant')[0].innerText;
+  //   let addButtonItem = cartRow.getElementsByClassName('add-item')[0];
+  //   console.log(addButtonItem);
+
+  // }
+  
+  // const removeCartItemsButtons = cartModalItems.getElementsByClassName('remove-item');
 };
+
 
 for (let i = 0; i < addToCartButtons.length; i++) {
   const button = addToCartButtons[i];
@@ -69,11 +84,12 @@ for (let i = 0; i < addToCartButtons.length; i++) {
 
 // Remove items from cart
 
-
-
-const updateCart = () => {
-  let cartItemContainer = document.getElementsByClassName('items-container')[0];
-  let cartRows = cartItemContainer.getElementsByClassName('order-item');
-  let total = 0;
-  console.log(cartItemContainer, cartRows);
-}
+// const updateCart = () => {
+//   let cartItemContainer = document.getElementsByClassName('items-container')[0];
+//   let cartRows = cartItemContainer.getElementsByClassName('order-item');
+//   for (let cartRow of cartRows) {
+//     let priceItem = cartRow.getElementsByClassName('order-item__price')[0].childNodes[1].innerText;
+//     let quantityItem = cartRow.getElementsByClassName('order-item__cant')[0].innerText;
+//     console.log(quantityItem);
+//   }
+// }

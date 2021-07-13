@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ma·ju·ba</title>
+    <!-- Link CSS using thymeleaf -->
+    <!-- <link rel="stylesheet" th:href="@{/food.css}" /> -->
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="../static/food2.css" />
+    <!-- Icons  -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+      integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <nav class="topnav">
+      <h2 class="logo">ma·ju·ba</h2>
+    </nav>
+    <main class="main-container">
+      <div class="cart-container">
+        <h1 class="option-menu">Cafetería</h1>
+        <button class="cart-button">
+          <i class="fas fa-shopping-cart"></i>
+        </button>
+      </div>
+
+      <ul class="foods-container" id="cards">
+        <li class="food" th:each=" food : ${foods}">
+          <img
+            class="food__img"
+            src="../static/images/food-images/cafe.jpg"
+            th:src="@{/foods/image/__${food.food_id}__}"
+            alt="Cafetería"
+          />
+          <div class="food__info">
+            <h3 class="food__title" th:text="${food.title}">
+              El cafe mas negro
+            </h3>
+            <p class="food__description" th:text="${food.description}">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </p>
+          </div>
+          <div class="food__cart">
+            <p class="food__cart-price">
+              $<span th:text="${food.price}" class="price-value">20</span>
+            </p>
+            <button class="food__cart-button">Agregar al carrito</button>
+          </div>
+        </li>
+        <li class="food" th:each=" food : ${foods}">
+          <img
+            class="food__img"
+            src="../static/images/food-images/cafe.jpg"
+            th:src="@{/foods/image/__${food.food_id}__}"
+            alt="Cafetería"
+          />
+          <div class="food__info">
+            <h3 class="food__title" th:text="${food.title}">
+              El cafe mas negro 2
+            </h3>
+            <p class="food__description" th:text="${food.description}">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </p>
+          </div>
+          <div class="food__cart">
+            <p class="food__cart-price">
+              $<span th:text="${food.price}" class="price-value">40</span>
+            </p>
+            <button class="food__cart-button">Agregar al carrito</button>
+          </div>
+        </li>
+      </ul>
+    </main>
+    <div class="cart__modal-bg">
+      <div class="cart__modal" id="modal">
+        <button class="cart__modal-button">
+          <i class="fas fa-times"></i>
+        </button>
+        <h2>Orden de compra</h2>
+        <div class="items-container">
+        </div>
+        <p>Total de la cuenta: $<span class="total-price"></span></p>
+        <button class="order-button">
+          <i class="fas fa-money-check-alt"></i>
+        </button>
+      </div>
+    </div>
+    <script src="../static/cart2.js"></script>
+  </body>
+</html>
