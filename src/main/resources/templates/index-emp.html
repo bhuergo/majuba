@@ -63,12 +63,35 @@
                 <span
                   class="table__code"
                   th:each=" waiter : ${table.waiters}"
-                  th:text="${waiter.name}"
-                  th:value="${waiter.waiter_id}"
-                ></span>
+                >
+                  <span
+                      th:text="${waiter.name}"
+                      th:value="${waiter.waiter_id}"
+                  ></span>
+                </span>
               </p>
             </div>
           </div>
+        </div>
+        <div th:each=" table : ${tables}" th:if="${!table.available and table.waiters.isEmpty()}">
+          <form class="form" autocomplete="off" th:action="@{/assignWaiter/__${table.table_id}__}" method="post">
+              <h2 class="form__title">Asignar mozo a mesa <span th:text="${table.table_id}"></span></h2>
+            <select
+                    class="form__select"
+                    multiple="multiple"
+                    name="setwaiters"
+            >
+              <option
+                      th:each=" waiter : ${Waiters}"
+                      th:text="${waiter.name}"
+                      th:value="${waiter.waiter_id}"
+              ></option>
+            </select>
+              <button class="form__button" type="submit">
+                <i class="fas fa-plus"></i>
+                <span>Asignar</span>
+              </button>
+          </form>
         </div>
       </section>
 

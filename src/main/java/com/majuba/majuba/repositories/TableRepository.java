@@ -10,6 +10,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface TableRepository extends JpaRepository<Table, Long>{
@@ -26,6 +27,6 @@ public interface TableRepository extends JpaRepository<Table, Long>{
 
     @Modifying
     @Query("UPDATE Table t SET t.waiters = :waiters WHERE t.table_id = :table_id")
-    public void assignWaiters(@Param("table_id") Long table_id, @Param("waiters") List<Waiter> waiters);
+    public void assignWaiters(@Param("table_id") Long table_id, @Param("waiters") List<Waiter> waiter);
 
 }
