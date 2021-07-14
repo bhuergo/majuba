@@ -53,7 +53,7 @@
             <p class="food__cart-price">
               $<span th:text="${food.price}" class="price-value">20</span>
             </p>
-            <button class="food__cart-button">Agregar al carrito</button>
+            <button class="food__cart-button" th:attr="data-id=${food.food_id}">Agregar al carrito</button>
           </div>
         </li>
         <li class="food" th:each=" food : ${foods}">
@@ -75,7 +75,7 @@
             <p class="food__cart-price">
               $<span th:text="${food.price}" class="price-value">40</span>
             </p>
-            <button class="food__cart-button">Agregar al carrito</button>
+            <button class="food__cart-button" th:attr="data-id=${food.food_id}">Agregar al carrito</button>
           </div>
         </li>
       </ul>
@@ -85,10 +85,10 @@
         <button class="cart__modal-button">
           <i class="fas fa-times"></i>
         </button>
-        <h2>Orden de compra</h2>
+        <h2 class="cart-title">Orden de compra</h2>
         <div class="items-container">
         </div>
-        <p>Total de la cuenta: $<span class="total-price"></span></p>
+        <p class="total-items-price">Total de la cuenta: $<span class="total-price"></span></p>
         <button class="order-button">
           <i class="fas fa-money-check-alt"></i>
         </button>

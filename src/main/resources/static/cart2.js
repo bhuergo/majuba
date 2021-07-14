@@ -9,66 +9,19 @@ cartModalButton.addEventListener("click", () => {
   modalBg.classList.toggle("bg-active");
 });
 
-// const addToCartButtons = document.querySelectorAll(".food__cart-button");
-// const cartModalItems = document.querySelector(".items-container");
-
-// const addToCartClicked = (e) => {
-//   let buttonClicked = e.target;
-//   let foodItem = buttonClicked.parentElement.parentElement;
-//   let title = foodItem.getElementsByClassName("food__title")[0].innerText;
-//   let price = foodItem.getElementsByClassName("price-value")[0].innerText;
-//   let cant = foodItem.getElementsByClassName("food__cart-select")[0].value;
-//   let totalPrice = price * cant;
-//   totalPrice = Math.round(totalPrice * 100) / 100;
-//   addItemToCart(title, cant, totalPrice);
-// };
-
-// const addItemToCart = (title, cant, totalPrice) => {
-//   const orderItem = document.createElement("div");
-//   orderItem.classList.add("order-item");
-//   const orderItemsNames =
-//     cartModalItems.getElementsByClassName("order-item__title");
-//   for (let i = 0; i < orderItemsNames.length; i++) {
-//     if (orderItemsNames[i].innerHTML == title) {
-//       alert("Este item ya se encuentra en el carrito.");
-//       return;
-//     }
-//   }
-//   const orderItemContent = `
-//   <p>
-//     <span class="order-item__cant">${cant}</span>x
-//     <span class="order-item__title">${title}</span>
-//   </p>
-//   <div class="buttons-items">
-//     <button class="add-item">
-//       <i class="fas fa-plus"></i>
-//     </button>
-//     <button class="remove-item">
-//       <i class="fas fa-minus"></i>
-//     </button>
-//     <p class="order-item__price">$<span>${totalPrice}</span></p>
-//   </div>
-//   `;
-//   orderItem.innerHTML = orderItemContent;
-//   cartModalItems.append(orderItem);
-
-// };
-
-// let addItemsButtons = cartModalItems.getElementsByClassName("add-item");
-// for (let addItemButton of addItemsButtons) {
-//   addItemButton.addEventListener("click", () => {
-//     console.log("sad");
-//   });
-// }
-// for (let i = 0; i < addToCartButtons.length; i++) {
-//   const button = addToCartButtons[i];
-//   button.addEventListener("click", addToCartClicked);
-// }
-
-// document.getElementsByClassName('order-button')[0].addEventListener('click', () => {alert('hola')})
+let carrito = [];
 
 const removeCartItem = (e) => {
   let removeFromCartButton = e.target;
+  let idItem =
+    removeFromCartButton.parentElement.parentElement.parentElement.id;
+  let cart = window.localStorage.getItem("cart");
+  let cartParsed = JSON.parse(cart);
+  let cartItemIndex = cartParsed.findIndex(
+    (itemCart) => itemCart.id === idItem
+  );
+  carrito.splice(cartItemIndex, 1);
+  window.localStorage.setItem("cart", JSON.stringify(carrito));
   removeFromCartButton.parentElement.parentElement.parentElement.remove();
   updateCartTotal();
 };
@@ -78,47 +31,76 @@ const quantityChanged = (e) => {
   if (isNaN(quantityInput.value) || quantityInput.value <= 0) {
     quantityInput.value = 1;
   }
+  let foodItem = quantityInput.parentElement.parentElement;
+  let idItem = foodItem.id;
+  let cart = window.localStorage.getItem("cart");
+  let cartParsed = JSON.parse(cart);
+  let cartItemIndex = cartParsed.findIndex(
+    (itemCart) => itemCart.id === idItem
+  );
+  carrito[cartItemIndex].cant = quantityInput.value;
+  window.localStorage.setItem("cart", JSON.stringify(carrito));
   updateCartTotal();
 };
 
 const addToCartClicked = (e) => {
   let button = e.target;
   let orderItem = button.parentElement.parentElement;
+  let foodItemID = button.getAttribute("data-id");
   let title = orderItem.getElementsByClassName("food__title")[0].innerText;
   let price = orderItem
     .getElementsByClassName("food__cart-price")[0]
     .innerText.replace("$", "");
-  addItemToCart(title, price);
+  addItemToCart(title, price, foodItemID);
   updateCartTotal();
 };
 
-const addItemToCart = (title, price) => {
+const addItemToCart = (title, price, foodItemID) => {
   let orderItemDiv = document.createElement("div");
   orderItemDiv.classList.add("order-item");
+  orderItemDiv.id = foodItemID;
   let orderItems = document.getElementsByClassName("items-container")[0];
   let orderItemNames = orderItems.getElementsByClassName("order-item__title");
-  for (let name of orderItemNames) {
-    if (name.innerHTML == title) {
-      alert("Este item ya se encuentra en el carrito.");
-      return;
+  let idItem = orderItemDiv.id;
+  // let cantItem = orderItemDiv.getElementsByClassName('cart-quantity-input')[0].value;
+  let carritoItem = {
+    id: idItem,
+    name: title,
+    price: price,
+    cant: 1,
+  };
+  carrito = [...carrito, carritoItem];
+  window.localStorage.setItem("cart", JSON.stringify(carrito));
+  
+  let cart = window.localStorage.getItem("cart");
+  let cartParsed = JSON.parse(cart);
+  cartParsed.map((cartItem) => {
+    let newTitle = cartItem.name;
+    let newPrice = cartItem.price;
+
+    for (let name of orderItemNames) {
+      if (name.innerHTML == title) {
+        alert("Este item ya se encuentra en el carrito.");
+        return;
+      }
     }
-  }
-  let orderItemContent = `
-    <p class="order-item__title">${title}</p>
-    <span class="order-item__price">$${price}</span>
+    let orderItemContent = `
+    <p class="order-item__title">${newTitle}</p>
+    <span class="order-item__price">$${newPrice}</span>
     <div class="cart-quantity">
         <input class="cart-quantity-input" type="number" value="1">
         <button class="remove-item" type="button"><i class="fas fa-trash-alt"></i></button>
     </div>
     `;
-  orderItemDiv.innerHTML = orderItemContent;
-  orderItems.append(orderItemDiv);
-  orderItemDiv
-    .getElementsByClassName("remove-item")[0]
-    .addEventListener("click", removeCartItem);
-  orderItemDiv
-    .getElementsByClassName("cart-quantity-input")[0]
-    .addEventListener("change", quantityChanged);
+    orderItemDiv.innerHTML = orderItemContent;
+    orderItems.append(orderItemDiv);
+    orderItemDiv
+      .getElementsByClassName("remove-item")[0]
+      .addEventListener("click", removeCartItem);
+    orderItemDiv
+      .getElementsByClassName("cart-quantity-input")[0]
+      .addEventListener("change", quantityChanged);
+  });
 };
 
 const updateCartTotal = () => {
@@ -131,6 +113,7 @@ const updateCartTotal = () => {
     let quantityItem = orderItem.getElementsByClassName(
       "cart-quantity-input"
     )[0];
+    let foodItemID = orderItem.getAttribute("data-id");
     let price = +priceItem.innerHTML.replace("$", "");
     let quantity = +quantityItem.value;
     total += price * quantity;
@@ -141,7 +124,7 @@ const updateCartTotal = () => {
 
 let removeCartItemButtons = document.getElementsByClassName("remove-item");
 for (let removeButton of removeCartItemButtons) {
-  // removeButton.addEventListener("click", removeCartItem);
+  removeButton.addEventListener("click", removeCartItem);
 }
 
 let quantityInputs = document.getElementsByClassName("cart-quantity-input");
@@ -153,3 +136,24 @@ let addToCartButtons = document.getElementsByClassName("food__cart-button");
 for (let addButton of addToCartButtons) {
   addButton.addEventListener("click", addToCartClicked);
 }
+const purchaseClicked = () => {
+  console.log(carrito);
+};
+
+document
+  .getElementsByClassName("order-button")[0]
+  .addEventListener("click", purchaseClicked);
+
+// async function enviarCarrito(carrito) {
+//   const url = "localhost:8080/guardar-carrito";
+//   const options = {
+//       method: "post",
+//       headers: {
+//           "Content-Type": "application/json"
+//       },
+//       body: JSON.stringify(carrito)
+//   }
+
+//   const response = await fetch(url, options);
+//   return response.json();
+// }
