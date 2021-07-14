@@ -7,6 +7,7 @@ import com.majuba.majuba.entities.Waiter;
 import com.majuba.majuba.services.CategoryService;
 import com.majuba.majuba.services.TableService;
 import com.majuba.majuba.services.UserService;
+import com.majuba.majuba.services.WaiterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -44,6 +45,8 @@ public class LoginController {
     private TableService tableService;
     @Autowired
     private UserService userService;
+    @Autowired
+    private WaiterService waiterService;
 
     //Vista donde el usuario debe elegir si entra como admin o cliente
     @GetMapping("/")
@@ -64,17 +67,12 @@ public class LoginController {
     public ModelAndView system() {
         ModelAndView mav = new ModelAndView("index-emp");
         List<Table> tables = tableService.findAll();
-        mav.addObject("tables",tables);
+        mav.addObject("tables",tableService.findAll());
         mav.addObject("food",new Food());
         mav.addObject("categories", categoryService.findAll());
+        mav.addObject("Waiters", waiterService.fidAll());
         mav.addObject("waiter", new Waiter());
         return mav;
-    }
-
-    @PostMapping("/system/{table_id}")
-    public RedirectView tableWaiter(@PathVariable Long table_id, @RequestParam List<Waiter> waiters) {
-        tableService.assignWaiter(table_id, waiters);
-        return new RedirectView("/system");
     }
 
     //Al apretar "cliente", redirecciona a elegir tamaño de mesa

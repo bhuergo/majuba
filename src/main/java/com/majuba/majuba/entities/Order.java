@@ -23,6 +23,6 @@ public class Order implements Serializable {
     @OneToMany(mappedBy = "order")
     private List<Cart> cart_elements;
     @OneToOne
-    private Payment payment;
+    private Client client;
 
 }
