@@ -61,6 +61,29 @@ const addItemToCart = (title, price, foodItemID) => {
   orderItemDiv.id = foodItemID;
   let orderItems = document.getElementsByClassName("items-container")[0];
   let orderItemNames = orderItems.getElementsByClassName("order-item__title");
+
+  for (let name of orderItemNames) {
+    if (name.innerHTML == title) {
+      alert("Este item ya se encuentra en el carrito.");
+      return;
+    }
+  }
+  let orderItemContent = `
+    <p class="order-item__title">${title}</p>
+    <span class="order-item__price">$${price}</span>
+    <div class="cart-quantity">
+        <input class="cart-quantity-input" type="number" value="1">
+        <button class="remove-item" type="button"><i class="fas fa-trash-alt"></i></button>
+    </div>
+    `;
+  orderItemDiv.innerHTML = orderItemContent;
+  orderItems.append(orderItemDiv);
+  orderItemDiv
+    .getElementsByClassName("remove-item")[0]
+    .addEventListener("click", removeCartItem);
+  orderItemDiv
+    .getElementsByClassName("cart-quantity-input")[0]
+    .addEventListener("change", quantityChanged);
   let idItem = orderItemDiv.id;
   // let cantItem = orderItemDiv.getElementsByClassName('cart-quantity-input')[0].value;
   let carritoItem = {
@@ -71,36 +94,8 @@ const addItemToCart = (title, price, foodItemID) => {
   };
   carrito = [...carrito, carritoItem];
   window.localStorage.setItem("cart", JSON.stringify(carrito));
-  
   let cart = window.localStorage.getItem("cart");
   let cartParsed = JSON.parse(cart);
-  cartParsed.map((cartItem) => {
-    let newTitle = cartItem.name;
-    let newPrice = cartItem.price;
-
-    for (let name of orderItemNames) {
-      if (name.innerHTML == title) {
-        alert("Este item ya se encuentra en el carrito.");
-        return;
-      }
-    }
-    let orderItemContent = `
-    <p class="order-item__title">${newTitle}</p>
-    <span class="order-item__price">$${newPrice}</span>
-    <div class="cart-quantity">
-        <input class="cart-quantity-input" type="number" value="1">
-        <button class="remove-item" type="button"><i class="fas fa-trash-alt"></i></button>
-    </div>
-    `;
-    orderItemDiv.innerHTML = orderItemContent;
-    orderItems.append(orderItemDiv);
-    orderItemDiv
-      .getElementsByClassName("remove-item")[0]
-      .addEventListener("click", removeCartItem);
-    orderItemDiv
-      .getElementsByClassName("cart-quantity-input")[0]
-      .addEventListener("change", quantityChanged);
-  });
 };
 
 const updateCartTotal = () => {
