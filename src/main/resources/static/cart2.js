@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
     carrito.forEach((item) => {
       addItemToCart(item.name, item.price, item.id, item.cant);
     });
+    updateCartTotal();
   }
 });
 
@@ -47,8 +48,7 @@ const quantityChanged = (e) => {
   let cartItemIndex = cartParsed.findIndex(
     (itemCart) => itemCart.id === idItem
   );
-  console.log(carrito);
-  carrito[cartItemIndex].cant = quantityInput.value;
+  carrito[cartItemIndex].cant = +quantityInput.value;
   window.localStorage.setItem("cart", JSON.stringify(carrito));
   updateCartTotal();
 };
@@ -94,7 +94,6 @@ const addItemToCart = (title, price, foodItemID, cant = 1) => {
     .getElementsByClassName("cart-quantity-input")[0]
     .addEventListener("change", quantityChanged);
   let idItem = orderItemDiv.id;
-  // let cantItem = orderItemDiv.getElementsByClassName('cart-quantity-input')[0].value;
   let carritoItem = {
     id: idItem,
     name: title,
@@ -141,45 +140,32 @@ for (let addButton of addToCartButtons) {
   addButton.addEventListener("click", addToCartClicked);
 }
 
-// document
-//   .getElementsByClassName("order-button")[0]
-//   .addEventListener("click", purchaseClicked);
+document
+  .getElementsByClassName("order-button")[0]
+  .addEventListener("click", purchaseClicked);
 
-// const createCart = () => {
 
-//   carrito.forEach((item) => {
-//     let orderItemDiv = document.createElement("div");
-//     orderItemDiv.classList.add("order-item");
-//     let orderItems = document.getElementsByClassName("items-container")[0];
-//     let orderItemContent = `
-//     <p class="order-item__title">${item.name}</p>
-//     <span class="order-item__price">$${item.price}</span>
-//     <div class="cart-quantity">
-//         <input class="cart-quantity-input" type="number" value="1">
-//         <button class="remove-item" type="button"><i class="fas fa-trash-alt"></i></button>
-//     </div>
-//     `;
-//     orderItemDiv.innerHTML = orderItemContent;
-//     orderItems.append(orderItemDiv);
-//     orderItemDiv
-//       .getElementsByClassName("remove-item")[0]
-//       .addEventListener("click", removeCartItem);
-//     orderItemDiv
-//       .getElementsByClassName("cart-quantity-input")[0]
-//       .addEventListener("change", quantityChanged);
-//   });
-// };
 
-// async function enviarCarrito(carrito) {
-//   const url = "localhost:8080/guardar-carrito";
-//   const options = {
-//       method: "post",
-//       headers: {
-//           "Content-Type": "application/json"
-//       },
-//       body: JSON.stringify(carrito)
-//   }
+async function purchaseClicked() {
+  let cartParsed = JSON.parse(window.localStorage.getItem('cart'));
+  let finishCart = [];
+  cartParsed.forEach(cartItem => {
+    let finishCartItem = {
+      id: cartItem.id,
+      cant: cartItem.cant
+    }
+    finishCart.push(finishCartItem);
+  })
+  console.log(finishCart);
+  const url = "localhost:8080/saveCart__${}__";
+  const options = {
+      method: "post",
+      headers: {
+          "Content-Type": "application/json"
+      },
+      body: JSON.stringify(carrito)
+  }
 
-//   const response = await fetch(url, options);
-//   return response.json();
-// }
+  const response = await fetch(url, options);
+  return response.json();
+}
