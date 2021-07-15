@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ma·ju·ba</title>
     <!-- Link CSS using thymeleaf -->
-     <!-- <link rel="stylesheet" th:href="@{/index-emp.css}" /> -->
-    <!-- Link CSS -->
+    <link rel="stylesheet" th:href="@{/index-emp.css}" />
+    <!-- Link CSS
      <link rel="stylesheet" href="../static/index-emp.css" />
-     <!-- Icons   -->
+    Icons   -->
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
@@ -73,11 +73,16 @@
             </div>
           </div>
         </div>
-        <div class="waiters-container" th:each=" table : ${tables}" th:if="${!table.available and table.waiters.isEmpty()}">
-          <form class="waiters-form" autocomplete="off" th:action="@{/assignWaiter/__${table.table_id}__}" method="post">
+        <div
+               class="waiters"
+        >
+
+
+        <div class="waiters-div" th:each=" table : ${tables}" th:if="${!table.available and table.waiters.isEmpty()}">
+          <form class="waiter-form" autocomplete="off" th:action="@{/assignWaiter/__${table.table_id}__}" method="post">
               <h2 class="form__title">Asignar mozo a mesa <span th:text="${table.table_id}"></span></h2>
             <select
-                    class="form__select"
+                    class="waiters__select"
                     multiple="multiple"
                     name="setwaiters"
             >
@@ -92,6 +97,7 @@
                 <span>Asignar</span>
               </button>
           </form>
+        </div>
         </div>
       </section>
 
