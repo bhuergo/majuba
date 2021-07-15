@@ -248,6 +248,7 @@ section {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
+  overflow-y: scroll;
   justify-content: space-around;
 }
 
@@ -476,10 +477,24 @@ section {
 }
 
 .waiters-container {
-  width: 40%;
+  width: 300px;
+
+}
+.waiters{
+  overflow-y: scroll;
+  height: 40vh;
+  padding: 10px;
+  width: 50%;
+
 }
 
-.waiters-form {
+.waiters__select {
+  width: 100%;
+  margin-bottom: 20px;
+
+}
+
+.waiters-div {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -489,6 +504,13 @@ section {
   background: #FFF5FD;
   -webkit-box-shadow: 0px 0px 34px 0px rgba(0, 0, 0, 0.5);
   box-shadow: 0px 0px 34px 0px rgba(0, 0, 0, 0.5);
+  margin: 20px 0;
+}
+
+.waiter-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 @media only screen and (min-width: 768px) {
