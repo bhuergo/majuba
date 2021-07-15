@@ -41,6 +41,10 @@ body {
 
 /* Cart */
 
+#hidden_element {
+  visibility:hidden
+}
+
 .cart-container {
   width: 100%;
   justify-content: center;
