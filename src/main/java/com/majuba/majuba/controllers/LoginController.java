@@ -119,7 +119,9 @@ public class LoginController {
 
     @GetMapping("/menu")
     public ModelAndView menuMesa(HttpSession session) {
-        return new ModelAndView("index-cl");
+        ModelAndView mav = new ModelAndView("index-cl");
+        mav.addObject("assigned-table", (Table) session.getAttribute("assigned-table"));
+        return mav;
     }
 
     @GetMapping("/menu-emp")
