@@ -31,16 +31,20 @@ public class CartService {
         order.setTable(table.orElse(null));
         order.setClient(null);
         order = orderRepository.save(order);
-
+        Double tot = 0.0;
+        Cart cart = null;
         for (FoodDTO foodDTO : foodDTOS) {
-            Cart cart = new Cart();
+            cart = new Cart();
             Optional<Food> foodOptional = foodRepository.findById(foodDTO.getFood_id());
             Food food = foodOptional.orElseThrow(Exception::new);
             cart.setFood(food);
             cart.setAmount(foodDTO.getAmount());
-            cart.setSubtotal((food.getPrice()) * foodDTO.getAmount());
+            Double sub = food.getPrice() * foodDTO.getAmount();
+            tot = tot + sub;
+            cart.setSubtotal(sub);
             cart.setOrder(order);
             cartRepository.save(cart);
         }
+        cart.getOrder().setTotal(tot);
     }
 }
