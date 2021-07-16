@@ -231,9 +231,23 @@ section {
 
 /* Tables */
 
-.tables__container {
+.tables-waiters-container{
   margin-top: 5rem;
-  width: 90%;
+  padding: 1rem;
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  justify-content: space-between;
+}
+
+.tables__container {
+  height: 100%;
+  overflow-y: scroll;
+  width: 50%;
+}
+
+.waiter-name {
+  text-align: center;
 }
 
 .tables__title {
@@ -241,21 +255,20 @@ section {
   font-family: "Playfair Display", serif;
   font-weight: 500;
   font-size: 2rem;
-  margin-bottom: .8rem;
+  margin-bottom: 1rem;
 }
 
 .tables__flex-container {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  overflow-y: scroll;
   justify-content: space-around;
 }
 
 .table {
   font-family: "Roboto", sans-serif;
-  width: 150px;
-  height: 100px;
+  width: 200px;
+  height: 16vh;
   display: flex;
   border-radius: 12px;
   padding: 8px;
@@ -263,7 +276,7 @@ section {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-bottom: 10px;
+  margin: 1rem;
   background-color: #FFF5FD;
 }
 

@@ -36,6 +36,9 @@
       </nav>
 
       <section id="tables">
+        <div class="tables-waiters-container">
+
+
         <div class="tables__container">
           <h2 class="tables__title">Mesas</h2>
           <div class="tables__flex-container">
@@ -58,7 +61,7 @@
                 Código:
                 <span class="table__code" th:text="${table.access_code}"></span>
               </p>
-              <p>
+              <p class="waiter-name">
                 Mesero/s:
                 <span
                   class="table__code"
@@ -97,6 +100,7 @@
                 <span>Asignar</span>
               </button>
           </form>
+        </div>
         </div>
         </div>
       </section>

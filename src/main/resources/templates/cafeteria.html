@@ -77,9 +77,7 @@
         </button>
       </div>
     </div>
-    <script th:src="@{/cart2.js}">
-      var table = document.querySelector('#hidden_element');
-      console.log(table);
+    <script th:replace="cart2 :: cart2">
     </script>
   </body>
 </html>

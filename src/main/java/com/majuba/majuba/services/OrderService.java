@@ -29,6 +29,7 @@ public class OrderService {
         order.setTable(table.orElse(null));
         order.setCart_elements(carts);
         order.setClient(null);
+        orderRepository.save(order);
     }
 
     @Transactional
