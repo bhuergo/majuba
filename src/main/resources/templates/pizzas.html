@@ -1,67 +1,80 @@
 <!DOCTYPE html>
 <html
-  lang="en"
-  xmlns:th="http://www.thymeleaf.org"
-  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+        lang="en"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
 >
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ma·ju·ba</title>
-    <!-- Link CSS using thymeleaf -->
-    <link rel="stylesheet" th:href="@{/food2.css}" />
-    <!-- Link CSS
-    <link rel="stylesheet" href="../static/food.css" />
-     Icons -->
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
-      integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk"
-      crossorigin="anonymous"
-    />
-  </head>
-  <body>
-    <nav class="topnav">
-      <h2 class="logo">ma·ju·ba</h2>
-    </nav>
-    <main class="main-container">
-      <h1 class="option-menu">Pizzas</h1>
-      <ul class="foods-container">
-        <li class="food" th:each=" food : ${foods}">
-          <img
-            class="food__img"
-            th:src="@{/foods/image/__${food.food_id}__}"
-            alt="Pizzas"
-          />
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ma·ju·ba</title>
+  <!-- Link CSS using thymeleaf -->
+  <link rel="stylesheet" th:href="@{/food2.css}" />
+  <!-- Link CSS
+  <link rel="stylesheet" href="../static/food2.css" />
+  Icons  -->
+  <link
+          rel="stylesheet"
+          href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+          integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk"
+          crossorigin="anonymous"
+  />
+</head>
+<body>
+<nav class="topnav">
+  <h2 class="logo">ma·ju·ba</h2>
+</nav>
+<main class="main-container">
+  <div class="cart-container">
+    <h1 class="option-menu">Pizzas</h1>
+    <button class="cart-button">
+      <i class="fas fa-shopping-cart"></i>
+    </button>
+  </div>
+  <h3><a th:href="@{/menu}">Volver</a></h3>
 
-          <div class="food__info">
-            <h3 class="food__title" th:text="${food.title}"></h3>
-            <p class="food__description" th:text="${food.description}"></p>
-          </div>
-          <div class="food__cart">
-            <p class="food__cart-price">
-              $<span th:text="${food.price}"></span>
-            </p>
-            <select class="food__cart-select" name="" id="">
-              <option value="" selected>Cant</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-              <option value="11">11</option>
-              <option value="12">12</option>
-            </select>
-            <button class="food__cart-button">Agregar</button>
-          </div>
-        </li>
-      </ul>
-    </main>
-  </body>
+  <ul class="foods-container" id="cards">
+    <li class="food" th:each=" food : ${foods}">
+      <img
+              class="food__img"
+              src="../static/images/food-images/cafe.jpg"
+              th:src="@{/foods/image/__${food.food_id}__}"
+              alt="Cafetería"
+      />
+      <div class="food__info">
+        <h3 class="food__title" th:text="${food.title}">
+          El cafe mas negro
+        </h3>
+        <p class="food__description" th:text="${food.description}">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        </p>
+      </div>
+      <div class="food__cart">
+        <p class="food__cart-price">
+          $<span th:text="${food.price}" class="price-value">20</span>
+        </p>
+        <button class="food__cart-button" th:attr="data-id=${food.food_id}">Agregar al carrito</button>
+      </div>
+    </li>
+  </ul>
+
+</main>
+<div class="cart__modal-bg">
+  <div class="cart__modal" id="modal">
+    <button class="cart__modal-button">
+      <i class="fas fa-times"></i>
+    </button>
+    <h2 class="cart-title">Orden de compra</h2>
+    <div class="items-container">
+    </div>
+    <p class="total-items-price">Total de la cuenta: $<span class="total-price"></span></p>
+    <button class="order-button">
+      <i class="fas fa-money-check-alt"></i>
+    </button>
+  </div>
+</div>
+<script th:replace="cart2 :: cart2">
+</script>
+</body>
 </html>
