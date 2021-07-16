@@ -26,12 +26,18 @@ public class CartService {
 
     @Transactional
     public void transformDTO(Long table_id, List<FoodDTO> foodDTOS) throws Exception {
-        Order order = new Order();
-        Optional<Table> table = tableRepository.findById(table_id);
-        order.setTable(table.orElse(null));
-        order.setClient(null);
-        order = orderRepository.save(order);
-        Double tot = 0.0;
+        Order order;
+        if (orderRepository.existingTable(table_id) == null) {
+            order = new Order();
+            Optional<Table> table = tableRepository.findById(table_id);
+            order.setTable(table.orElse(null));
+            order.setClient(null);
+            order = orderRepository.save(order);
+        } else {
+            order = orderRepository.existingTable(table_id);
+        }
+
+        Double tot = order.getTotal(); //5
         Cart cart = null;
         for (FoodDTO foodDTO : foodDTOS) {
             cart = new Cart();

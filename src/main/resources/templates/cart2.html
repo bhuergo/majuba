@@ -171,6 +171,7 @@ async function purchaseClicked() {
 
   const response = await fetch(url, options);
   if (response === "error") console.log("ERROOOOOOOOOOOOOOOR");
+  localStorage.clear();
   location.href="/menu";
 }
 </script>

@@ -24,5 +24,5 @@ public class Order implements Serializable {
     private List<Cart> cart_elements;
     @OneToOne
     private Client client;
-    private Double total;
+    private Double total = 0.0;
 }
