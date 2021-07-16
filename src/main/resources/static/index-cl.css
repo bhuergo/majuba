@@ -51,6 +51,27 @@ body {
   padding: 12px;
 }
 
+.cart-button {
+  position: absolute;
+  border: none;
+  cursor: pointer;
+  color: #000;
+  background-color: transparent;
+  top: 10%;
+  right: 8%;
+  font-size: 1.4rem;
+  transition: all 0.2s ease;
+}
+
+.cart-button:hover {
+  transform: scale(1.1);
+  color: #6411f7;
+}
+
+.cart-button:active {
+  color: #000;
+}
+
 .selection {
   align-self: center;
   font-size: 18px;
