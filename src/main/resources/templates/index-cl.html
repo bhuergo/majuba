@@ -18,9 +18,12 @@
     />
   </head>
   <body>
-    <button class="cart-button">
-      <i class="fas fa-shopping-cart"></i>
-    </button>
+    <form th:action="@{/checkout/__${table}__}">
+      <button class="pay-button">
+        <h4>PAGAR</h4>
+      </button>
+    </form>
+
     <nav class="title__container">
 
     </nav>

@@ -51,11 +51,11 @@ body {
   padding: 12px;
 }
 
-.cart-button {
+.pay-button {
   position: absolute;
   border: none;
   cursor: pointer;
-  color: #000;
+  color: #ffffff;
   background-color: transparent;
   top: 10%;
   right: 8%;
@@ -63,12 +63,12 @@ body {
   transition: all 0.2s ease;
 }
 
-.cart-button:hover {
+.pay-button:hover {
   transform: scale(1.1);
-  color: #6411f7;
+  color: #000000;
 }
 
-.cart-button:active {
+.pay-button:active {
   color: #000;
 }
 

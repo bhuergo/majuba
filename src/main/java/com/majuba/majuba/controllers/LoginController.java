@@ -8,6 +8,7 @@ import com.majuba.majuba.services.CategoryService;
 import com.majuba.majuba.services.TableService;
 import com.majuba.majuba.services.UserService;
 import com.majuba.majuba.services.WaiterService;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.stereotype.Controller;
@@ -112,7 +113,11 @@ public class LoginController {
 
     @GetMapping("/menu")
     public ModelAndView menuMesa(HttpSession session) {
-        return new ModelAndView("index-cl");
+        ModelAndView mav = new ModelAndView("index-cl");
+        Table assigned_table = (Table) session.getAttribute("assigned_table");
+        Long table_id = assigned_table.getTable_id();
+        mav.addObject("table",table_id);
+        return mav;
     }
 
     @GetMapping("/menu-emp")
