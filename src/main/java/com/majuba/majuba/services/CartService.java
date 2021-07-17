@@ -62,4 +62,8 @@ public class CartService {
         return cartRepository.findByOrder(order_id);
     }
 
+    @Transactional
+    public void hideCart(Long cart_id) {
+        cartRepository.hideCart(cart_id);
+    }
 }
