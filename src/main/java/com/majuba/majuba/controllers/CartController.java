@@ -41,6 +41,7 @@ public class CartController {
     public RedirectView hidePreparedCart(@RequestParam Long cart_id) {
         cartService.hideCart(cart_id);
         return new RedirectView("/pedidos");
+        
     }
 
 }
