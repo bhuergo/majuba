@@ -41,7 +41,7 @@ public class OrderController {
         orderService.setEmail(order_id, clientName, email);
         Order order = orderService.findOrderById(order_id);
         tableService.resetTable(order.getTable().getTable_id());
-        return new RedirectView("/guest");
+        return new RedirectView("/logout");
     }
 
 }
