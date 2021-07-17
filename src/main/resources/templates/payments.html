@@ -24,70 +24,27 @@
     <main class="main-container">
       <h2 class="main-title">Pedidos</h2>
       <div class="carts">
-        <div class="cart">
+        <div
+          class="cart"
+          th:each="cart : ${carts}"
+          th:classappend="${!showFront} ? hidden : "
+        >
           <div class="cart__header">
-            <h3 class="cart__title">Mesa Nº<span>2</span></h3>
-            <p class="cart__id">67</p>
-          </div>     
+            <h3 class="cart__title">Mesa Nº<span th:text="${cart.order.table.table_id}"></span></h3>
+            <p class="cart__id" th:text="${cart.cart_id}"></p>
+          </div>
           <div class="cart__items">
             <div class="cart__item">
-              <p>Cafe</p>
-              <span>8</span>
+              <p th:text="${cart.title}"></p>
+              <span th:text="${cart.amount}"></span>
             </div>
-            <div class="cart__item">
-              <p>Cafe</p>
-              <span>8</span>
-            </div>
-            <div class="cart__item">
-              <p>Cafe</p>
-              <span>8</span>
-            </div>
-            <div class="cart__item">
-              <p>Cafe</p>
-              <span>8</span>
-            </div>
+            <form th:action="@{/hide}" method="POST">
+              <button class="cart__remove-button">Listo</button>
+            </form>
           </div>
-          <button class="cart__remove-button">
-            Eliminar
-          </button>
         </div>
-        <div class="cart">
-          <div class="cart__header">
-            <h3 class="cart__title">Mesa Nº<span>2</span></h3>
-            <p class="cart__id">67</p>
-          </div>     
-          <div class="cart__items">
-            <div class="cart__item">
-              <p>Cafe</p>
-              <span>8</span>
-            </div>
-            <div class="cart__item">
-              <p>Cafe</p>
-              <span>8</span>
-            </div>
-            <div class="cart__item">
-              <p>Cafe</p>
-              <span>8</span>
-            </div>
-            <div class="cart__item">
-              <p>Cafe</p>
-              <span>8</span>
-            </div>
-          </div>
-          <button class="cart__remove-button">
-            Eliminar
-          </button>
-        </div>
+        
       </div>
     </main>
-    <script>
-      const removeCartButtons = document.getElementsByClassName("cart__remove-button");
-      for (let button of removeCartButtons) {
-        button.addEventListener("click", () => {
-          button.parentElement.remove();
-        })
-      }
-      
-    </script>
   </body>
 </html>
