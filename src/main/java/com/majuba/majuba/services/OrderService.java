@@ -40,8 +40,7 @@ public class OrderService {
     }
 
     public Order showOrder(Long table_id) {
-        Optional<Order> optionalOrder = orderRepository.findById(table_id);
-        Order order = optionalOrder.orElse(null);
+        Order order = orderRepository.retrieveOrder(table_id);
         return order;
     }
 

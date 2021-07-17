@@ -12,4 +12,7 @@ public interface OrderRepository extends JpaRepository<Order, Long>{
     
     @Query("SELECT o FROM Order o WHERE o.table.table_id = :table_id")
     public Order existingTable(@Param("table_id") Long table_id);
+
+    @Query("SELECT o FROM Order o WHERE o.table.table_id = :table_id")
+    public Order retrieveOrder(@Param("table_id") Long table_id);
 }

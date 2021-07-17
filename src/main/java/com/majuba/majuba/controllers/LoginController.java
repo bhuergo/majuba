@@ -8,7 +8,6 @@ import com.majuba.majuba.services.CategoryService;
 import com.majuba.majuba.services.TableService;
 import com.majuba.majuba.services.UserService;
 import com.majuba.majuba.services.WaiterService;
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.stereotype.Controller;
