@@ -22,12 +22,11 @@
       <i class="fas fa-shopping-cart"></i>
     </button>
     <nav class="title__container">
-      <h2 class="title">ma·ju·ba</h2>
 
     </nav>
 
     <div class="restaurant">
-      <span class="restaurant__name" >Cake in Box</span>
+      <span class="restaurant__name" >Nombre del Restaurante</span>
 
     </div>
     <main class="main-container">
@@ -156,6 +155,7 @@
     </div>
     </main>
     <script>
+      //Dropdown menu cl (index-cl)
       const principalFood = document.querySelector(".principal__food-info");
       const foodOptions = document.querySelector(".food-options");
       const dropdownButton = document.querySelector(".fa-angle-down");
@@ -164,5 +164,8 @@
         dropdownButton.classList.toggle('rotate');
       })
     </script>
+    <script th:replace="cart2 :: cart2">
+    </script>
+
   </body>
 </html>

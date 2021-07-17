@@ -23,7 +23,6 @@
         <a href="#tables" id="title">ma·ju·ba</a>
         <ul>
           <li><a href="#tables">Mesas</a></li>
-          <li><a href="#new-supply">Nuevo insumo</a></li>
           <li><a href="#new-food">Nueva comida</a></li>
           <li><a href="#waiter">Mozo</a></li>
           <li><a href="#foods">Comidas</a></li>
@@ -57,6 +56,11 @@
                 />
                 <h4>Mesa Nº<span th:text="${table.table_id}"></span></h4>
               </div>
+              <p>
+                Capacidad:
+                <span class="table__code" th:text="${table.capacity}"></span>
+                personas
+              </p>
               <p>
                 Código:
                 <span class="table__code" th:text="${table.access_code}"></span>
@@ -103,20 +107,6 @@
         </div>
         </div>
         </div>
-      </section>
-
-      <section id="new-supply">
-        <form class="form" autocomplete="off">
-          <h2 class="form__title">Nuevo insumo</h2>
-          <div class="form__div">
-            <input type="text" class="form__input" placeholder=" " />
-            <label for="" class="form__label">Nombre</label>
-          </div>
-          <button class="form__button">
-            <i class="fas fa-plus"></i>
-            <span>Cargar</span>
-          </button>
-        </form>
       </section>
 
       <section id="new-food">

@@ -62,7 +62,7 @@ public class FoodController {
 
         try {
             String category = fService.edit(food_id, image, title, description, price, category_id);
-            return new RedirectView("/foods/"+category+"-emp");
+            return new RedirectView("/foods/"+category+"/emp");
         }catch(Exception e){
             return new RedirectView("/system");
         }
