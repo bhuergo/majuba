@@ -2,13 +2,16 @@ package com.majuba.majuba.controllers;
 
 import com.majuba.majuba.entities.Cart;
 import com.majuba.majuba.entities.FoodDTO;
+import com.majuba.majuba.entities.Table;
 import com.majuba.majuba.services.CartService;
 import com.majuba.majuba.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -28,5 +31,12 @@ public class CartController {
             return "error";
         }
         return "ok";
+    }
+
+    @GetMapping("/pedidos")
+    public ModelAndView showCarts() {
+        ModelAndView mav = new ModelAndView("payments");
+        mav.addObject("carts", cartService.findAll());
+        return mav;
     }
 }

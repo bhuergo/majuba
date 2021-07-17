@@ -53,4 +53,8 @@ public class CartService {
         }
         cart.getOrder().setTotal(tot);
     }
+
+    public List<Cart> findAll() {
+        return cartRepository.findAll();
+    }
 }
