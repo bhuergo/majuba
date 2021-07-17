@@ -8,7 +8,7 @@
     <!-- Link CSS using thymeleaf -->
     <!-- <link rel="stylesheet" th:href="@{/index-emp.css}" /> -->
     <!-- Link CSS -->
-    <link rel="stylesheet" href="../static/index-emp.css" />
+    <link rel="stylesheet" href="../static/payments.css" />
     <!-- Icons -->
     <link
       rel="stylesheet"
@@ -18,27 +18,76 @@
     />
   </head>
   <body>
-    <!-- Cart modal -->
-    <div class="cart__modal-bg">
-      <div class="cart__modal">
-        funciona
-        <button class="cart__modal-button">
-          <i class="fas fa-times"></i>
-        </button>
+    <nav class="topnav">
+      <h2 class="logo">ma·ju·ba</h2>
+    </nav>
+    <main class="main-container">
+      <h2 class="main-title">Pedidos</h2>
+      <div class="carts">
+        <div class="cart">
+          <div class="cart__header">
+            <h3 class="cart__title">Mesa Nº<span>2</span></h3>
+            <p class="cart__id">67</p>
+          </div>     
+          <div class="cart__items">
+            <div class="cart__item">
+              <p>Cafe</p>
+              <span>8</span>
+            </div>
+            <div class="cart__item">
+              <p>Cafe</p>
+              <span>8</span>
+            </div>
+            <div class="cart__item">
+              <p>Cafe</p>
+              <span>8</span>
+            </div>
+            <div class="cart__item">
+              <p>Cafe</p>
+              <span>8</span>
+            </div>
+          </div>
+          <button class="cart__remove-button">
+            Eliminar
+          </button>
+        </div>
+        <div class="cart">
+          <div class="cart__header">
+            <h3 class="cart__title">Mesa Nº<span>2</span></h3>
+            <p class="cart__id">67</p>
+          </div>     
+          <div class="cart__items">
+            <div class="cart__item">
+              <p>Cafe</p>
+              <span>8</span>
+            </div>
+            <div class="cart__item">
+              <p>Cafe</p>
+              <span>8</span>
+            </div>
+            <div class="cart__item">
+              <p>Cafe</p>
+              <span>8</span>
+            </div>
+            <div class="cart__item">
+              <p>Cafe</p>
+              <span>8</span>
+            </div>
+          </div>
+          <button class="cart__remove-button">
+            Eliminar
+          </button>
+        </div>
       </div>
-    </div>
+    </main>
     <script>
-      const cartButton = document.querySelector(".cart__button");
-      const modalBg = document.querySelector(".cart__modal-bg");
-      const cartModalButton = document.querySelector(".cart__modal-button");
-
-      cartButton.addEventListener("click", () => {
-        modalBg.classList.toggle("bg-active");
-      });
-
-      cartModalButton.addEventListener("click", () => {
-        modalBg.classList.toggle("bg-active");
-      });
+      const removeCartButtons = document.getElementsByClassName("cart__remove-button");
+      for (let button of removeCartButtons) {
+        button.addEventListener("click", () => {
+          button.parentElement.remove();
+        })
+      }
+      
     </script>
   </body>
 </html>
