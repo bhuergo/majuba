@@ -39,4 +39,10 @@ public class OrderService {
         order.getClient().setEmail(email);
     }
 
+    public Order showOrder(Long table_id) {
+        Optional<Order> optionalOrder = orderRepository.findById(table_id);
+        Order order = optionalOrder.orElse(null);
+        return order;
+    }
+
 }

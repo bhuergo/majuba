@@ -57,4 +57,9 @@ public class CartService {
     public List<Cart> findAll() {
         return cartRepository.findAll();
     }
+
+    public List<Cart> findByOrder(Long order_id) {
+        return cartRepository.findByOrder(order_id);
+    }
+
 }
