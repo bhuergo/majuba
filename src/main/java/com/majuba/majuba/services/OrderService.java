@@ -34,13 +34,19 @@ public class OrderService {
 
     @Transactional
     public void setEmail(Long order_id, String name, String email) {
-        Order order = (Order) orderRepository.findById(order_id).orElse(null);
+        Order order = orderRepository.findById(order_id).orElse(null);
         order.getClient().setName(name);
         order.getClient().setEmail(email);
     }
 
     public Order showOrder(Long table_id) {
         Optional<Order> optionalOrder = orderRepository.findById(table_id);
+        Order order = optionalOrder.orElse(null);
+        return order;
+    }
+
+    public Order findOrderById(Long order_id) {
+        Optional<Order> optionalOrder = orderRepository.findById(order_id);
         Order order = optionalOrder.orElse(null);
         return order;
     }

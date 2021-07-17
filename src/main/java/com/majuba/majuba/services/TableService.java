@@ -92,4 +92,10 @@ public class TableService {
 
     }
 
+    @Transactional
+    public void resetTable(Long table_id) {
+        tableRepository.updateAvailability(table_id);
+        tableRepository.reset(table_id);
+    }
+
 }
