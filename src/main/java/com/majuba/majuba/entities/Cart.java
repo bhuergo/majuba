@@ -5,9 +5,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.persistence.Table;
 import java.io.Serializable;
 
 @Entity
+@Table(name = "cart")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -22,4 +24,5 @@ public class Cart implements Serializable {
     private Double subtotal;
     @ManyToOne
     private Order order;
+    private Boolean showFront;
 }
