@@ -11,6 +11,7 @@
 
 a {
   text-decoration: none;
+  color: #000000;
 }
 
 body {
@@ -50,6 +51,7 @@ body {
   height: 92vh;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .main-title {

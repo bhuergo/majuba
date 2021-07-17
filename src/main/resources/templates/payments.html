@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ma·ju·ba</title>
     <!-- Link CSS using thymeleaf -->
-    <!-- <link rel="stylesheet" th:href="@{/index-emp.css}" /> -->
-    <!-- Link CSS -->
+    <link rel="stylesheet" th:href="@{/payments.css}" />
+    <!-- Link CSS
     <link rel="stylesheet" href="../static/payments.css" />
-    <!-- Icons -->
+    Icons -->
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
@@ -23,11 +23,12 @@
     </nav>
     <main class="main-container">
       <h2 class="main-title">Pedidos</h2>
+      <h3><a th:href="@{/system#foods}">Volver</a></h3>
       <div class="carts">
         <div
           class="cart"
           th:each="cart : ${carts}"
-          th:classappend="${!showFront} ? hidden : "
+          th:if="${cart.showFront}"
         >
           <div class="cart__header">
             <h3 class="cart__title">Mesa Nº<span th:text="${cart.order.table.table_id}"></span></h3>
@@ -35,11 +36,11 @@
           </div>
           <div class="cart__items">
             <div class="cart__item">
-              <p th:text="${cart.title}"></p>
+              <p th:text="${cart.food.title}"></p>
               <span th:text="${cart.amount}"></span>
             </div>
-            <form th:action="@{/hide}" method="POST">
-              <button class="cart__remove-button">Listo</button>
+            <form th:action="@{/hide/__${cart.cart_id}__}" method="POST">
+              <button type="submit" class="cart__remove-button">Listo</button>
             </form>
           </div>
         </div>

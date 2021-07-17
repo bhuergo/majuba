@@ -37,8 +37,8 @@ public class CartController {
         return mav;
     }
 
-    @PostMapping("/hide")
-    public RedirectView hidePreparedCart(@RequestParam Long cart_id) {
+    @PostMapping("/hide/{cart_id}")
+    public RedirectView hidePreparedCart(@PathVariable Long cart_id) {
         cartService.hideCart(cart_id);
         return new RedirectView("/pedidos");
         

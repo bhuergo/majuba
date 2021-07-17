@@ -14,6 +14,11 @@ body {
   background-color: #f7c329;
 }
 
+a {
+  text-decoration: none;
+  color: #000000;
+}
+
 .topnav {
   width: 100%;
   height: 8vh;
