@@ -156,6 +156,7 @@
     </div>
     </main>
     <script>
+      //Dropdown menu cl (index-cl)
       const principalFood = document.querySelector(".principal__food-info");
       const foodOptions = document.querySelector(".food-options");
       const dropdownButton = document.querySelector(".fa-angle-down");
@@ -164,5 +165,8 @@
         dropdownButton.classList.toggle('rotate');
       })
     </script>
+    <script th:replace="cart2 :: cart2">
+    </script>
+
   </body>
 </html>

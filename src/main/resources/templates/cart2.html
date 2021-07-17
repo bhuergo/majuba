@@ -171,8 +171,11 @@ async function purchaseClicked() {
 
   const response = await fetch(url, options);
   if (response === "error") console.log("ERROOOOOOOOOOOOOOOR");
-  localStorage.clear();
+  window.localStorage.removeItem('cart');
   location.href="/menu";
 }
+
+
+
 </script>
 </html>
