@@ -49,6 +49,7 @@ public class CartService {
             tot = tot + sub;
             cart.setSubtotal(sub);
             cart.setOrder(order);
+            cart.setShowFront(true);
             cartRepository.save(cart);
         }
         cart.getOrder().setTotal(tot);
