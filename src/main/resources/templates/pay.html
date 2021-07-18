@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ma·ju·ba</title>
+    <!-- Link CSS using thymeleaf -->
+    <!-- <link rel="stylesheet" th:href="@{/pay.css}" /> -->
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="../static/pay.css" />
+    <!-- Icons  -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+      integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <nav class="topnav">
+      <h2 class="logo">ma·ju·ba</h2>
+    </nav>
+    <main class="main-container">
+      <div class="order">
+        <h2 class="title">Tu pedido</h2>
+        <div class="order__container">
+          <h3 class="order__title">Items</h3>
+          <div class="order__items">
+            <div class="order__item" th:each="item : ${order_elements}">
+              <h4 th:text="${item.food.getTitle()}"></h4>
+              <div class="order__item-price">
+                <p th:text="${item.amount}"></p>
+                <p>$<span th:text="${item.subtotal}"></span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="order__pay-button">
+            <i class="fas fa-dollar-sign"></i>
+            <span th:text="${order.total}"></span>
+        </button>
+      </div>
+    </main>
+  </body>
+</html>
