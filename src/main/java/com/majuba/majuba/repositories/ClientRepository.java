@@ -13,7 +13,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ClientRepository extends JpaRepository<Client, Long>{
     
-    @Modifying
     @Query("SELECT a FROM Client a WHERE a.name LIKE :name")
     List<Client> searchForName(@Param("name") String name);
+
+    @Modifying
+    @Query("UPDATE Client c SET c.name = :name, c.email = :email WHERE c.client_id = :client_id")
+    public void updateClient(@Param("name") String name, @Param("email") String email, @Param("client_id") Long client_id);
 }

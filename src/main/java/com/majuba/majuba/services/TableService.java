@@ -96,6 +96,9 @@ public class TableService {
     public void resetTable(Long table_id) {
         tableRepository.updateAvailability(table_id);
         tableRepository.reset(table_id);
+        Optional<Table> tableOptional = tableRepository.findById(table_id);
+        Table table = tableOptional.orElse(null);
+        table.setWaiters(null);
     }
 
 }
