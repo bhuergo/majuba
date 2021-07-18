@@ -33,8 +33,8 @@ public class OrderController {
         return mav;
     }
 
-    @PostMapping("/payment")
-    public RedirectView checkout(@RequestParam Long order_id, @RequestParam String clientName, @RequestParam String email) {
+    @PostMapping("/payment/{order_id}")
+    public RedirectView checkout(@PathVariable Long order_id, @RequestParam String clientName, @RequestParam String email) {
         orderService.setEmail(order_id, clientName, email);
         Order order = orderService.findOrderById(order_id);
         tableService.resetTable(order.getTable().getTable_id());
