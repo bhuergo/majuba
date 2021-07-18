@@ -515,8 +515,7 @@ section {
 }
 .waiters{
   overflow-y: scroll;
-  height: 40vh;
-  padding: 10px;
+  height: 100%;
   width: 50%;
 
 }
@@ -535,8 +534,6 @@ section {
   padding: 10px 2rem;
   border-radius: 10px;
   background: #FFF5FD;
-  -webkit-box-shadow: 0px 0px 34px 0px rgba(0, 0, 0, 0.5);
-  box-shadow: 0px 0px 34px 0px rgba(0, 0, 0, 0.5);
   margin: 20px 0;
 }
 
