@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ma·ju·ba</title>
     <!-- Link CSS using thymeleaf -->
-    <link rel="stylesheet" th:href="@{/index-cl.css}" />
-    <!-- Link CSS
+    <!-- <link rel="stylesheet" th:href="@{/index-cl.css}" /> -->
+    <!-- Link CSS -->
       <link rel="stylesheet" href="../static/index-cl.css" />
-    Icons   -->
+    <!-- Icons    -->
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
@@ -18,27 +18,21 @@
     />
   </head>
   <body>
-    <form th:action="@{/checkout/__${table}__}">
-      <button class="pay-button">
-        <h4>PAGAR</h4>
-      </button>
-    </form>
-
-    <nav class="title__container">
-
-    </nav>
-
+    
     <div class="restaurant">
-      <span class="restaurant__name" >Nombre del Restaurante</span>
-
+      <span class="restaurant__name">ma·ju·ba</span>
     </div>
     <main class="main-container">
-
-      <p class="selection">¿Qué desea comer?</p>
-
-      <div class="foods-container">
-
+      <div class="pay-container">
+        <p class="selection">¿Qué desea comer?</p>
+        <form class="pay-form" th:action="@{/checkout/__${table}__}" method="post">
+          <button class="pay-button">
+            <i class="fas fa-money-bill-wave"></i>
+          </button>
+        </form>
+      </div>
       
+      <div class="foods-container">
       <div class="food-container">
         <img
           class="food__image"
