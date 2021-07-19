@@ -19,4 +19,8 @@ public interface CartRepository extends JpaRepository<Cart, Long>{
     @Modifying
     @Query("UPDATE Cart c SET c.showFront = false WHERE c.cart_id = :cart_id")
     public void hideCart(@Param("cart_id") Long cart_id);
+
+    @Modifying
+    @Query("DELETE FROM Cart c WHERE c.order.order_id = :order_id")
+    public void deleteAll(@Param("order_id") Long order_id);
 }

@@ -59,4 +59,8 @@ public class OrderService {
         return order;
     }
 
+    public void deleteOrder(Order order) {
+        orderRepository.delete(order);
+    }
+
 }

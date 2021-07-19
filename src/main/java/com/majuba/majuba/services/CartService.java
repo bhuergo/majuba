@@ -67,4 +67,9 @@ public class CartService {
     public void hideCart(Long cart_id) {
         cartRepository.hideCart(cart_id);
     }
+
+    @Transactional
+    public void deleteAll(Long order_id) {
+        cartRepository.deleteAll(order_id);
+    }
 }
