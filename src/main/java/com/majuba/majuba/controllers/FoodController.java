@@ -3,6 +3,7 @@ package com.majuba.majuba.controllers;
 
 
 import com.majuba.majuba.entities.Food;
+import com.majuba.majuba.entities.Table;
 import com.majuba.majuba.repositories.FoodRepository;
 import com.majuba.majuba.services.CategoryService;
 import com.majuba.majuba.services.FoodService;
@@ -15,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 
@@ -60,7 +62,7 @@ public class FoodController {
 
         try {
             String category = fService.edit(food_id, image, title, description, price, category_id);
-            return new RedirectView("/foods/"+category+"-emp");
+            return new RedirectView("/foods/"+category+"/emp");
         }catch(Exception e){
             return new RedirectView("/system");
         }
@@ -76,10 +78,12 @@ public class FoodController {
     }
 
     @GetMapping("/{categoria}")
-    public ModelAndView showCl(@PathVariable("categoria") String food_category) {
+    public ModelAndView showCl(@PathVariable("categoria") String food_category, HttpSession session) {
         ModelAndView mav = new ModelAndView(food_category);
         mav.addObject("foods", fService.findByCategory(food_category));
         mav.addObject("categories", cService.findAll());
+        Table assigned_table = (Table) session.getAttribute("assigned_table");
+        mav.addObject("assigned_table", assigned_table);
         return mav;
     }
 

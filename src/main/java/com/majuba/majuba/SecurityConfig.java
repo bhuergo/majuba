@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 
 @Configuration
 @EnableWebSecurity
@@ -40,7 +41,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/ingreso","/admin", "/guest", "/*.css", "/*.js", "/images/*", "/disponible","/mesa").permitAll()
+                .antMatchers("/ingreso", "/admin", "/guest", "/*.css", "/*.js", "/images/*", "/disponible", "/mesa").permitAll()
                 .antMatchers("/admin/**").hasRole("ADMIN").antMatchers("/**").authenticated()
                 .and()
                 .formLogin()
@@ -48,7 +49,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginProcessingUrl("/login") // <- No deberia ser necesario, por que lo pide?
                 .defaultSuccessUrl("/system", true).permitAll()
                 .and()
-                .logout().permitAll()
-                .and().csrf().disable();
+                .logout()
+                .logoutUrl("/logout")
+                .invalidateHttpSession(true)
+                .deleteCookies("JSESSIONID")
+                .logoutSuccessUrl("/guest")
+                .and()
+                .csrf().disable();
     }
 }

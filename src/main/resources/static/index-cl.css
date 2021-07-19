@@ -51,6 +51,27 @@ body {
   padding: 12px;
 }
 
+.pay-button {
+  position: absolute;
+  border: none;
+  cursor: pointer;
+  color: #ffffff;
+  background-color: transparent;
+  top: 10%;
+  right: 8%;
+  font-size: 1.4rem;
+  transition: all 0.2s ease;
+}
+
+.pay-button:hover {
+  transform: scale(1.1);
+  color: #000000;
+}
+
+.pay-button:active {
+  color: #000;
+}
+
 .selection {
   align-self: center;
   font-size: 18px;

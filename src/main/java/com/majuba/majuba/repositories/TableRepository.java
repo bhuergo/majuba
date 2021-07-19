@@ -29,4 +29,9 @@ public interface TableRepository extends JpaRepository<Table, Long>{
     @Query("UPDATE Table t SET t.waiters = :waiters WHERE t.table_id = :table_id")
     public void assignWaiters(@Param("table_id") Long table_id, @Param("waiters") List<Waiter> waiter);
 
+    @Modifying
+    @Query(value = "UPDATE restaurant_table t SET t.access_code = null WHERE t.table_id = :table_id" ,nativeQuery = true)
+    public void reset(@Param("table_id") Long table_id);
+
+
 }

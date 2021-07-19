@@ -12,7 +12,7 @@
     <!-- Link CSS using thymeleaf -->
     <!-- <link rel="stylesheet" th:href="@{/food.css}" /> -->
     <!-- Link CSS -->
-    <link rel="stylesheet" href="../static/food2.css" />
+    <link rel="stylesheet" href="../static/food.css" />
     <!-- Icons  -->
     <link
       rel="stylesheet"
@@ -53,7 +53,21 @@
             <p class="food__cart-price">
               $<span th:text="${food.price}" class="price-value">20</span>
             </p>
-            <button class="food__cart-button" th:attr="data-id=${food.food_id}">Agregar al carrito</button>
+            <select class="food__cart-select" name="" id="">
+              <option value="1" selected>1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+            </select>
+            <button class="food__cart-button">Agregar</button>
           </div>
         </li>
         <li class="food" th:each=" food : ${foods}">
@@ -75,7 +89,21 @@
             <p class="food__cart-price">
               $<span th:text="${food.price}" class="price-value">40</span>
             </p>
-            <button class="food__cart-button" th:attr="data-id=${food.food_id}">Agregar al carrito</button>
+            <select class="food__cart-select" name="" id="">
+              <option value="1" selected>1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+            </select>
+            <button class="food__cart-button">Agregar</button>
           </div>
         </li>
       </ul>
@@ -85,15 +113,15 @@
         <button class="cart__modal-button">
           <i class="fas fa-times"></i>
         </button>
-        <h2 class="cart-title">Orden de compra</h2>
+        <h2>Orden de pedido</h2>
         <div class="items-container">
+          
         </div>
-        <p class="total-items-price">Total de la cuenta: $<span class="total-price"></span></p>
         <button class="order-button">
           <i class="fas fa-money-check-alt"></i>
         </button>
       </div>
     </div>
-    <script src="../static/cart2.js"></script>
+    <script src="../static/cart.js"></script>
   </body>
 </html>

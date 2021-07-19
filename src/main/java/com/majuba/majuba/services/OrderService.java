@@ -1,47 +1,62 @@
 
 package com.majuba.majuba.services;
 
+import com.majuba.majuba.entities.Cart;
+import com.majuba.majuba.entities.Client;
 import com.majuba.majuba.entities.Order;
 import com.majuba.majuba.entities.Table;
+import com.majuba.majuba.repositories.ClientRepository;
 import com.majuba.majuba.repositories.OrderRepository;
+import com.majuba.majuba.repositories.TableRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class OrderService {
     
         
     @Autowired
     private OrderRepository orderRepository;
+    @Autowired
+    private TableRepository tableRepository;
+    @Autowired
+    private ClientRepository clientRepository;
 
     @Transactional
-    public void create(Long order_id, Table table, List cart_elements) {
+    public void createOrder(Long table_id, List<Cart> carts) {
         Order order = new Order();
-        order.setCart_elements(cart_elements);
-        order.setOrder_id(order_id);
-        order.setTable(table);
+        Optional<Table> table = tableRepository.findById(table_id);
+        order.setTable(table.orElse(null));
+        order.setCart_elements(carts);
+        order.setClient(null);
         orderRepository.save(order);
-
-    }
-
-    @Transactional(readOnly = true)
-    public List<Order> fidAll() {
-        return orderRepository.findAll();
     }
 
     @Transactional
-    public void delete(Long order_id) {
-        orderRepository.deleteById(order_id);
+    public void setEmail(Long order_id, String name, String email) {
+        Order order = orderRepository.findById(order_id).orElse(null);
+        Client client = new Client();
+        order.setClient(client);
+        orderRepository.setClient(client,order_id);
+        order.getClient().setName(name);
+        order.getClient().setEmail(email);
+        Long client_id = order.getClient().getClient_id();
+        clientRepository.updateClient(name,email,client_id);
     }
 
-    
-    @Transactional(readOnly = true)
-    public Order searchById(Long order_id) {
-        Optional<Order> orderOptional = orderRepository.findById(order_id);
-        return orderOptional.orElse(null);
+    public Order showOrder(Long table_id) {
+        Order order = orderRepository.retrieveOrder(table_id);
+        return order;
     }
-    
-    
+
+    public Order findOrderById(Long order_id) {
+        Optional<Order> optionalOrder = orderRepository.findById(order_id);
+        Order order = optionalOrder.orElse(null);
+        return order;
+    }
+
 }

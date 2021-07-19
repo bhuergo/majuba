@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<script th:inline="javascript" th:fragment="cart2">
 const cantSelect = document.querySelector(".food__cart-select");
 const cartButton = document.querySelector(".cart-button");
 const modalBg = document.querySelector(".cart__modal-bg");
@@ -151,21 +154,28 @@ async function purchaseClicked() {
   let finishCart = [];
   cartParsed.forEach(cartItem => {
     let finishCartItem = {
-      id: cartItem.id,
-      cant: cartItem.cant
+      food_id: cartItem.id,
+      amount: cartItem.cant
     }
     finishCart.push(finishCartItem);
   })
   console.log(finishCart);
-  const url = "localhost:8080/saveCart__${}__";
+  const url = "/saveCart/" + [[${assigned_table.table_id}]];
   const options = {
       method: "post",
       headers: {
           "Content-Type": "application/json"
       },
-      body: JSON.stringify(carrito)
+      body: JSON.stringify(finishCart)
   }
 
   const response = await fetch(url, options);
-  return response.json();
+  if (response === "error") console.log("ERROOOOOOOOOOOOOOOR");
+  window.localStorage.removeItem('cart');
+  location.href="/menu";
 }
+
+
+
+</script>
+</html>

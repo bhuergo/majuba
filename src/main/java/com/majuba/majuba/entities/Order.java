@@ -22,7 +22,7 @@ public class Order implements Serializable {
     private Table table;
     @OneToMany(mappedBy = "order")
     private List<Cart> cart_elements;
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.ALL})
     private Client client;
-
+    private Double total = 0.0;
 }

@@ -20,5 +20,6 @@ public class Client implements Serializable {
     private String document;
     private String email;
     private Long phone;
-    
+    @OneToOne
+    Order order;
 }
