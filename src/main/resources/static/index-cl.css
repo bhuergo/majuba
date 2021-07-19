@@ -28,7 +28,6 @@ body {
 }
 
 .restaurant {
-  font-family: "Roboto", sans-serif;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -51,30 +50,49 @@ body {
   padding: 12px;
 }
 
+.pay-container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 10px;
+}
+
 .pay-button {
   position: absolute;
-  border: none;
+  display: flex;
+  top: 0;
+  right: 1%;
   cursor: pointer;
+  border-radius: 18px;
+  padding: 6px 14px;
+  background-color: #4AA96C;
+  border: 1px solid #4AA96C;
   color: #ffffff;
-  background-color: transparent;
-  top: 10%;
-  right: 8%;
-  font-size: 1.4rem;
-  transition: all 0.2s ease;
+  font-size: 1rem;
+  transition: all 0.3s ease;
 }
 
 .pay-button:hover {
   transform: scale(1.1);
-  color: #000000;
+  background-color: #fff;
+  border: 1px solid #fff;
+  color: #4AA96C;
 }
 
 .pay-button:active {
   color: #000;
 }
 
+.pay-form {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .selection {
   align-self: center;
-  font-size: 18px;
+  font-size: 20px;
   margin-bottom: 1rem;
 }
 
@@ -207,9 +225,14 @@ body {
 }
 
 
+
 @media only screen and (min-width: 768px) {
   .foods-container {
     width: 80%;
+  }
+
+  .pay-container {
+    width: 50%;
   }
 }
 
