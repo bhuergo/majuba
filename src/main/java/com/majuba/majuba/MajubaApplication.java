@@ -7,17 +7,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MajubaApplication implements CommandLineRunner {
-    @Autowired
-    private EmailService emailService;
+public class MajubaApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(MajubaApplication.class, args);
     }
 
-
-    @Override
-    public void run(String... args) throws Exception {
-        emailService.enviarCorreo("juanpablogallart@gmail.com", "correo de prueba", "hola este es un correo de prueba");
-    }
 }

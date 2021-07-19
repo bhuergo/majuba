@@ -1,8 +1,10 @@
 package com.majuba.majuba.controllers;
 
 
+import com.majuba.majuba.MajubaApplication;
 import com.majuba.majuba.entities.Order;
 import com.majuba.majuba.services.CartService;
+import com.majuba.majuba.services.EmailService;
 import com.majuba.majuba.services.OrderService;
 import com.majuba.majuba.services.TableService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,8 @@ public class OrderController {
     CartService cartService;
     @Autowired
     TableService tableService;
+    @Autowired
+    EmailService emailService;
 
     @GetMapping("/checkout/{table_id}")
     public ModelAndView showFinal(@PathVariable Long table_id) {
@@ -37,7 +41,12 @@ public class OrderController {
     public RedirectView checkout(@PathVariable Long order_id, @RequestParam String clientName, @RequestParam String email) {
         orderService.setEmail(order_id, clientName, email);
         Order order = orderService.findOrderById(order_id);
+        String emailBody = emailService.cuerpo(order,clientName);
+        emailService.enviarCorreo(email,"Pagar pedido 000" + order_id, emailBody);
+        System.out.println("correo enviado");
         tableService.resetTable(order.getTable().getTable_id());
+        cartService.deleteAll(order_id);
+        orderService.deleteOrder(order);
         return new RedirectView("/logout");
     }
 
