@@ -48,10 +48,6 @@ public class OrderController {
         String emailBody = emailService.cuerpo(order, clientName);
         emailService.enviarCorreo(email, "Pagar pedido 000" + order_id, emailBody);
         System.out.println("correo enviado");
-        tableService.resetTable(order.getTable().getTable_id());
-        cartService.deleteAll(order_id);
-        orderService.deleteOrder(order);
-
         //MERCADOPAGO
         MercadoPago.SDK.setAccessToken("TEST-5245977742845310-080321-39fc00d3f23246acf95337f68679ad4f-275572218");
         //crear objeto preferencia
@@ -64,6 +60,11 @@ public class OrderController {
                 .setUnitPrice((float)order.getTotal().doubleValue());
         preference.appendItem(item);
         preference.save();
+
+        tableService.resetTable(order.getTable().getTable_id());
+        cartService.deleteAll(order_id);
+        orderService.deleteOrder(order);
+
 
 
 //        paymentService.mppayment();
