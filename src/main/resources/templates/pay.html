@@ -49,5 +49,23 @@
         </form>
       </div>
     </main>
+    <script src="https://sdk.mercadopago.com/js/v2"></script>
+    <script>
+      // Agrega credenciales de SDK
+      const mp = new MercadoPago('PUBLIC_KEY', {
+        locale: 'es-AR'
+      });
+
+      // Inicializa el checkout
+      mp.checkout({
+        preference: {
+          id: 'YOUR_PREFERENCE_ID'
+        },
+        render: {
+          container: '.cho-container', // Indica el nombre de la clase donde se mostrará el botón de pago
+          label: 'Pagar', // Cambia el texto del botón de pago (opcional)
+        }
+      });
+    </script>
   </body>
 </html>
