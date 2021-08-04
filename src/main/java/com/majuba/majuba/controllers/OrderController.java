@@ -8,7 +8,9 @@ import com.mercadopago.MercadoPago;
 import com.mercadopago.exceptions.MPConfException;
 import com.mercadopago.exceptions.MPException;
 import com.mercadopago.resources.Preference;
+import com.mercadopago.resources.datastructures.preference.BackUrls;
 import com.mercadopago.resources.datastructures.preference.Item;
+import org.graalvm.compiler.core.target.Backend;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -74,6 +76,7 @@ public class OrderController {
                 .setQuantity(1)
                 .setUnitPrice((float)order.getTotal().doubleValue());
         preference.appendItem(item);
+
         preference.save();
 
             //Paso el id al MAV
