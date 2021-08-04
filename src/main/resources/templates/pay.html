@@ -53,7 +53,10 @@
     </main>
     <script src="https://sdk.mercadopago.com/js/v2"></script>
     <script th:inline="javascript">
-      const mp = new MercadoPago('TEST-beeec4aa-25c1-49c2-bc96-d3cdb39d74c5');
+      const mp = new MercadoPago('TEST-beeec4aa-25c1-49c2-bc96-d3cdb39d74c5',{
+        locale: 'es-AR'
+      });
+
       const checkout = mp.checkout({
         preference: {
           id: [[${preferenceId}]]
