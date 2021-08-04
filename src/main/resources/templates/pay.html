@@ -42,30 +42,20 @@
                 <input class="form__input" name="email" type="email" placeholder="Email" required>
             </div>
             
-          <button class=".cho-container">
-
+          <button class="order__pay-button" onclick="checkout.open()">
             <i class="fas fa-dollar-sign"></i>
             <span th:text="${order.total}"></span>
           </button>
-          <button class=".cho-container"> </button>
+
         </form>
       </div>
     </main>
     <script src="https://sdk.mercadopago.com/js/v2"></script>
-    <script>
-      // Agrega credenciales de SDK
-      const mp = new MercadoPago('PUBLIC_KEY', {
-        locale: 'es-AR'
-      });
-
-      // Inicializa el checkout
-      mp.checkout({
+    <script th:inline="javascript">
+      const mp = new MercadoPago('TEST-beeec4aa-25c1-49c2-bc96-d3cdb39d74c5');
+      const checkout = mp.checkout({
         preference: {
-          id: 'YOUR_PREFERENCE_ID'
-        },
-        render: {
-          container: '.cho-container', // Indica el nombre de la clase donde se mostrará el botón de pago
-          label: 'Pagar', // Cambia el texto del botón de pago (opcional)
+          id: [[${preferenceId}]]
         }
       });
     </script>

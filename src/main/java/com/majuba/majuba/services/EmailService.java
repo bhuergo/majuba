@@ -28,7 +28,7 @@ public class EmailService {
 
     public void enviarCorreo(String to, String asunto,String cuerpo)  {
 
-//        new Thread(() -> {
+       new Thread(() -> {
             System.out.println("Enviando correo a "+to);
             try {
 
@@ -56,7 +56,7 @@ public class EmailService {
                 e.printStackTrace(); // chequear el mensaje.
             }
 
-//        });
+      }).run();
 
     }
 
